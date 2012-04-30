@@ -23,15 +23,15 @@
 					
 					//nos conectamos a la base de datos y traemos todas las funcionalidades de la clase bd_consultas
 					
-					//indicamos los campos a consultar
+					//indicamos los campos a consultar EN UN ARREGLO
 					$campos=array("nombre");
 					
-					//indicamos la tabla donde vamos a buscar los campos
+					//indicamos la tabla donde vamos a buscar los campos EN UN ARREGLO
 					$tablas=array("admin");
 					
-					$respuesta=$conexionDB->select($campos,$tablas);
 					
-						return $respuesta;
+					
+						return $respuesta=$conexionDB->select($campos,$tablas);
 					
 				}
 				
