@@ -1,41 +1,38 @@
 <?php 
+/*=================================================================	
+//=========FICHA DE LA ClASE	
+//=================================================================		
+	*FRAMEWORK VERSION: 0.0.1
+	*CLASE:class_db.php
+	*DESCRIPCION:clase donde se establecen los parametros de las consultas 
+	*CREADO POR: "desarrollador"
+	* CORREO ELECTRONICO: 
+	*FECHA CREACION: 
+	*FECHA ULTIMO MANTENIMIENTO:              POR:  
 
-//clase que trae las conexiones y consultas a la base de datos
-	
-		
-		
-		/* si queremos que se conecte a otra cadena de conexion diferente a la establecida en el archivo de configuracion simplemente
-			le indicamos la ruta de los parametros de conexion 
-		*/
-			//$conexionDB->cadenaConexion="../conexion/conexion.php";
-			
-		class consultas{
-			
-				
-				
-				function consultarNombre(){
-					require ("../../class/db/class_db.php");
-		
-					//hecemos una instancia de db consultas
-					$conexionDB= new db_consultas();
+//=================================================================	*/	
+	class consultas{
+	// estos metodos son hechos por el desarrollador
+		function consultarNombre(){
+		//traemos la clase db_consultas que contiene los metodos y atributos que interactian con el modelo
+			require ("../../class/db/class_db.php");
+			//hecemos una instancia de db consultas
+			//nos conectamos a la base de datos y traemos todas las funcionalidades de la clase bd_consultas
+			$conexionDB= new db_consultas();
+		//======== armar la consulta =============================			
 					
-					
-					
-					//nos conectamos a la base de datos y traemos todas las funcionalidades de la clase bd_consultas
-					
-					//indicamos los campos a consultar EN UN ARREGLO
-					$campos=array("nombre");
-					
-					//indicamos la tabla donde vamos a buscar los campos EN UN ARREGLO
-					$tablas=array("admin");
-					
-					
-					
-						return $respuesta=$conexionDB->select($campos,$tablas);
-					
-				}
+			//indicamos los campos a consultar EN UN ARREGLO
+			$campos=array("nombre",
+						  "clave"
+						  );
+			//indicamos la tabla donde vamos a buscar los campos EN UN ARREGLO
+			$tablas=array("admin"
+						  );
+			//devolvemos los resultados de la consulta
+			return $respuesta=$conexionDB->select($campos,$tablas);
+			}
 				
 			
-		}	
+	}	
 
 ?>

@@ -31,10 +31,16 @@
 //==========LOGICA DE NEGOCIOS ====================================		
 //=================================================================
 		
+	//invocamos una consulta
 		$respuesta=$selecionarNombre->consultarNombre();
 		
+	//llenamos el mensaje que estara dentro de nuestro marco html de salida	
 		$mensaje.=$respuesta;
 		
+
+		print_r($respuesta);
+
+
 //=================================================================			
 //===========MUESTRA EN PANTALLA DE RESULTADOS (SALIDA)============
 //=================================================================			
