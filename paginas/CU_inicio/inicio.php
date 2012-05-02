@@ -35,8 +35,8 @@
 		$respuesta=$selecionarNombre->consultarNombre();
 		
 	//llenamos el mensaje que estara dentro de nuestro marco html de salida	
-		$mensaje.=$respuesta;
-		
+		$mensaje.="<center><h2>Zion<font color='#159B15'>P</font><font color='#DED91B'>H</font><font color='#FF0000'>P</font> 
+				   <font color='#000000'>dice: Hola Mundo! </font></h2></center>";	
 
 		print_r($respuesta);
 
