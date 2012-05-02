@@ -3,7 +3,7 @@
 /*=================================================================	
 //=========FICHA DEL CASO DE USO	
 //=================================================================		
-	*FRAMEWORK VERSION: 0.0.1
+	*SISTEMA VERSION: 0.0.1
 	*CASO DE USO:
 	*CREADO POR:
 	* CORREO ELECTRONICO:

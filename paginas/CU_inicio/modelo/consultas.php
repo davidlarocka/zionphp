@@ -2,7 +2,7 @@
 /*=================================================================	
 //=========FICHA DE LA ClASE	
 //=================================================================		
-	*FRAMEWORK VERSION: 0.0.1
+	*SISTEMA VERSION: 0.0.1
 	*CLASE:class_db.php
 	*DESCRIPCION:clase donde se establecen los parametros de las consultas 
 	*CREADO POR: "desarrollador"
