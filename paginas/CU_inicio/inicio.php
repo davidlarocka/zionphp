@@ -17,7 +17,7 @@
 		require("modelo/consultas.php");
 		
 		//clase que trae el marco html
-		require ("../../class/marco_html/html.php");
+		require ("../../framework/marco_html/html.php");
 
 //=================================================================			
 

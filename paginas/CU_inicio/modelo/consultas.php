@@ -15,7 +15,7 @@
 	// estos metodos son hechos por el desarrollador
 		function consultarNombre(){
 		//traemos la clase db_consultas que contiene los metodos y atributos que interactian con el modelo
-			require ("../../class/db/class_db.php");
+			require ("../../framework/db/class_db.php");
 			//hecemos una instancia de db consultas
 			//nos conectamos a la base de datos y traemos todas las funcionalidades de la clase bd_consultas
 			$conexionDB= new db_consultas();
