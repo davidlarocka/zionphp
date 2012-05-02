@@ -36,10 +36,9 @@
 		
 	//llenamos el mensaje que estara dentro de nuestro marco html de salida	
 		$mensaje.="<center><h2>Zion<font color='#159B15'>P</font><font color='#DED91B'>H</font><font color='#FF0000'>P</font> 
-				   <font color='#000000'>dice: Hola Mundo! </font></h2></center>";	
+				   <font color='#000000'>dice: Hola Mundo! </font></h2></center><br/>";	
 
-		print_r($respuesta);
-
+		$mensaje.="el nombre de la comision es: ".$respuesta[0][1];
 
 //=================================================================			
 //===========MUESTRA EN PANTALLA DE RESULTADOS (SALIDA)============

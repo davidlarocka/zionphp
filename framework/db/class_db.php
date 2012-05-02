@@ -12,7 +12,7 @@
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with Foobar.  If not, see <http://www.gnu.org/licenses/>. 
+    along with zionPHP 1.0.  If not, see <http://www.gnu.org/licenses/>. 
 */
 /*=================================================================	
 //=========FICHA TECNICA DE LA CLASE	
@@ -27,7 +27,7 @@
 				  -Update
 				  -Delete
 	*CREADO POR: TSU David Garcia
-	* CORREO ELECTRONICO: davidlarocka@gmail.com
+	*CORREO ELECTRONICO: davidlarocka@gmail.com
 	*FECHA CREACION: 1 DE MAYO DE 2012
 	*FECHA ULTIMO MANTENIMIENTO:              POR:  
 
@@ -57,26 +57,28 @@
 				$conexion[0]=mysql_connect($servidor,$usuario,$pass) or die ("murio la conexion a la base de datos");
 				$conexion[1]=mysql_select_db($base_datos);
 				//devuelve el resultado
+				echo "parametros conexion: ".$servidor." ".$usuario." ".$base_datos." ".$pass."<br/><br/>";
 				return $conexion;
 				}
 
 			// a este select le pasamos como parametros los campos a buscar, la tabla o tablas y de ser necesario la condicion...
-			function select($atributo, $tabla){
+			function select($atributo, $tabla, $condicion){
 				
 				//se conecta a la base de datos
 					$conexion=$this->conectar();
-					
+					$nro_atributos=-1;
 					//armamos la sentencia en lenguaje SQL
 					$SQL='SELECT ';
 					
 							
 					//indicamos los campos a consultar
-							
+						
 					foreach($atributo as $valor){
 					//incluimos el campo que toca en el buble a la consulta SQL
 						$SQL.= $valor;
 						//ponemos una coma para separar campo por campo y respetar la sintaxsis del lenguaje SQL
 						$SQL.=', ';
+						$nro_atributos++;
 					}	
 					//eliminamos la ultima coma que quedo en el ciclo como basura(esto borra los dos ultimos caracteres de la cadena... la coma y el espacio )
 					$SQL=substr($SQL,0,-2);
@@ -91,20 +93,39 @@
 					}	
 					//eliminamos la ultima coma que quedo en el ciclo como basura(esto borra los dos ultimos caracteres de la cadena... la coma y el espacio )
 					$SQL=substr($SQL,0,-2);  
+					//indicamos la condicion
+					$SQL.=" WHERE ";
+					foreach($condicion as $valor){
+					//incluimos el campo que toca en el buble a la consulta SQL
+						$SQL.= $valor;
+						//ponemos una coma para separar campo por campo y respetar la sintaxsis del lenguaje SQL
+						$SQL.=' AND ';
+					}
+					//eliminamos el ultimo AND que nos enbasura la sentencia
+					$SQL=substr($SQL,0,-5);
+					
 					//cerramos la sentencia SQL
 					$SQL.= ';'; 	   
-				//	echo $SQL;
+				
+				echo $SQL;
+				
 					//exit;
 					//aki hacemos el select	
 					$resultado=mysql_query($SQL)or die("no se realizo la consulta");
 					//ordenamos en un arreglo lo que nos trae
 					$i=0;
-	//CONTINUAR AKIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 	//cuando arregla no trae todos los resultados				
 					
 					while($row=mysql_fetch_array($resultado)){
-							$res[$i]=$row[0];
-							$i++;
+						
+						for($j=0;$j<=$nro_atributos;$j++){	
+							
+							$res[$i][$j]=$row[$j];
+						
+						
+							
+						}
+					$i++;		
 					}	
 					return $res;				
 			}
