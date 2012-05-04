@@ -1,10 +1,10 @@
 
 <?php 
 	
-	$servidor="localhost";
-	$base_datos="login";
+	$servidor="172.16.8.41";
+	$base_datos="mpprijv3";
 	$usuario="root";
-	$pass="dayana";
+	$pass="1ntr@n3t2010";
 	
 
 ?>

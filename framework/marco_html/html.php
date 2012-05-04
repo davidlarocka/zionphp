@@ -30,29 +30,21 @@
 //definimos la clase html	
 	class Html {
 		
-			function marco ($mensaje){
+			function salidaFinal ($mensaje){
+				//traemos la configuracion para ver que plantilla usa
+				require ("../../configuracion.php");
+				//traemos la configuracion para ver que plantilla usa
+				$urlPlantilla='plantillas/'.$plantilla.'.php';
 				
-				require ("menus/menusUsuario.php");
+				//buscamos que plantilla estamos utilizando
+				try{
+				require ($urlPlantilla);
+				}catch (Exception $e){
+				echo "no se configuro la plantilla, por favor indique una plantilla valida en el archivo de configuracion";	
+				}
 				
-				
-				//imprime la plantilla
-				echo '<center><table border="1" width="90%" height="100%" aling="center">
-						  <tr height="20%">
-							  <td> 
-							 <img src="../../framework/marco_html/imagenes/logo.png"  alt"logo.png" width="20%" height="100%"/>
-							  </td>
-						  </tr>
-						  <tr height="10%" >
-							  <td> 
-							  '.$menu_admin.'
-							  </td>
-						  </tr>
-						   <tr height="70%" >
-							  <td> 
-								'.$mensaje.'
-							  </td>
-						  </tr>
-					  </table></center>';
+				//imprimir la plantilla
+				echo $plantillaHtml;
 				
 				
 			}

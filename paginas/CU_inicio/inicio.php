@@ -30,20 +30,27 @@
 //=================================================================		
 //==========LOGICA DE NEGOCIOS ====================================		
 //=================================================================
-		
+	
 	//invocamos una consulta
 		$respuesta=$selecionarNombre->consultarNombre();
+
+		//print_r($respuesta);
+		
+//=================================================================		
+//==========ARMAR LA SALIDA ====================================		
+//=================================================================		
+	
 		
 	//llenamos el mensaje que estara dentro de nuestro marco html de salida	
 		$mensaje.="<center><h2>Zion<font color='#159B15'>P</font><font color='#DED91B'>H</font><font color='#FF0000'>P</font> 
 				   <font color='#000000'>dice: Hola Mundo! </font></h2></center><br/>";	
 
-		$mensaje.="el nombre de la comision es: ".$respuesta[0][1];
+		$mensaje.="el nombre de la comision es: ".$respuesta[0][0];
 
 //=================================================================			
 //===========MUESTRA EN PANTALLA DE RESULTADOS (SALIDA)============
 //=================================================================			
-		$html->marco($mensaje);
+		$html->salidaFinal($mensaje);
 	
 
 ?>

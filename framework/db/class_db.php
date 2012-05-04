@@ -52,12 +52,12 @@
 					hacer una nueva instancia de db_consultas entonces esa es la que se usa*/
 					require($this->cadenaConexion);
 				}
-				
+				echo "parametros conexion: ".$servidor." ".$usuario." ".$base_datos." ".$pass."<br/><br/>";
 				//construimos la conexion para mysql
-				$conexion[0]=mysql_connect($servidor,$usuario,$pass) or die ("murio la conexion a la base de datos");
+				$conexion[0]=mysql_connect($servidor,$usuario,$pass) or die ("murio la conexion a la base de datos :(");
 				$conexion[1]=mysql_select_db($base_datos);
 				//devuelve el resultado
-				echo "parametros conexion: ".$servidor." ".$usuario." ".$base_datos." ".$pass."<br/><br/>";
+				
 				return $conexion;
 				}
 

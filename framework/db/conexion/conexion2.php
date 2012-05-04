@@ -2,7 +2,7 @@
 <?php 
 	
 	$servidor="localhost";
-	$base_datos="ovi";
+	$base_datos="zionframework";
 	$usuario="root";
 	$pass="dayana";
 	

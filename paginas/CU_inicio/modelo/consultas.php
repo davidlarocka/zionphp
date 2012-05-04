@@ -21,21 +21,18 @@
 			$conexionDB= new db_consultas();
 			
 			//aki indicamos una cadena de conexion distinta a la indicada en la configuracion
-			$conexionDB->cadenaConexion="conexion/conexion2.php";
+			//$conexionDB->cadenaConexion="conexion/conexion2.php";
 		//======== armar la consulta =============================			
 					
 			//indicamos los campos a consultar EN UN ARREGLO
-			$campos=array("id_comision",      //0
-						  "comision"          //1
+			$campos=array("*"          //1
 						  ); 
 			//indicamos la tabla donde vamos a buscar los campos EN UN ARREGLO
-			$tablas=array("comision"
+			$tablas=array("jos_denuncias"
 						  );
-			
-			$condicion=array(
-							'id_comision=3',
-							'comision="Comision Local"'
-							);
+			//indicamos la condicion donde vamos a buscar los campos EN UN ARREGLO
+			$condicion=array("cedula=20301220");
+							
 			$groupBy=array();
 			$ordenBy="";
 			$limit="";

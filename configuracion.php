@@ -2,7 +2,8 @@
 	
 	//ruta del archivo de conexion
 	$cadenaConexionGlobal="conexion/conexion.php";
-	$plantilla="";
+	//plantilla de la vista del sistema
+	$plantilla="sol";
 
 
 ?>
