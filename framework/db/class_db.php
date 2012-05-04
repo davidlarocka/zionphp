@@ -1,4 +1,4 @@
-<?php 
+|<?php 
 /*copyright:This file is part of zionPHP 1.0
 
     zionPHP 1.0 is free software: you can redistribute it and/or modify

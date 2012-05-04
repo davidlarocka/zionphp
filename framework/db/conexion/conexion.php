@@ -1,10 +1,10 @@
 
 <?php 
 	
-	$servidor="172.16.8.41";
-	$base_datos="mpprijv3";
+	$servidor="localhost";
+	$base_datos="zionphp";
 	$usuario="root";
-	$pass="1ntr@n3t2010";
+	$pass="123456";
 	
 
 ?>
