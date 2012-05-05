@@ -19,7 +19,7 @@
 		require("js/validaciones.php");
 		//clase que trae el marco html
 		require ("../../framework/marco_html/html.php");
-
+		session_start();
 //=================================================================			
 
 		//hacemos una instancia del marco html
@@ -65,6 +65,13 @@
 			exit;	
 		}
 		else if(($objUsuario[0][0]==$_POST["usuario"]) && ($objUsuario[0][1]==$_POST["password"]) ){
+			
+			//iniciamos la session 
+			
+			
+			$_SESSION['usuario']=$objUsuario[0][2];
+			$_SESSION['password']=$objUsuario[0][0];
+			
 			echo '<script  type="text/javascript">
 						var pagina="../CU_inicio/index.php";
 						location.href=pagina;
@@ -106,8 +113,16 @@
 					Password<input type="password" name="password" id="password" /><br/><br/>
 					<input type="button" value="Entrar" onclick="validarCampos()" /><br/><br/>
 					
-				<a href="#">Registrarte         </a><br/>
-			    <a href="#"> Olvidaste tu Clave? </a>  	
+			<table>
+				<tr>
+					<td> <a href="#">Registrarte         </a><br/></td>
+					<td> <a href="#"> Olvidaste tu Clave? </a>  	</td>
+				</tr>
+			</table>	
+			   
+			   
+			   
+			   
 					
 				 </form>
 		</center>';

@@ -19,7 +19,7 @@
 		require("js/validaciones.php");
 		//clase que trae el marco html
 		require ("../../framework/marco_html/html.php");
-
+		session_start();
 //=================================================================			
 
 		//hacemos una instancia del marco html
@@ -32,7 +32,7 @@
 //==========LOGICA DE NEGOCIOS ====================================		
 //=================================================================
 	
-
+	
 	
 	
 		

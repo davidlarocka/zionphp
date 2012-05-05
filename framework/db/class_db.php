@@ -93,20 +93,22 @@
 					}	
 					//eliminamos la ultima coma que quedo en el ciclo como basura(esto borra los dos ultimos caracteres de la cadena... la coma y el espacio )
 					$SQL=substr($SQL,0,-2);  
-					//indicamos la condicion
-					$SQL.=" WHERE ";
-					foreach($condicion as $valor){
-					//incluimos el campo que toca en el buble a la consulta SQL
-						$SQL.= $valor;
-						//ponemos una coma para separar campo por campo y respetar la sintaxsis del lenguaje SQL
-						$SQL.=' AND ';
-					}
-					//eliminamos el ultimo AND que nos enbasura la sentencia
-					$SQL=substr($SQL,0,-5);
 					
-					//cerramos la sentencia SQL
-					$SQL.= ';'; 	   
-				
+					//verifica si existe condicion y de existir indicamos la condicion
+					if($condicion[0]!=""){ 	
+						$SQL.=" WHERE ";
+						foreach($condicion as $valor){
+						//incluimos el campo que toca en el buble a la consulta SQL
+							$SQL.= $valor;
+							//ponemos una coma para separar campo por campo y respetar la sintaxsis del lenguaje SQL
+							$SQL.=' AND ';
+						}
+						//eliminamos el ultimo AND que nos enbasura la sentencia
+						$SQL=substr($SQL,0,-5);
+						
+						//cerramos la sentencia SQL
+						$SQL.= ';'; 	   
+				    }
 				echo $SQL;
 				
 					//exit;

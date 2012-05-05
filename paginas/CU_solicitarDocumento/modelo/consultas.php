@@ -13,27 +13,26 @@
 //=================================================================	*/	
 	class consultas{
 	// estos metodos son hechos por el desarrollador
-		function login($cedula){
+		function selectDocumentos(){
 		//traemos la clase db_consultas que contiene los metodos y atributos que interactian con el modelo
 			require ("../../framework/db/class_db.php");
 			//hecemos una instancia de db consultas
 			//nos conectamos a la base de datos y traemos todas las funcionalidades de la clase bd_consultas
-			$conexionDB= new db_consultas($cedula);
+			$conexionDB= new db_consultas();
 			
 			//aki indicamos una cadena de conexion distinta a la indicada en la configuracion
 			//$conexionDB->cadenaConexion="conexion/conexion2.php";
 		//======== armar la consulta =============================			
 					
 			//indicamos los campos a consultar EN UN ARREGLO
-			$campos=array("cedula",          //1
-						  "password",
-						  "p_nombre"	
+			$campos=array("descripcion"         //1
+						
 						  ); 
 			//indicamos la tabla donde vamos a buscar los campos EN UN ARREGLO
-			$tablas=array("t_usuarios"
+			$tablas=array("t_documentos"
 						  );
 			//indicamos la condicion donde vamos a buscar los campos EN UN ARREGLO
-			$condicion=array("cedula=$cedula"
+			$condicion=array(""
 			
 			);
 							

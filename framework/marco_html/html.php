@@ -42,9 +42,34 @@
 				}catch (Exception $e){
 				echo "no se configuro la plantilla, por favor indique una plantilla valida en el archivo de configuracion";	
 				}
-				
+				print_r($_SESSION);
 				//imprimir la plantilla
-				echo $plantillaHtml;
+				
+				
+	//====================================================================================			
+	// excepciones de session: contiene una lista de url donde no hace falta estar auntentificado para ver el CU		
+	//====================================================================================			
+				
+				if($_SERVER["REQUEST_URI"]=="/zionphp/sistema/paginas/CU_login/" or 
+				   $_SERVER["REQUEST_URI"]=="/zionphp/sistema/paginas/CU_login/index.php" //excepcion 1
+				   ){
+					session_destroy();
+					echo $plantillaHtml;
+					exit;
+					
+				 }		
+				
+				
+				
+				
+				
+				if($_SESSION['usuario']!=""){
+					echo $plantillaHtml;
+				}else{
+					echo "Acceso denegado!!";	
+					echo $_SERVER["REQUEST_URI"];
+							
+					}
 				
 				
 			}

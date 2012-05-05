@@ -15,26 +15,33 @@
 	// incluimos las clases necesarias para que corra la aplicacion
 		//clase que trae las consultas de este caso de uso
 		require("modelo/consultas.php");
-		ass
+		//archivo que trae las validaciones particulares de este caso de uso
+		require("js/validaciones.php");
 		//clase que trae el marco html
 		require ("../../framework/marco_html/html.php");
-
+		session_start();
 //=================================================================			
 
 		//hacemos una instancia del marco html
 		$html = new Html();
 		
 		//instanciamos una consulta
-		$selecionarNombre= new consultas();
+		$consultasCU_documentos= new consultas();
 		
 //=================================================================		
 //==========LOGICA DE NEGOCIOS ====================================		
 //=================================================================
 	
-	//invocamos una consulta
-		$respuesta=$selecionarNombre->consultarNombre();
-
-		//print_r($respuesta);
+	//buscar los tipos de documentos que puede solicitar el alumno
+	
+		$objDocumentos=$consultasCU_documentos->selectDocumentos();
+		
+	$ComboDocumentos.="<Select id='documentos' name='documentos'>";
+	//creamos un select 
+	foreach($objDocumentos as $valor){
+			$ComboDocumentos.="<option value='".$valor[0]."'>".$valor[0]."</option>";
+	}	
+	$ComboDocumentos.="</Select>";	
 		
 //=================================================================		
 //==========ARMAR LA SALIDA ====================================		
@@ -42,10 +49,24 @@
 	
 		
 	//llenamos el mensaje que estara dentro de nuestro marco html de salida	
-		$mensaje.="<center><h2>Zion<font color='#159B15'>P</font><font color='#DED91B'>H</font><font color='#FF0000'>P</font> 
-				   <font color='#000000'>dice: Hola Mundo! </font></h2></center><br/>";	
 
-		$mensaje.="el nombre de la comision es: ".$respuesta[0][0];
+		$mensaje.="<table border='1' width='50%' height='80%' align='center'>
+					<tr height='10%'>
+						<td>
+							Solicitud de Documentos
+						</td>
+						
+					</tr>	
+					<tr>
+						<td>
+						<center>Seleccione Documento:".$ComboDocumentos."</center>
+						</td>
+						
+					</tr>
+				  </table>";	
+		
+		
+
 
 //=================================================================			
 //===========MUESTRA EN PANTALLA DE RESULTADOS (SALIDA)============
