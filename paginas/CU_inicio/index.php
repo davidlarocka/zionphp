@@ -32,46 +32,7 @@
 //==========LOGICA DE NEGOCIOS ====================================		
 //=================================================================
 	
-	//invocamos una consulta
-		//$respuesta=$selecionarNombre->consultarNombre();
-		//print_r($respuesta);
-	$cedula=$_POST["usuario"];	
-	
-	if (isset($_POST["usuario"])){
-		//consultamos si el usuario exite en la base de datos y asignamos el resultado a una variable usuario
-		$objUsuario=$consultasCU_inicio->login($cedula);
-		
-		//revisamos que el usuario y la clave sean validos
-		if(($objUsuario[0][0]!=$_POST["usuario"])){
-			
-			//si el usuario no existe redireccionamos al inicio
-		   echo	'<script  type="text/javascript">
-						alert("El Usuario no esta Registrado");
-						var pagina="inicio.php";
-						location.href=pagina;
-						
-				</script>';
-			exit;	
-						
-		}
-		else if(($objUsuario[0][0]==$_POST["usuario"]) && ($objUsuario[0][1]!=$_POST["password"]) ){
-			
-			echo '<script  type="text/javascript">
-						alert("clave Invalida");
-						var pagina="inicio.php";
-						location.href=pagina;
-						
-				</script>';
-			exit;	
-		}
-		else if(($objUsuario[0][0]==$_POST["usuario"]) && ($objUsuario[0][1]==$_POST["password"]) ){
-			echo "---------------___>si es valido";
-		
-		}
-		
-		
-		
-	}	
+
 	
 	
 		
@@ -82,30 +43,9 @@
 	
 		
 	//llenamos el mensaje que estara dentro de nuestro marco html de salida	
-/*
+
 		$mensaje.="<center><h2>Zion<font color='#159B15'>P</font><font color='#DED91B'>H</font><font color='#FF0000'>P</font> 
 				   <font color='#000000'>dice: Hola Mundo! </font></h2></center><br/>";	
-*/
-
-/*
-		$mensaje.="el nombre de la comision es: ".$respuesta[0][0];
-*/
-
- //armamos un formulario
-
- 
-		$mensaje.='
-		<center>
-				<form name="form_login" id="form_login" action="" method="post">
-					Cedula<input type="text" name="usuario" id="usuario" /><br/><br/>
-					Password<input type="password" name="password" id="password" /><br/><br/>
-					<input type="button" value="Entrar" onclick="validarCampos()" /><br/><br/>
-					
-				<a href="#">Registrarte         </a><br/>
-			    <a href="#"> Olvidaste tu Clave? </a>  	
-					
-				 </form>
-		</center>';
 		
 		
 

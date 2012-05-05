@@ -32,7 +32,7 @@
 //==========LOGICA DE NEGOCIOS ====================================		
 //=================================================================
 	
-	//invocamos una consulta
+		//invocamos una consulta
 		//$respuesta=$selecionarNombre->consultarNombre();
 		//print_r($respuesta);
 	$cedula=$_POST["usuario"];	
@@ -47,7 +47,7 @@
 			//si el usuario no existe redireccionamos al inicio
 		   echo	'<script  type="text/javascript">
 						alert("El Usuario no esta Registrado");
-						var pagina="inicio.php";
+						var pagina="index.php";
 						location.href=pagina;
 						
 				</script>';
@@ -58,14 +58,19 @@
 			
 			echo '<script  type="text/javascript">
 						alert("clave Invalida");
-						var pagina="inicio.php";
+						var pagina="index.php";
 						location.href=pagina;
 						
 				</script>';
 			exit;	
 		}
 		else if(($objUsuario[0][0]==$_POST["usuario"]) && ($objUsuario[0][1]==$_POST["password"]) ){
-			echo "---------------___>si es valido";
+			echo '<script  type="text/javascript">
+						var pagina="../CU_inicio/index.php";
+						location.href=pagina;
+						
+				</script>';
+			exit;	
 		
 		}
 		

@@ -2,11 +2,11 @@
    $plantillaHtml= '
 		<body bgcolor="#B9B9B9">			
 					<center><table border="0" width="90%" height="100%" aling="center" bgcolor="white">
-						  <tr height="20%">
+						  <tr height="15%">
 							  <td> 
-							 <!-- img src="../../framework/marco_html/imagenes/logo.png"  alt"logo.png" width="20%" height="100%"/-->
+							 <img src="../../framework/marco_html/imagenes/logosis.png"  alt"logo.png" width="100%" height="200px"/>
 							 
-							 <center><h1>SISGETRAC</h1></center>
+							
 							  </td>
 						  </tr>
 						  <tr height="10%" >
@@ -19,7 +19,7 @@
 								'.$mensaje.'
 							  </td>
 						  </tr>
-					  </table>
+					  </table><br/><br/><br/>
 					  
 					</center>
      </body>'
