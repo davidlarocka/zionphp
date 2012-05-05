@@ -70,7 +70,10 @@
 			
 			
 			$_SESSION['usuario']=$objUsuario[0][2];
-			$_SESSION['password']=$objUsuario[0][0];
+			$_SESSION['password']=$objUsuario[0][1];
+			$_SESSION['cedula']=$objUsuario[0][0];
+			$_SESSION['idt_usuario']=$objUsuario[0][3];
+			
 			
 			echo '<script  type="text/javascript">
 						var pagina="../CU_inicio/index.php";
