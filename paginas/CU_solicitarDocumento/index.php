@@ -18,6 +18,9 @@
 		//archivo que trae las validaciones particulares de este caso de uso
 		require("js/validaciones.php");
 		//clase que trae el marco html
+		require("ajax/ajax.php");
+		//clase que trae el marco html
+		
 		require ("../../framework/marco_html/html.php");
 		session_start();
 //=================================================================			
@@ -36,7 +39,7 @@
 	
 		$objDocumentos=$consultasCU_documentos->selectDocumentos();
 		
-	$ComboDocumentos.="<Select id='documentos' name='documentos'>";
+	$ComboDocumentos.="<Select id='documentos' name='documentos' onchange='buscarSolicitudesHechas(\"this.value\")'>";
 	//creamos un select 
 	foreach($objDocumentos as $valor){
 			$ComboDocumentos.="<option value='".$valor[0]."'>".$valor[0]."</option>";
@@ -60,6 +63,7 @@
 					<tr>
 						<td>
 						<center>Seleccione Documento:".$ComboDocumentos."</center>
+						<div id='contenedor'></div>
 						</td>
 						
 					</tr>

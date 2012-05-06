@@ -27,7 +27,9 @@
 			//indicamos los campos a consultar EN UN ARREGLO
 			$campos=array("cedula",          //1
 						  "password",
-						  "p_nombre"	
+						  "p_nombre",
+						   "idt_usuario"
+						  	
 						  ); 
 			//indicamos la tabla donde vamos a buscar los campos EN UN ARREGLO
 			$tablas=array("t_usuarios"
