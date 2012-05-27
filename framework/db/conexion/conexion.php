@@ -2,9 +2,9 @@
 <?php 
 	
 	$servidor="localhost";
-	$base_datos="zionframework";
+	$base_datos="ejemplo1";
 	$usuario="root";
-	$pass="123456";
+	$pass="dayana";
 	
 
 ?>
