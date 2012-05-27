@@ -1,3 +1,5 @@
+
+
 <?php
 /*copyright:This file is part of zionPHP 1.0
 
@@ -25,7 +27,54 @@
 	*ULTIMO MANTENIMIENTO:              POR:  
 
 //=================================================================	*/
-	
-echo "<h1>Hola, mundo</h1>";
+
+require ("instalador/ajax/ajax.php");
 
 ?>
+<body bgcolor="#1A1A1A">
+<table align="center" border="0" bgcolor="white" style="width:95%; height:100%;">
+	<tr><td>
+<?php	
+echo "<p align='center'><img src='instalador/logo.png'  /><br/>";	
+echo "<center><b>Instalador</b></center>";
+echo "<center><img src='instalador/barra_progreso.gif' /><br/><br/></center>";
+?>
+
+<table align="center" border="0" style="width:80%;">
+	<tr>
+		<td style="background-image:url(instalador/tab.png);height:40px;">
+			<p align="left"> <b>Datos del Sistema</b><br/></p>
+		</td>
+		<td style="background-image:url(instalador/tab2.png);height:40px;">
+			<p align="left"> <b>Base de Datos</b><br/></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="30%">
+			<p align="right">
+				<form name="crear" id="crear" method="post" action="">
+				
+					<br/>Nombre del Sistema<input type="text" id="nombre_sis" /><br/>
+										Acronimo<input type="text" id="acronimo" /><br/>
+			</p>
+		</td>
+		<td>
+		
+					 <p align="left"> Gestor de Base de Datos<select id="gestor_bd" ></p>
+							<option value="mysql">Mysql</option>
+							<option value="psql">Postgresql</option>
+						</select>
+						Nombre de la base de datos<input type="text" id="nombre_bd" /><br/><br/>
+						Servidor<input type="text" id="server" />
+						Usuario<input type="text" id="user" />
+						Password<input type="password" id="pass" /><br/>
+									<input type="button" value="Comprobar conexion" onclick="comprobarConexion(server.value, user.value, pass.value)"><div id="contenedor"></div>
+									
+									<br/>	
+		</td>
+	</tr>
+	
+</table>
+</td></tr>
+</table>
+</body>

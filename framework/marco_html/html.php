@@ -50,8 +50,8 @@
 	// excepciones de session: contiene una lista de url donde no hace falta estar auntentificado para ver el CU		
 	//====================================================================================			
 				
-				if($_SERVER["REQUEST_URI"]=="/zionphp/sistema/paginas/CU_login/" or 
-				   $_SERVER["REQUEST_URI"]=="/zionphp/sistema/paginas/CU_login/index.php" //excepcion 1
+				if($_SERVER["REQUEST_URI"]=="/proyecto_ovi/zionphp/paginas/CU_login/" or 
+				   $_SERVER["REQUEST_URI"]=="/proyecto_ovi/zionphp/paginas/CU_login/index.php" //excepcion 1
 				   ){
 					session_destroy();
 					echo $plantillaHtml;
@@ -67,6 +67,7 @@
 					echo $plantillaHtml;
 				}else{
 					echo "Acceso denegado!!";	
+				//	echo $plantillaHtml;
 					echo $_SERVER["REQUEST_URI"];
 							
 					}

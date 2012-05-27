@@ -1,0 +1,38 @@
+<?php
+
+$servidor=$_GET['server'];
+$baseDatos=$_GET['nombre_bd'];
+$usuario=$_GET['user'];
+$pass=$_GET['pass'];
+
+
+//conextamos a la base de datos
+$conexion= mysql_connect($servidor, $usuario, $pass)or die ("no se pudo conectar");
+
+// armamos la sentencia que creara la nueva base de datos
+$sql = 'CREATE DATABASE IF NOT EXISTS '.$baseDatos;
+ $respuestaQUERY=mysql_query($sql, $conexion);
+   
+    echo "La base de datos ".$baseDatos." fue creada satisfactoriamente\n <br/>";
+//creamos las tablas basicas para el funcionamiento del sistema
+
+	// creamos la tabla de usuarios
+		// armamos la sentencia que creara la nueva base de datos
+	$sql ='DROP TABLE IF EXISTS `'.$baseDatos.'`.`t_usuarios`;';
+	$respuestaQUERY=mysql_query($sql, $conexion);
+	
+	$sql = 'CREATE TABLE  `'.$baseDatos.'`.`t_usuarios` (
+			  `id_usuario` int(11) NOT NULL,
+			  `p_nombre` varchar(45) DEFAULT NULL,
+			  `p_apellido` varchar(45) DEFAULT NULL,
+			  `cedula` int(15) DEFAULT NULL,
+			  `rol` int(15) DEFAULT NULL,
+			  `password` varchar(50) DEFAULT NULL,
+			  PRIMARY KEY (`id_usuario`)
+			) ;';
+	$respuestaQUERY=mysql_query($sql, $conexion);
+	if($respuestaQUERY==false)
+		echo "no se crearon las tablas :(";
+	if($respuestaQUERY==true)
+		echo "todas las tablas fueron creadas";	
+?>
