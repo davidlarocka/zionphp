@@ -69,7 +69,7 @@ echo "<center><img src='instalador/barra_progreso.gif' /><br/><br/></center>";
 						Servidor<input type="text" id="server" />
 						Usuario<input type="text" id="user" />
 						Password<input type="password" id="pass" /><br/>
-									<br/><input type="button" value="Comprobar conexion" onclick="comprobarConexion(server.value, user.value, pass.value)"><div id="contenedor"></div>
+									<br/><input type="button" value="Comprobar conexion" onclick="comprobarConexion(server.value, user.value, pass.value, gestor_bd.value)"><div id="contenedor"></div>
 									
 									<br/>	
 		</td>

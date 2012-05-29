@@ -20,12 +20,12 @@
 
 
 //////////////////////////////////////////////////////////////////
-	function comprobarConexion(servidor, user, pass){
+	function comprobarConexion(servidor, user, pass, gestor_bd){
 		var contenedor;
 			contenedor = document.getElementById('contenedor');
-			
+			alert(gestor_bd)
 			ajax=nuevoAjax();
-			ajax.open('GET', 'instalador/ajax/probarDB.php?server='+servidor+'&user='+user+'&pass='+pass,true);
+			ajax.open('GET', 'instalador/ajax/probarDB.php?server='+servidor+'&user='+user+'&pass='+pass+'&motor='+gestor_bd,true);
 			ajax.onreadystatechange=function() {
 			if (ajax.readyState==4) {
 			contenedor.innerHTML = ajax.responseText
