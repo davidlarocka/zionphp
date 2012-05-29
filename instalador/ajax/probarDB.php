@@ -17,7 +17,7 @@ $pass=$_GET['pass'];
 			if($link==false){
 					echo "parametros invalidos para la conexion";
 				}else{
-					echo "Conexion Exitosa <br/><p align='center'><input type='button' value='Instalar' onclick=\" crearDB(server.value, user.value, pass.value, nombre_bd.value)\"></p>
+					echo "Conexion Exitosa <br/><p align='center'><input type='button' value='Instalar base de datos' onclick=\" crearDB(server.value, user.value, pass.value, nombre_bd.value, gestor_bd.value)\"></p>
 		";	
 			}
 
@@ -28,5 +28,17 @@ $pass=$_GET['pass'];
 	}
 	if($motor=="psql"){
 		
+		//tratamos de conectar a postgres
+		$conn_string = "host=".$servidor."  user=".$usuario." password=".$pass."";
+		$dbcon = pg_connect($conn_string);
+		$versionCliente=pg_version();
+			if($dbcon==false){
+					echo "no hay conexion a postgres";
+			}else{
+					
+					echo "version del cliente PostgreSQL: ".$versionCliente['client']."<br/>";
+					echo "conexion exitosa<p align='center'><input type='button' value='Instalar' onclick=\" crearDB(server.value, user.value, pass.value, nombre_bd.value, gestor_bd.value)\">";
+			}
+			
 	}
 ?>

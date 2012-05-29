@@ -23,7 +23,7 @@
 	function comprobarConexion(servidor, user, pass, gestor_bd){
 		var contenedor;
 			contenedor = document.getElementById('contenedor');
-			alert(gestor_bd)
+			
 			ajax=nuevoAjax();
 			ajax.open('GET', 'instalador/ajax/probarDB.php?server='+servidor+'&user='+user+'&pass='+pass+'&motor='+gestor_bd,true);
 			ajax.onreadystatechange=function() {
@@ -33,12 +33,12 @@
 			}
 			ajax.send(null)
 	 } 
-	 function crearDB(servidor, user, pass,nombre_bd){
+	 function crearDB(servidor, user, pass,nombre_bd, gestor_bd){
 		var contenedor;
 			contenedor = document.getElementById('contenedor');
 			
 			ajax=nuevoAjax();
-			ajax.open('GET', 'instalador/ajax/crearDB.php?server='+servidor+'&user='+user+'&pass='+pass+'&nombre_bd='+nombre_bd,true);
+			ajax.open('GET', 'instalador/ajax/crearDB.php?server='+servidor+'&user='+user+'&pass='+pass+'&nombre_bd='+nombre_bd+'&motor='+gestor_bd,true);
 			ajax.onreadystatechange=function() {
 			if (ajax.readyState==4) {
 			contenedor.innerHTML = ajax.responseText

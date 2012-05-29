@@ -56,19 +56,19 @@ echo "<center><img src='instalador/barra_progreso.gif' /><br/><br/></center>";
 				<form name="crear" id="crear" method="post" action="">
 				
 					<br/>Nombre del Sistema<input type="text" id="nombre_sis" /><br/><br/>
-										Acronimo<input type="text" id="acronimo" /><br/>
+										Acronimo<input type="text" id="acronimo" /><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 			</p>
 		</td>
 		<td>
 		
-					 <p align="center"> Gestor de Base de Datos<select id="gestor_bd" ></p>
+					 <br/><p align="left"> Gestor de Base de Datos<select id="gestor_bd" ><br/><br/></p>
 							<option value="mysql">Mysql</option>
 							<option value="psql">Postgresql</option>
-						</select>
+						</select><br/><br/>
 						Nombre de la base de datos<input type="text" id="nombre_bd" /><br/><br/>
-						Servidor<input type="text" id="server" />
-						Usuario<input type="text" id="user" />
-						Password<input type="password" id="pass" /><br/>
+						Servidor<input type="text" id="server" /><br/><br/>
+						Usuario<input type="text" id="user" /><br/><br/>
+						Password<input type="password" id="pass" /><br/><br/>
 									<br/><input type="button" value="Comprobar conexion" onclick="comprobarConexion(server.value, user.value, pass.value, gestor_bd.value)"><div id="contenedor"></div>
 									
 									<br/>	
