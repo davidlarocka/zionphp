@@ -1,5 +1,6 @@
 
 
+
 <?php
 /*copyright:This file is part of zionPHP 1.0
 
@@ -20,10 +21,10 @@
 //=========FICHA TECNICA DE LA CLASE	
 //=================================================================		
 	*FRAMEWORK VERSION: 0.0.1
-	*CLASE:
+	*CLASE: instalador
 	*CREADO POR: TSU David García
 	* CORREO ELECTRONICO:davidlarocka@gmail.com
-	* FECHA CREACION: 1 DE MAYO DE 2012
+	* FECHA CREACION: 27 DE MAYO DE 2012
 	*ULTIMO MANTENIMIENTO:              POR:  
 
 //=================================================================	*/
@@ -32,7 +33,7 @@ require ("instalador/ajax/ajax.php");
 
 ?>
 <body bgcolor="#1A1A1A">
-<table align="center" border="0" bgcolor="white" style="width:95%; height:100%;">
+<table align="center" border="0" bgcolor="white" style="width:95%; height:90%;">
 	<tr><td>
 <?php	
 echo "<p align='center'><img src='instalador/logo.png'  /><br/>";	
@@ -43,10 +44,10 @@ echo "<center><img src='instalador/barra_progreso.gif' /><br/><br/></center>";
 <table align="center" border="0" style="width:80%;">
 	<tr>
 		<td style="background-image:url(instalador/tab.png);height:40px;">
-			<p align="left"> <b>Datos del Sistema</b><br/></p>
+			<p align="center"> <b>Datos del Sistema</b><img src="instalador/ventana.png" width="32px" height="35px"/><br/></p>
 		</td>
 		<td style="background-image:url(instalador/tab2.png);height:40px;">
-			<p align="left"> <b>Base de Datos</b><br/></p>
+			<p align="center"> <b><font color="#FFFFFF">Base de Datos <img src="instalador/db-icon.png" width="32px" height="35px"/></font></b><br/></p>
 		</td>
 	</tr>
 	<tr>
@@ -54,13 +55,13 @@ echo "<center><img src='instalador/barra_progreso.gif' /><br/><br/></center>";
 			<p align="right">
 				<form name="crear" id="crear" method="post" action="">
 				
-					<br/>Nombre del Sistema<input type="text" id="nombre_sis" /><br/>
+					<br/>Nombre del Sistema<input type="text" id="nombre_sis" /><br/><br/>
 										Acronimo<input type="text" id="acronimo" /><br/>
 			</p>
 		</td>
 		<td>
 		
-					 <p align="left"> Gestor de Base de Datos<select id="gestor_bd" ></p>
+					 <p align="center"> Gestor de Base de Datos<select id="gestor_bd" ></p>
 							<option value="mysql">Mysql</option>
 							<option value="psql">Postgresql</option>
 						</select>
@@ -68,7 +69,7 @@ echo "<center><img src='instalador/barra_progreso.gif' /><br/><br/></center>";
 						Servidor<input type="text" id="server" />
 						Usuario<input type="text" id="user" />
 						Password<input type="password" id="pass" /><br/>
-									<input type="button" value="Comprobar conexion" onclick="comprobarConexion(server.value, user.value, pass.value)"><div id="contenedor"></div>
+									<br/><input type="button" value="Comprobar conexion" onclick="comprobarConexion(server.value, user.value, pass.value)"><div id="contenedor"></div>
 									
 									<br/>	
 		</td>
@@ -77,4 +78,5 @@ echo "<center><img src='instalador/barra_progreso.gif' /><br/><br/></center>";
 </table>
 </td></tr>
 </table>
+<p align="center"> <b><font color="#FFFFFF" size="2px">Framework oficial del Ministerio del Poder Popular para Relaciones Interiores y Justicia<br/>Software libre bajo licencia GNU v3</font></b><br/></p>
 </body>
