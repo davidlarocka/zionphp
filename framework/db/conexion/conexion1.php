@@ -1,6 +1,7 @@
 <?php
+$gestorBD="postgres";
 $servidor="localhost";
-$base_datos="dayana";
-$usuario="root";
-$pass="dayana";
+$base_datos="zionprueba";
+$usuario="postgres";
+$pass="123456";
 ?>

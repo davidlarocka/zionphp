@@ -1,31 +1,8 @@
-@charset "UTF-8";
-
-/** 
- * Vimeo.com CSS Drop-Down Menu Theme
- *
- * @file		default.css
- * @name		Vimeo
- * @version		beta
- * @type		transitional
- * @browsers	Windows: IE5+, Opera9+, Firefox1+
- *				Mac OS: Safari2+, Firefox2+
- *
- * @link		http://www.lwis.net/
- * @copyright	2009 Live Web Institute. All Rights Reserved.
- *
- */
-
-
-/*-------------------------------------------------/
- * @section		Base Drop-Down Styling
- */
-
-
 ul.dropdown {
  background: transparent url(../../../../images/vimeo.com/box1-bottom-left.png) 0 100% no-repeat;
- font: normal 14px/normal Tahoma, Verdana, Arial, Helvetica, sans-serif;
+ font-family: normal Tahoma, Verdana, Arial, Helvetica, sans-serif;
+ font-size:14px;
 }
-
 	ul.dropdown li {
 	 padding: 5px 10px;
 	 background-color: #172322;
@@ -141,7 +118,8 @@ ul.dropdown form input.text {
  border-width: 0;
  background: transparent url(../../../../images/vimeo.com/bg_search-field.png) 0 0 no-repeat;
  color: #969696;
- font: normal 14px/17px Tahoma, Verdana, Arial, Helvetica, sans-serif;
+ font-family: normal Tahoma, Verdana, Arial, Helvetica, sans-serif;
+ font-size:14px;
  vertical-align: middle;
 }
 

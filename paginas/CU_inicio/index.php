@@ -1,5 +1,5 @@
-
 <?php 
+
 /*=================================================================	
 //=========FICHA DEL CASO DE USO	
 //=================================================================		
@@ -21,7 +21,6 @@
 		require ("../../framework/marco_html/html.php");
 		session_start();
 //=================================================================			
-
 		//hacemos una instancia del marco html
 		$html = new Html();
 		
@@ -44,8 +43,9 @@
 		
 	//llenamos el mensaje que estara dentro de nuestro marco html de salida	
 
-		$mensaje.="<center><h2>Zion<font color='#159B15'>P</font><font color='#DED91B'>H</font><font color='#FF0000'>P</font> 
-				   <font color='#000000'>dice: Hola Mundo! </font></h2></center><br/>";	
+		$mensaje="<div align='center'>
+					<h2><font color='#159B15'>SISTEMA DE ANTECEDENTES PENALES</font></h2></div>";	
+				 
 		
 		
 
@@ -53,7 +53,7 @@
 //=================================================================			
 //===========MUESTRA EN PANTALLA DE RESULTADOS (SALIDA)============
 //=================================================================			
-		$html->salidaFinal($mensaje);
+		$html->salidaFinal($tituloPagina="Página Principal",$menu="menu2",$mensaje);
 	
 
 ?>

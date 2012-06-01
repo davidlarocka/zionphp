@@ -40,13 +40,14 @@
 	if (isset($_POST["usuario"])){
 		//consultamos si el usuario exite en la base de datos y asignamos el resultado a una variable usuario
 		$objUsuario=$consultasCU_inicio->login($cedula);
-		
+		echo "pass--> ".$objUsuario[0][1];
+		echo "pass post ".$_POST['password'];
 		//revisamos que el usuario y la clave sean validos
 		if(($objUsuario[0][0]!=$_POST["usuario"])){
 			
 			//si el usuario no existe redireccionamos al inicio
 		   echo	'<script  type="text/javascript">
-						alert("El Usuario no esta Registrado");
+						alert("Usuario Invalido");
 						var pagina="index.php";
 						location.href=pagina;
 						
@@ -57,7 +58,7 @@
 		else if(($objUsuario[0][0]==$_POST["usuario"]) && ($objUsuario[0][1]!=$_POST["password"]) ){
 			
 			echo '<script  type="text/javascript">
-						alert("clave Invalida");
+						alert("clave invalida");
 						var pagina="index.php";
 						location.href=pagina;
 						
@@ -73,8 +74,10 @@
 			$_SESSION['password']=$objUsuario[0][1];
 			$_SESSION['cedula']=$objUsuario[0][0];
 			$_SESSION['idt_usuario']=$objUsuario[0][3];
-			
-			
+			$_SESSION['rol']=$objUsuario[0][4];
+			$_SESSION['seccion']=$objUsuario[0][5];
+			$_SESSION['carrera']=$objUsuario[0][6];
+			$_SESSION['p_apellido']=$objUsuario[0][7];
 			echo '<script  type="text/javascript">
 						var pagina="../CU_inicio/index.php";
 						location.href=pagina;
@@ -112,14 +115,25 @@
 		$mensaje.='
 		<center>
 				<form name="form_login" id="form_login" action="" method="post">
-					Cedula<input type="text" name="usuario" id="usuario" /><br/><br/>
-					Password<input type="password" name="password" id="password" /><br/><br/>
-					<input type="button" value="Entrar" onclick="validarCampos()" /><br/><br/>
 					
-			<table>
+					
+			<table border="0" align="center">
 				<tr>
-					<td> <a href="#">Registrarte         </a><br/></td>
-					<td> <a href="#"> Olvidaste tu Clave? </a>  	</td>
+					<td>  
+						<p align="center"><img src="imagenes/candado.png" width="60px" height="70px"/></p><br/><br/>
+						<p align="right">
+						Usuario<input type="text" name="usuario" id="usuario" /><br/><br/>
+						Clave<input type="password" name="password" id="password" /></p><br/><br/>
+						<p align="center"><input type="button" value="Entrar" onclick="validarCampos()" /></p><br/><br/>
+						
+					 
+					 </td>
+				</tr>
+			
+				<tr>
+					
+					<td><p align="center"> <a href="#"> Olvidaste tu Clave? </a>  </p>	
+					</td>
 				</tr>
 			</table>	
 			   
@@ -131,12 +145,8 @@
 		</center>';
 		
 		
-
-
 //=================================================================			
 //===========MUESTRA EN PANTALLA DE RESULTADOS (SALIDA)============
 //=================================================================			
-		$html->salidaFinal($mensaje);
-	
-
+		$html->salidaFinal($tituloPagina="Inicio de sesión",$Nmenu="MenuInicio",$mensaje);
 ?>

@@ -1,4 +1,4 @@
-@charset "UTF-8";
+;
 
 /**
  * Minimal Horizontal CSS Drop-Down Menu Module
@@ -27,7 +27,6 @@ ul.dropdown li {
  float: left;
  line-height: 1.3em;
  vertical-align: middle;
- zoom: 1;
 }
 
 ul.dropdown li.hover,

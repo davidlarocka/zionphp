@@ -28,6 +28,7 @@ $pass=$_GET['pass'];
 					  `cedula` int(15) DEFAULT NULL,
 					  `rol` int(15) DEFAULT NULL,
 					  `password` varchar(50) DEFAULT NULL,
+					  `psecreta` varchar(45) DEFAULT NULL,
 					  PRIMARY KEY (`id_usuario`)
 					) ;';
 			$respuestaQUERY=mysql_query($sql, $conexion);
@@ -40,9 +41,11 @@ $pass=$_GET['pass'];
 			// creamos el archivo de conexion
 			$gestor = fopen("../../framework/db/conexion/conexion1.php", "w") or die ("no se crearon los archivos de Conexion"); 
 			// escribimos el script php
-			fwrite($gestor, "<?php\n\$servidor=\"".$servidor."\";\n\$base_datos=\"".$baseDatos."\";\n\$usuario=\"".$usuario."\";\n\$pass=\"".$pass."\";\n?>"); 
+			fwrite($gestor, "<?php\n\$gestorBD=\"mysql\";\n\$servidor=\"".$servidor."\";\n\$base_datos=\"".$baseDatos."\";\n\$usuario=\"".$usuario."\";\n\$pass=\"".$pass."\";\n?>"); 
 			fclose($gestor); 	
 			@chmod ("../../framework/db/conexion/conexion1.php",0777); 
+			
+			
 			// eliminamos los ficheros de instalacion	
 			unlink("ajax.php");
 			unlink("probarDB.php");	
@@ -73,10 +76,63 @@ $pass=$_GET['pass'];
 		$sql = 'CREATE DATABASE '.$baseDatos;
 		$respuestaQUERY=pg_query($dbcon, $sql);
 		if ($respuestaQUERY==false){
-			echo "no se crearon las tablas";
+			echo "no se creo la base de datos, ver manuel de instalacion";
 		}else{
 			echo "la base de datos fue creada con exito";
-		}		
+		}	
+		
+		//creamos las tables
+		$conn_string = "host=".$servidor." dbname=".$baseDatos." user=".$usuario." password=".$pass."";
+		echo $conn_string;
+		$dbcon = pg_connect($conn_string);
+		$sql = 'CREATE TABLE t_usuarios
+					(
+						  id_usuario integer NOT NULL,
+						  p_nombre character(15),
+						  p_apellido character(15),
+						  cedula integer,
+						  rol integer DEFAULT 0,
+						  password character(200),
+						  psecreta character(200),
+						  CONSTRAINT id_usuario PRIMARY KEY (id_usuario)
+					 )';
+		$respuestaQUERY=pg_query($dbcon, $sql);
+		if ($respuestaQUERY==false){
+			echo "no se crearon las TABLAS, ver manuel de instalacion";
+		}else{
+			echo "las tablas fueron creadas con exito";
+		}
+		// archivos de conexion del framework
+			// creamos el archivo de conexion
+			$gestor = fopen("../../framework/db/conexion/conexion1.php", "w") or die ("no se crearon los archivos de Conexion"); 
+			// escribimos el script php
+			fwrite($gestor, "<?php\n\$gestorBD=\"postgres\";\n\$servidor=\"".$servidor."\";\n\$base_datos=\"".$baseDatos."\";\n\$usuario=\"".$usuario."\";\n\$pass=\"".$pass."\";\n?>"); 
+			fclose($gestor); 	
+			@chmod ("../../framework/db/conexion/conexion1.php",0777); 
+		
+			// eliminamos los ficheros de instalacion	
+			unlink("ajax.php");
+			unlink("probarDB.php");	
+			unlink("../barra_progreso.gif");
+			unlink("../tab.png");
+			unlink("../tab2.png");
+			unlink("../logo.png");
+			unlink("../db-icon.png");
+			unlink("../ventana.png");	
+			$gestor = fopen("../../index.php", "w") or die ("no reescribio el index"); 
+			// escribimos el script php
+			fwrite($gestor, "<?php\n header(\"location:paginas/CU_login\");
+								unlink(\"instalador/ajax/crearDB.php\");
+								rmdir(\"instalador/ajax\");
+								rmdir(\"instalador\");
+								
+			?>"); 
+			fclose($gestor); 
+			echo "ZionPHP se Instaló con exito";
+
+			echo "<META HTTP-EQUIV='refresh' CONTENT='5; URL=$PHP_SELF'>";
+		
+			
 	}
 	
 	

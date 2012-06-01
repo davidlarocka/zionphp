@@ -52,17 +52,26 @@
 					hacer una nueva instancia de db_consultas entonces esa es la que se usa*/
 					require($this->cadenaConexion);
 				}
-				echo "parametros conexion: ".$servidor." ".$usuario." ".$base_datos." ".$pass."<br/><br/>";
+				//echo "parametros conexion: ".$servidor." ".$usuario." ".$base_datos." ".$pass."<br/><br/>";
+				
 				//construimos la conexion para mysql
+				if($gestorBD=="mysql"){
 				$conexion[0]=mysql_connect($servidor,$usuario,$pass) or die ("murio la conexion a la base de datos :(");
 				$conexion[1]=mysql_select_db($base_datos);
+				$conexion[2]=$gestorBD;
+				}
 				//devuelve el resultado
-				
+				if($gestorBD=="postgres"){
+				$conexion[0]= pg_connect("host=".$servidor."  dbname=".$base_datos." user=".$usuario." password=".$pass."")
+    			  or die ("no hay conexion " . pg_last_error($conn)); 	
+				$conexion[1]=NULL;
+				$conexion[2]=$gestorBD; 
+				}
 				return $conexion;
 				}
 
 			// a este select le pasamos como parametros los campos a buscar, la tabla o tablas y de ser necesario la condicion...
-			function select($atributo, $tabla, $condicion){
+			function select($atributo, $tabla, $condicion, $groupBy){
 				
 				//se conecta a la base de datos
 					$conexion=$this->conectar();
@@ -105,14 +114,35 @@
 						}
 						//eliminamos el ultimo AND que nos enbasura la sentencia
 						$SQL=substr($SQL,0,-5);
+					
+					
+					
+					
+					//group By
+					if($groupBy[0]!=""){ 	
+						$SQL.=" GROUP BY ";
+						foreach($groupBy as $valor){
+						//incluimos el campo que toca en el buble a la consulta SQL
+							$SQL.= $valor;
+							//ponemos una coma para separar campo por campo y respetar la sintaxsis del lenguaje SQL
+							$SQL.=' AND ';
+						}
+						$SQL=substr($SQL,0,-5);
+						}
+						//eliminamos el ultimo AND que nos enbasura la sentencia
+						//
+					
 						
 						//cerramos la sentencia SQL
 						$SQL.= ';'; 	   
 				    }
+			
 				echo $SQL;
 				
 					//exit;
-					//aki hacemos el select	
+					//aki hacemos el select
+					if($conexion[2]=="mysql"){
+				echo "-3";
 					$resultado=mysql_query($SQL)or die("no se realizo la consulta");
 					//ordenamos en un arreglo lo que nos trae
 					$i=0;
@@ -128,8 +158,174 @@
 							
 						}
 					$i++;		
-					}	
-					return $res;				
+					}
+						
+					return $res;	
+					}
+					if($conexion[2]=="postgres"){
+				
+						$resultado=pg_query($conexion[0], $SQL)or die("no se realizo la consulta");
+						//ordenamos en un arreglo lo que nos trae
+/*
+						$row=pg_fetch_all($resultado);
+						$res=$row;
+*/						$i=0;
+	//cuando arregla no trae todos los resultados				
+					
+					while($row=pg_fetch_array($resultado)){
+						
+						for($j=0;$j<=$nro_atributos;$j++){	
+							
+							$res[$i][$j]=$row[$j];
+						
+						
+							
+						}
+					$i++;		
+					}
+
+						return $res;	
+					}
 			}
+			
+//================================insert=====================
+
+			function insert($atributo, $tabla, $values){
+							
+							//se conecta a la base de datos
+								$conexion=$this->conectar();
+								$nro_atributos=-1;
+								//armamos la sentencia en lenguaje SQL
+								$SQL.='INSERT INTO ';
+								
+								//indicamos las tablas a utilizar
+								foreach($tabla as $valor){
+								//incluimos el campo que toca en el buble a la consulta SQL
+									$SQL.= $valor;
+									//ponemos una coma para separar campo por campo y respetar la sintaxsis del lenguaje SQL
+									$SQL.=', ';
+								}	
+								//eliminamos la ultima coma que quedo en el ciclo como basura(esto borra los dos ultimos caracteres de la cadena... la coma y el espacio )
+								$SQL=substr($SQL,0,-2);		
+								
+								//indicamos que campos
+								$SQL.="(";
+									foreach($atributo as $valor){
+									//incluimos el campo que toca en el buble a la consulta SQL
+										$SQL.= $valor;
+										//ponemos una coma para separar campo por campo y respetar la sintaxsis del lenguaje SQL
+										$SQL.=', ';
+										$nro_atributos++;
+									}	
+									//eliminamos la ultima coma que quedo en el ciclo como basura(esto borra los dos ultimos caracteres de la cadena... la coma y el espacio )
+									$SQL=substr($SQL,0,-2);
+									//VALORES
+								$SQL.=  ') VALUES (';
+									
+									foreach($values as $valor){
+									//incluimos el campo que toca en el buble a la consulta SQL
+										$SQL.= "'".$valor."'";
+										//ponemos una coma para separar campo por campo y respetar la sintaxsis del lenguaje SQL
+										$SQL.=', ';
+										;
+									}	
+								$SQL=substr($SQL,0,-2);	
+								//cerramos la sentencia SQL
+								$SQL.=  ')';
+									   
+								
+							echo $SQL;
+							
+								//exit;
+								//aki hacemos el select	
+								if($conexion[2]=="mysql"){
+								$resultado=mysql_query($SQL)or die("no se realizo la consulta");
+								//ordenamos en un arreglo lo que nos trae
+								$i=0;
+				//cuando arregla no trae todos los resultados				
+								
+								
+								return null;
+								}
+								if($conexion[2]=="postgres"){
+								$resultado=pg_query($SQL)or die("no se realizo la consulta");
+								//ordenamos en un arreglo lo que nos trae
+								$i=0;
+				//cuando arregla no trae todos los resultados				
+								
+								
+								return null;
+								}
+		   }
+		   function update($tabla, $set,  $condicion){
+							
+							//se conecta a la base de datos
+								$conexion=$this->conectar();
+								$nro_atributos=-1;
+								//armamos la sentencia en lenguaje SQL
+								$SQL.='UPDATE ';
+								
+
+								//indicamos las tablas a utilizar
+								foreach($tabla as $valor){
+								//incluimos el campo que toca en el buble a la consulta SQL
+									$SQL.= $valor;
+									//ponemos una coma para separar campo por campo y respetar la sintaxsis del lenguaje SQL
+									$SQL.=', ';
+								}	
+								//eliminamos la ultima coma que quedo en el ciclo como basura(esto borra los dos ultimos caracteres de la cadena... la coma y el espacio )
+								$SQL=substr($SQL,0,-2);		
+								$SQL.=' SET   ';
+							
+								//indicamos que campos a actualizar
+								
+								foreach($set as $valor){
+									//incluimos el campo que toca en el buble a la consulta SQL
+										$SQL.= $valor;
+										//ponemos una coma para separar campo por campo y respetar la sintaxsis del lenguaje SQL
+										$SQL.=', ';
+										$nro_atributos++;
+								}	
+								//eliminamos la ultima coma que quedo en el ciclo como basura(esto borra los dos ultimos caracteres de la cadena... la coma y el espacio )
+								$SQL=substr($SQL,0,-2);
+								if($condicion[0]!=""){ 	
+									$SQL.=" WHERE ";
+									foreach($condicion as $valor){
+									//incluimos el campo que toca en el buble a la consulta SQL
+										$SQL.= $valor;
+										//ponemos una coma para separar campo por campo y respetar la sintaxsis del lenguaje SQL
+										$SQL.=' AND ';
+									}
+								 }	
+									//eliminamos el ultimo AND que nos enbasura la sentencia
+								$SQL=substr($SQL,0,-5);	
+									   
+								
+							echo $SQL;
+							
+								//exit;
+								//aki hacemos el select	
+								if($conexion[2]=="mysql"){
+								$resultado=mysql_query($SQL)or die("no se realizo la consulta");
+								//ordenamos en un arreglo lo que nos trae
+								$i=0;
+				//cuando arregla no trae todos los resultados				
+								
+								
+								return null;
+								}
+								if($conexion[2]=="postgres"){
+								$resultado=pg_query($SQL)or die("no se realizo la consulta");
+								//ordenamos en un arreglo lo que nos trae
+								$i=0;
+				//cuando arregla no trae todos los resultados				
+								
+								
+								return null;
+								}
+								
+
+		  			
+		}	
 	}
 ?>

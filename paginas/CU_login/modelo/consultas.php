@@ -27,9 +27,9 @@
 			//indicamos los campos a consultar EN UN ARREGLO
 			$campos=array("cedula",          //1
 						  "password",
-						  "p_nombre",
-						   "id_usuario"
-						  	
+						   "id_usuario",
+						   "rol",
+						   "psecreta"
 						  ); 
 			//indicamos la tabla donde vamos a buscar los campos EN UN ARREGLO
 			$tablas=array("t_usuarios"
@@ -42,8 +42,9 @@
 			$groupBy=array();
 			$ordenBy="";
 			$limit="";
+			
 			//devolvemos los resultados de la consulta
-			return $respuesta=$conexionDB->select($campos,$tablas,$condicion);
+			return $respuesta=$conexionDB->select($campos,$tablas,$condicion,$groupBy);
 			}
 				
 			

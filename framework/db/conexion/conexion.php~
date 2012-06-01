@@ -1,10 +1,6 @@
-
 <?php 
-	
-	$servidor="172.16.8.41";
-	$base_datos="mpprijv3";
+	$servidor="172.16.8.53";
+	$base_datos="sircapweb";
 	$usuario="root";
 	$pass="1ntr@n3t2010";
-	
-
 ?>

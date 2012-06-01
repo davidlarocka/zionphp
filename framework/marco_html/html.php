@@ -30,7 +30,8 @@
 //definimos la clase html	
 	class Html {
 		
-			function salidaFinal ($mensaje){
+			function salidaFinal ($tituloPagina,$Nmenu,$mensaje)
+			{
 				//traemos la configuracion para ver que plantilla usa
 				require ("../../configuracion.php");
 				//traemos la configuracion para ver que plantilla usa
@@ -42,41 +43,26 @@
 				}catch (Exception $e){
 				echo "no se configuro la plantilla, por favor indique una plantilla valida en el archivo de configuracion";	
 				}
-				print_r($_SESSION);
-				//imprimir la plantilla
+
 				
 				
 	//====================================================================================			
 	// excepciones de session: contiene una lista de url donde no hace falta estar auntentificado para ver el CU		
 	//====================================================================================			
-				
-				if($_SERVER["REQUEST_URI"]=="/zionphp/paginas/CU_login/" or 
-				   $_SERVER["REQUEST_URI"]=="/zionphp/paginas/CU_login/index.php" //excepcion 1
+				$plantilla=new marcohtml();
+				if($_SERVER["REQUEST_URI"]=="/zionphp/sistema/paginas/CU_login/" or 
+				   $_SERVER["REQUEST_URI"]=="/zionphp/sistema/paginas/CU_login/index.php" or //excepcion 1
+				   
+				   $_SERVER["REQUEST_URI"]=="/zionphp/sistema/paginas/CU_registrarUsuario/" or 
+				   $_SERVER["REQUEST_URI"]=="/zionphp/sistema/paginas/CU_registrarusuario/index.php" //excepcion 2
 				   ){
 					session_destroy();
-					echo $plantillaHtml;
+					$salidahtml=$plantilla->html($Nmenu,$mensaje);
 					exit;
 					
 				 }		
-				
-				
-				
-				
-				
-				if($_SESSION['usuario']!=""){
-					echo $plantillaHtml;
-				}else{
-					echo "Acceso denegado!!";	
-				//	echo $plantillaHtml;
-					echo $_SERVER["REQUEST_URI"];
-							
-					}
-				
-				
+				$salidahtml=$plantilla->html($tituloPagina,$Nmenu,$mensaje);
+
 			}
-		
-		
 	}
-
-
 ?>
