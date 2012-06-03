@@ -36,7 +36,17 @@ $pass=$_GET['pass'];
 				echo "no se crearon las tablas :(";
 			if($respuestaQUERY==true)
 				echo "todas las tablas fueron creadas";	
-				
+			
+			// insertar
+			 $insert = "INSERT INTO t_usuarios (p_nombre, p_apellido, cedula, rol, password, psecreta) VALUES ('Administrador', 'ZionPHP', '0', '1', '0000', '0000')";				
+			mysql_select_db($baseDatos)or die ("no se seleccionó la base de datos");
+			$respuestaQUERY=mysql_query($insert, $conexion);
+			if($respuestaQUERY==false)
+				echo "no se insertó el usuario";
+			if($respuestaQUERY==true)
+				echo "se insertó el usuario";	
+			
+			
 			// archivos de conexion del framework
 			// creamos el archivo de conexion
 			$gestor = fopen("../../framework/db/conexion/conexion1.php", "w") or die ("no se crearon los archivos de Conexion"); 
