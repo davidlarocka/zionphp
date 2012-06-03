@@ -4,9 +4,10 @@ $servidor=$_GET['server'];
 $baseDatos=$_GET['nombre_bd'];
 $usuario=$_GET['user'];
 $pass=$_GET['pass'];
+$insert = "INSERT INTO t_usuarios (p_nombre, p_apellido, cedula, rol, password, psecreta) VALUES ('Administrador', 'ZionPHP', '0', '1', '0000', '0000')";				
 
 	if($motor=="mysql"){
-		//conextamos a la base de datos
+		// Conectamos a la base de datos
 		$conexion= mysql_connect($servidor, $usuario, $pass)or die ("no se pudo conectar");
 
 		// armamos la sentencia que creara la nueva base de datos
@@ -38,7 +39,6 @@ $pass=$_GET['pass'];
 				echo "todas las tablas fueron creadas";	
 			
 			// insertar
-			 $insert = "INSERT INTO t_usuarios (p_nombre, p_apellido, cedula, rol, password, psecreta) VALUES ('Administrador', 'ZionPHP', '0', '1', '0000', '0000')";				
 			mysql_select_db($baseDatos)or die ("no se seleccionó la base de datos");
 			$respuestaQUERY=mysql_query($insert, $conexion);
 			if($respuestaQUERY==false)
@@ -97,7 +97,7 @@ $pass=$_GET['pass'];
 		$dbcon = pg_connect($conn_string);
 		$sql = 'CREATE TABLE t_usuarios
 					(
-						  id_usuario integer NOT NULL,
+						  id_usuario SERIAL,
 						  p_nombre character(15),
 						  p_apellido character(15),
 						  cedula integer,
@@ -111,6 +111,12 @@ $pass=$_GET['pass'];
 			echo "no se crearon las TABLAS, ver manuel de instalacion";
 		}else{
 			echo "las tablas fueron creadas con exito";
+		}
+		$insertResult = pg_query($insert);
+		if ($insertResult) {
+			echo "Usuario administrador creado exitosamente";
+		} else {
+			echo "Hubo un problema tratando de crear el usuario administrador.";
 		}
 		// archivos de conexion del framework
 			// creamos el archivo de conexion
