@@ -1,6 +1,3 @@
-
-
-
 <?php
 /*copyright:This file is part of zionPHP 1.0
 
@@ -65,11 +62,11 @@ echo "<center><img src='instalador/barra_progreso.gif' /><br/><br/></center>";
 							<option value="mysql">Mysql</option>
 							<option value="psql">Postgresql</option>
 						</select><br/><br/>
-						Nombre de la base de datos<input type="text" id="nombre_bd" /><br/><br/>
-						Servidor<input type="text" id="server" /><br/><br/>
+						Nombre de la base de datos<input type="text" id="dbname" /><br/><br/>
+						Servidor<input type="text" id="host" /><br/><br/>
 						Usuario<input type="text" id="user" /><br/><br/>
-						Password<input type="password" id="pass" /><br/><br/>
-									<br/><input type="button" value="Comprobar conexion" onclick="comprobarConexion(server.value, user.value, pass.value, gestor_bd.value)"><div id="contenedor"></div>
+						Password<input type="password" id="password" /><br/><br/>
+									<br/><input type="button" value="Comprobar conexion" onclick="comprobarConexion(host.value, user.value, password.value, gestor_bd.value)"><div id="contenedor"></div>
 									
 									<br/>	
 		</td>

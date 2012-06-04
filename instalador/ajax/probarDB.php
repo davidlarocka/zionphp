@@ -1,44 +1,19 @@
 <?php
 $motor=$_GET['motor'];
-$servidor=$_GET['server'];
-$usuario=$_GET['user'];
-$pass=$_GET['pass'];
+$host=$_GET['host'];
+$user=$_GET['user'];
+$password=$_GET['password'];
+// Cuando el motor es MySQL
+if($motor=="mysql") {
+  // Si está instalado MySQL entonces muestra la versión
+  echo "Versión del cliente de MySQL: ".mysql_get_client_info() or die ("ERROR: Servicio MySQL se encuentra detenido");
+  echo mysql_connect($host, $user, $password) ? "Conexión Exitosa <br/><p align='center'><input type='button' value='Instalar base de datos' onclick=\" crearDB(server.value, user.value, pass.value, nombre_bd.value, gestor_bd.value)\"></p>" : "Parámetros inválidos para la conexión";
+}
 
-	//cuando el motor es mysql	
-	if($motor=="mysql"){	
-		$estadoCliente=mysql_get_client_info();
-		//si esta instalado mysql entonces dice la version
-		if($estadoCliente==true){
-			echo "version del cliente de mysql: ".mysql_get_client_info();
-
-			$link =  mysql_connect($servidor, $usuario, $pass);
-
-			//verifica si se conecto
-			if($link==false){
-					echo "parametros invalidos para la conexion";
-				}else{
-					echo "Conexion Exitosa <br/><p align='center'><input type='button' value='Instalar base de datos' onclick=\" crearDB(server.value, user.value, pass.value, nombre_bd.value, gestor_bd.value)\"></p>
-		";	
-			}
-
-		}else{
-			
-		echo "ERROR: Servicio Mysql se encuentra detenido";
-		}
-	}
-	if($motor=="psql"){
-		
-		//tratamos de conectar a postgres
-		$conn_string = "host=".$servidor."  user=".$usuario." password=".$pass."";
-		$dbcon = pg_connect($conn_string);
-		$versionCliente=pg_version();
-			if($dbcon==false){
-					echo "no hay conexion a postgres";
-			}else{
-					
-					echo "version del cliente PostgreSQL: ".$versionCliente['client']."<br/>";
-					echo "conexion exitosa<p align='center'><input type='button' value='Instalar' onclick=\" crearDB(server.value, user.value, pass.value, nombre_bd.value, gestor_bd.value)\">";
-			}
-			
-	}
+if($motor=="psql") {
+  // Tratamos de conectar a PostgreSQL
+  $connection = "host=".$host."  user=".$user." password=".$password."";
+  $version = pg_version();
+  echo pg_connect($connection) ? "Versión del cliente de PostgreSQL: ".$version['client']."<br/>Conexión exitosa<p align='center'><input type='button' value='Instalar' onclick=\" crearDB(server.value, user.value, pass.value, nombre_bd.value, gestor_bd.value)\">" : "No hay conexión a PostgreSQL";
+}
 ?>

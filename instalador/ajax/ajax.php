@@ -1,52 +1,39 @@
 <script type="text/javascript">
-//objeto ajax
-    function nuevoAjax(){
-    var xmlhttp=false;
-    try {
+// Objeto AJAX
+function nuevoAjax() {
+  var xmlhttp = false;
+  try {
     xmlhttp = new ActiveXObject('Msxml2.XMLHTTP');
-    } catch (e) {
+  } catch (e) {
     try {
-    xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
-    } catch (E) {
-    xmlhttp = false;
+      xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+    } catch (m) {
+      xmlhttp = false;
     }
-    }
-
-    if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+  }
+  if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
     xmlhttp = new XMLHttpRequest();
-    }
-    return xmlhttp;
-    } 
+  }
+  return xmlhttp;
+}
 
+////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////////
-	function comprobarConexion(servidor, user, pass, gestor_bd){
-		var contenedor;
-			contenedor = document.getElementById('contenedor');
-			
-			ajax=nuevoAjax();
-			ajax.open('GET', 'instalador/ajax/probarDB.php?server='+servidor+'&user='+user+'&pass='+pass+'&motor='+gestor_bd,true);
-			ajax.onreadystatechange=function() {
-			if (ajax.readyState==4) {
-			contenedor.innerHTML = ajax.responseText
-			}
-			}
-			ajax.send(null)
-	 } 
-	 function crearDB(servidor, user, pass,nombre_bd, gestor_bd){
-		var contenedor;
-			contenedor = document.getElementById('contenedor');
-			
-			ajax=nuevoAjax();
-			ajax.open('GET', 'instalador/ajax/crearDB.php?server='+servidor+'&user='+user+'&pass='+pass+'&nombre_bd='+nombre_bd+'&motor='+gestor_bd,true);
-			ajax.onreadystatechange=function() {
-			if (ajax.readyState==4) {
-			contenedor.innerHTML = ajax.responseText
-			}
-			}
-			ajax.send(null)
-	 } 
-		
-	
+function comprobarConexion(host, user, password, motor) {
+  var contenedor;
+  contenedor = document.getElementById('contenedor');
+  ajax = nuevoAjax();
+  ajax.open('GET', 'instalador/ajax/probarDB.php?host='+host+'&user='+user+'&password='+password+'&motor='+motor, true);
+  ajax.onreadystatechange = function() { if (ajax.readyState==4) contenedor.innerHTML = ajax.responseText }
+  ajax.send(null)
+}
 
+function crearDB(host, user, password, dbname, motor) {
+  var contenedor;
+  contenedor = document.getElementById('contenedor');
+  ajax=nuevoAjax();
+  ajax.open('GET', 'instalador/ajax/crearDB.php?host='+host+'&user='+user+'&password='+password+'&dbname='+dbname+'&motor='+motor,true);
+  ajax.onreadystatechange = function() { if (ajax.readyState==4) contenedor.innerHTML = ajax.responseText }
+  ajax.send(null)
+}
 </script>
