@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<todo version="0.1.20">
+    <note priority="veryhigh" time="1339270403">
+        Investigar cómo hacer lo del OR y el AND en las condiciones
+    </note>
+</todo>
