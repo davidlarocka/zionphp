@@ -45,7 +45,23 @@
 			}
 			ajax.send(null)
 	 } 
+	 function mostrar_td(id_siguiente, id_anterior){
+		var nombre_sistema = document.getElementById("nombre_sis").value;
+		var acronimo_sistema = document.getElementById("acronimo").value;
+		var admin = document.getElementById("admin").value;
+		var clave_admin = document.getElementById("clave_admin").value;
 		
+		var td=document.getElementById(id_siguiente);
+		var td_anterior=document.getElementById(id_anterior);
+		
+		if(nombre_sistema=="" || acronimo_sistema=="" || admin=="" || clave_admin==""  ){
+			alert("todos los campos son requeridos");
+		}
+		else{
+			td.style.display="block";
+			//td_anterior.style.width="20%";
+		}	
+	 }	
 	
 
 </script>

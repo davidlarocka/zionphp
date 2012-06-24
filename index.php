@@ -33,8 +33,13 @@
 	$nombreArchivo=ereg_replace("[/]", "", $urlServer);
 
 ?>
+<head>
+	<title>
+		ZionPHP v1.0
+	</title>
+</head>
 <body bgcolor="#1A1A1A">
-<table align="center" border="0" bgcolor="white" style="width:95%; height:90%;">
+<table align="center" border="0" bgcolor="white" style="width:95%; height:550px;">
 	<tr><td>
 <?php	
 echo "<p align='center'><img src='instalador/logo.png'  /><br/>";	
@@ -52,7 +57,7 @@ echo "<center><img src='instalador/barra_progreso.gif' /><br/><br/></center>";
 		</td>
 	</tr>
 	<tr>
-		<td width="30%">
+		<td width="30%" id="td_sis">
 			<p align="right">
 				<form name="crear" id="crear" method="post" action="">
 				
@@ -61,11 +66,14 @@ echo "<center><img src='instalador/barra_progreso.gif' /><br/><br/></center>";
 						 Super Administrador<br/><input type="text" id="admin" value="" /><br/><br/>
 						 Password <br/><input type="password" id="clave_admin" value="" />
 							
-						 <br/><br/><br/><br/><br/><br/><br/>
+						 <br/>
+						 <p align="center"><img src="instalador/siguiente.png" alt="siguiente" onclick="mostrar_td('td_bd', 'td_sis')" width="50px" height="50px" />
+						 </p>
+						 <br/>
 			
 			</p>
 		</td>
-		<td>
+		<td id="td_bd" style="display:none;">
 		
 					 <br/><p align="left"> Gestor de Base de Datos<select id="gestor_bd" ><br/><br/></p>
 							<option value="mysql">Mysql</option>
