@@ -18,6 +18,8 @@
 //datos pernitentes al proyecto
 $nombreSistema=$_GET['nombre_sis'];
 $nombreArchivo=$_GET['acronimo'];
+$admin=$_GET['admin'];
+$clave_admin=$_GET['clave_admin'];
 
 //datos pertienetes a la BD
 $motor=$_GET['motor'];
@@ -25,7 +27,7 @@ $servidor=$_GET['server'];
 $baseDatos=$_GET['nombre_bd'];
 $usuario=$_GET['user'];
 $pass=$_GET['pass'];
-$insert = "INSERT INTO t_usuarios (p_nombre, p_apellido, cedula, rol, password, psecreta) VALUES ('Administrador', 'ZionPHP', '0', '1', '0000', '0000')";				
+$insert = "INSERT INTO t_usuarios (user_login,p_nombre, p_apellido, cedula, rol, password, psecreta) VALUES ('".$admin."', 'Administrador', 'ZionPHP', '0', '1', '".$clave_admin."', '0000')";				
 
 	if($motor=="mysql"){
 		// Conectamos a la base de datos
@@ -45,6 +47,7 @@ $insert = "INSERT INTO t_usuarios (p_nombre, p_apellido, cedula, rol, password, 
 			
 			$sql = 'CREATE TABLE  `'.$baseDatos.'`.`t_usuarios` (
 					  `id_usuario` int(11) NOT NULL,
+					  `user_login` varchar(45) DEFAULT NULL,
 					  `p_nombre` varchar(45) DEFAULT NULL,
 					  `p_apellido` varchar(45) DEFAULT NULL,
 					  `cedula` int(15) DEFAULT NULL,
@@ -128,6 +131,7 @@ $insert = "INSERT INTO t_usuarios (p_nombre, p_apellido, cedula, rol, password, 
 		$sql = 'CREATE TABLE t_usuarios
 					(
 						  id_usuario SERIAL,
+						  user_login varchar(45),
 						  p_nombre varchar(45),
 						  p_apellido varchar(45),
 						  cedula integer,

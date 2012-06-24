@@ -1,6 +1,3 @@
-
-
-
 <?php
 /*copyright:This file is part of zionPHP 1.0
 
@@ -59,8 +56,13 @@ echo "<center><img src='instalador/barra_progreso.gif' /><br/><br/></center>";
 			<p align="right">
 				<form name="crear" id="crear" method="post" action="">
 				
-					<br/>Nombre del Sistema<input type="text" id="nombre_sis" /><br/><br/>
-										Acronimo<input type="text" id="acronimo" value="<?php echo $nombreArchivo ?>" /><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+					<br/>Nombre del Sistema<br/><input type="text" id="nombre_sis" /><br/><br/>
+						 Acronimo<br/><input type="text" id="acronimo" value="<?php echo $nombreArchivo ?>" /><br/><br/>
+						 Super Administrador<br/><input type="text" id="admin" value="" /><br/><br/>
+						 Password <br/><input type="password" id="clave_admin" value="" />
+							
+						 <br/><br/><br/><br/><br/><br/><br/>
+			
 			</p>
 		</td>
 		<td>

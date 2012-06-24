@@ -37,7 +37,7 @@ $pass=$_GET['pass'];
 			}else{
 					
 					echo "version del cliente PostgreSQL: ".$versionCliente['client']."<br/>";
-					echo "conexion exitosa<p align='center'><input type='button' value='Instalar' onclick=\" crearDB(server.value, user.value, pass.value, nombre_bd.value, gestor_bd.value, nombre_sis.value, acronimo.value)\">";
+					echo "conexion exitosa<p align='center'><input type='button' value='Instalar' onclick=\" crearDB(server.value, user.value, pass.value, nombre_bd.value, gestor_bd.value, nombre_sis.value, acronimo.value, admin.value, clave_admin.value)\">";
 			}
 			
 	}
