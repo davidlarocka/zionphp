@@ -129,12 +129,12 @@ $insert = "INSERT INTO t_usuarios (p_nombre, p_apellido, cedula, rol, password, 
 		$sql = 'CREATE TABLE t_usuarios
 					(
 						  id_usuario SERIAL,
-						  p_nombre character(15),
-						  p_apellido character(15),
+						  p_nombre varchar(45),
+						  p_apellido varchar(45),
 						  cedula integer,
 						  rol integer DEFAULT 0,
-						  password character(200),
-						  psecreta character(200),
+						  password varchar(45),
+						  psecreta varchar(200),
 						  CONSTRAINT id_usuario PRIMARY KEY (id_usuario)
 					 )';
 		$respuestaQUERY=pg_query($dbcon, $sql);
