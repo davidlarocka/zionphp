@@ -119,12 +119,11 @@ $insert = "INSERT INTO t_usuarios (p_nombre, p_apellido, cedula, rol, password, 
 		if ($respuestaQUERY==false){
 			echo "no se creo la base de datos, ver manuel de instalacionz<br/>";
 		}else{
-			echo "la base de datos fue creada con exito<br/>";
+			echo "La base de datos <font='#227324'>".$baseDatos."</font> fue creada satisfactoriamente\n <br/>";
 		}	
 		
 		//creamos las tables
 		$conn_string = "host=".$servidor." dbname=".$baseDatos." user=".$usuario." password=".$pass."";
-		echo $conn_string;
 		$dbcon = pg_connect($conn_string);
 		$sql = 'CREATE TABLE t_usuarios
 					(
