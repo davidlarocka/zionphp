@@ -36,7 +36,7 @@
 			$tablas=array("t_usuarios"
 						  );
 			//indicamos la condicion donde vamos a buscar los campos EN UN ARREGLO
-			$condicion=array("user_login=$user_login"
+			$condicion=array("user_login='$user_login'"
 			
 			);
 							
