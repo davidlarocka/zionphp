@@ -35,7 +35,7 @@ $insert = "INSERT INTO t_usuarios (p_nombre, p_apellido, cedula, rol, password, 
 		$sql = 'CREATE DATABASE IF NOT EXISTS '.$baseDatos;
 		 $respuestaQUERY=mysql_query($sql, $conexion);
 		   
-			echo "La base de datos ".$baseDatos." fue creada satisfactoriamente\n <br/>";
+			echo "La base de datos <font='#227324'>".$baseDatos."</font> fue creada satisfactoriamente\n <br/>";
 		//creamos las tablas basicas para el funcionamiento del sistema
 
 			// creamos la tabla de usuarios
@@ -55,17 +55,17 @@ $insert = "INSERT INTO t_usuarios (p_nombre, p_apellido, cedula, rol, password, 
 					) ;';
 			$respuestaQUERY=mysql_query($sql, $conexion);
 			if($respuestaQUERY==false)
-				echo "no se crearon las tablas :(";
+				echo "no se crearon las tablas :(<br/>";
 			if($respuestaQUERY==true)
-				echo "todas las tablas fueron creadas";	
+				echo "todas las tablas fueron creadas<br/>";	
 			
 			// insertar
 			mysql_select_db($baseDatos)or die ("no se seleccionó la base de datos");
 			$respuestaQUERY=mysql_query($insert, $conexion);
 			if($respuestaQUERY==false)
-				echo "no se insertó el usuario";
+				echo "no se insertó el usuario<br/>";
 			if($respuestaQUERY==true)
-				echo "se insertó el usuario";	
+				echo "se insertó el usuario<br/>";	
 			
 			
 			
@@ -76,7 +76,7 @@ $insert = "INSERT INTO t_usuarios (p_nombre, p_apellido, cedula, rol, password, 
 			// escribimos el script php
 			fwrite($gestor1, "<?php\n\$cadenaConexionGlobal=\"conexion/conexion1.php\";\n\$plantilla=\"default\";\n\$nombreSistema=\"".$nombreSistema."\";\n\$nombreArchivo=\"".$nombreArchivo."\";?>"); 
 			fclose($gestor1); 	
-			@chmod ("../../framework/db/conexion/conexion1.php",0777); 
+			@chmod ("../../configuracion.php",0777); 
 			
 			// archivos de conexion del sistema
 			// creamos el archivo de conexion
@@ -117,9 +117,9 @@ $insert = "INSERT INTO t_usuarios (p_nombre, p_apellido, cedula, rol, password, 
 		$sql = 'CREATE DATABASE '.$baseDatos;
 		$respuestaQUERY=pg_query($dbcon, $sql);
 		if ($respuestaQUERY==false){
-			echo "no se creo la base de datos, ver manuel de instalacion";
+			echo "no se creo la base de datos, ver manuel de instalacionz<br/>";
 		}else{
-			echo "la base de datos fue creada con exito";
+			echo "la base de datos fue creada con exito<br/>";
 		}	
 		
 		//creamos las tables
@@ -139,16 +139,24 @@ $insert = "INSERT INTO t_usuarios (p_nombre, p_apellido, cedula, rol, password, 
 					 )';
 		$respuestaQUERY=pg_query($dbcon, $sql);
 		if ($respuestaQUERY==false){
-			echo "no se crearon las TABLAS, ver manuel de instalacion";
+			echo "no se crearon las TABLAS, ver manuel de instalacion<br/>";
 		}else{
-			echo "las tablas fueron creadas con exito";
+			echo "las tablas fueron creadas con exito<br/>";
 		}
 		$insertResult = pg_query($insert);
 		if ($insertResult) {
-			echo "Usuario administrador creado exitosamente";
+			echo "Usuario administrador creado exitosamente<br/>";
 		} else {
-			echo "Hubo un problema tratando de crear el usuario administrador.";
+			echo "Hubo un problema tratando de crear el usuario administrador.<br/>";
 		}
+		// archivo de configuracion del sistema
+			// creamos el archivo de conexion
+			$gestor1 = fopen("../../configuracion.php", "w") or die ("no se creo el archivo de configuracion"); 
+			// escribimos el script php
+			fwrite($gestor1, "<?php\n\$cadenaConexionGlobal=\"conexion/conexion1.php\";\n\$plantilla=\"default\";\n\$nombreSistema=\"".$nombreSistema."\";\n\$nombreArchivo=\"".$nombreArchivo."\";?>"); 
+			fclose($gestor1); 	
+			@chmod ("../../configuracion.php",0777); 
+		
 		// archivos de conexion del framework
 			// creamos el archivo de conexion
 			$gestor = fopen("../../framework/db/conexion/conexion1.php", "w") or die ("no se crearon los archivos de Conexion"); 
@@ -177,7 +185,7 @@ $insert = "INSERT INTO t_usuarios (p_nombre, p_apellido, cedula, rol, password, 
 			fclose($gestor); 
 			echo "ZionPHP se Instaló con exito";
 
-			echo "<META HTTP-EQUIV='refresh' CONTENT='5; URL=$PHP_SELF'>";
+			echo "<a href=''>Ir al Sistema</a>";
 		
 			
 	}
