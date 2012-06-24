@@ -33,12 +33,12 @@
 			}
 			ajax.send(null)
 	 } 
-	 function crearDB(servidor, user, pass,nombre_bd, gestor_bd){
+	 function crearDB(servidor, user, pass,nombre_bd, gestor_bd, nombre_sis, acronimo){
 		var contenedor;
 			contenedor = document.getElementById('contenedor');
 			
 			ajax=nuevoAjax();
-			ajax.open('GET', 'instalador/ajax/crearDB.php?server='+servidor+'&user='+user+'&pass='+pass+'&nombre_bd='+nombre_bd+'&motor='+gestor_bd,true);
+			ajax.open('GET', 'instalador/ajax/crearDB.php?server='+servidor+'&user='+user+'&pass='+pass+'&nombre_bd='+nombre_bd+'&motor='+gestor_bd+'&nombre_sis='+nombre_sis+'&acronimo='+acronimo,true);
 			ajax.onreadystatechange=function() {
 			if (ajax.readyState==4) {
 			contenedor.innerHTML = ajax.responseText

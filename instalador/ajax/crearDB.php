@@ -14,6 +14,12 @@
     You should have received a copy of the GNU General Public License
     along with  zionPHP 1.0.  If not, see <http://www.gnu.org/licenses/>. 
 */
+
+//datos pernitentes al proyecto
+$nombreSistema=$_GET['nombre_sis'];
+$nombreArchivo=$_GET['acronimo'];
+
+//datos pertienetes a la BD
 $motor=$_GET['motor'];
 $servidor=$_GET['server'];
 $baseDatos=$_GET['nombre_bd'];
@@ -62,7 +68,17 @@ $insert = "INSERT INTO t_usuarios (p_nombre, p_apellido, cedula, rol, password, 
 				echo "se insertó el usuario";	
 			
 			
-			// archivos de conexion del framework
+			
+			
+			// archivo de configuracion del sistema
+			// creamos el archivo de conexion
+			$gestor1 = fopen("../../configuracion.php", "w") or die ("no se creo el archivo de configuracion"); 
+			// escribimos el script php
+			fwrite($gestor1, "<?php\n\$cadenaConexionGlobal=\"conexion/conexion1.php\";\n\$plantilla=\"default\";\n\$nombreSistema=\"".$nombreSistema."\";\n\$nombreArchivo=\"".$nombreArchivo."\";?>"); 
+			fclose($gestor1); 	
+			@chmod ("../../framework/db/conexion/conexion1.php",0777); 
+			
+			// archivos de conexion del sistema
 			// creamos el archivo de conexion
 			$gestor = fopen("../../framework/db/conexion/conexion1.php", "w") or die ("no se crearon los archivos de Conexion"); 
 			// escribimos el script php
@@ -91,7 +107,7 @@ $insert = "INSERT INTO t_usuarios (p_nombre, p_apellido, cedula, rol, password, 
 			fclose($gestor); 
 			echo "ZionPHP se Instaló con exito";
 
-			echo "<META HTTP-EQUIV='refresh' CONTENT='5; URL=$PHP_SELF'>";
+			echo "<a href=''>Ir al Sistema</a>";
 		}
 	if($motor=="psql"){
 		//conectamos a postgres
@@ -137,7 +153,7 @@ $insert = "INSERT INTO t_usuarios (p_nombre, p_apellido, cedula, rol, password, 
 			// creamos el archivo de conexion
 			$gestor = fopen("../../framework/db/conexion/conexion1.php", "w") or die ("no se crearon los archivos de Conexion"); 
 			// escribimos el script php
-			fwrite($gestor, "<?php\n\$gestorBD=\"postgres\";\n\$servidor=\"".$servidor."\";\n\$base_datos=\"".$baseDatos."\";\n\$usuario=\"".$usuario."\";\n\$pass=\"".$pass."\";\n?>"); 
+			fwrite($gestor, "<?php\n\$gestorBD=\"postgres\";\n\$servidor=\"".$servidor."\";\n\$base_datos=\"".$baseDatos."\";\n\$usuario=\"".$usuario."\";\n\$pass=\"".$pass."\";\n\n?>"); 
 			fclose($gestor); 	
 			@chmod ("../../framework/db/conexion/conexion1.php",0777); 
 		

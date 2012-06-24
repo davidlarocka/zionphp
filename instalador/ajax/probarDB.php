@@ -17,7 +17,7 @@ $pass=$_GET['pass'];
 			if($link==false){
 					echo "parametros invalidos para la conexion";
 				}else{
-					echo "Conexion Exitosa <br/><p align='center'><input type='button' value='Instalar base de datos' onclick=\" crearDB(server.value, user.value, pass.value, nombre_bd.value, gestor_bd.value)\"></p>
+					echo "Conexion Exitosa <br/><p align='center'><input type='button' value='Instalar base de datos' onclick=\" crearDB(server.value, user.value, pass.value, nombre_bd.value, gestor_bd.value, nombre_sis.value, acronimo.value)\"></p>
 		";	
 			}
 
@@ -37,7 +37,7 @@ $pass=$_GET['pass'];
 			}else{
 					
 					echo "version del cliente PostgreSQL: ".$versionCliente['client']."<br/>";
-					echo "conexion exitosa<p align='center'><input type='button' value='Instalar' onclick=\" crearDB(server.value, user.value, pass.value, nombre_bd.value, gestor_bd.value)\">";
+					echo "conexion exitosa<p align='center'><input type='button' value='Instalar' onclick=\" crearDB(server.value, user.value, pass.value, nombre_bd.value, gestor_bd.value, nombre_sis.value, acronimo.value)\">";
 			}
 			
 	}

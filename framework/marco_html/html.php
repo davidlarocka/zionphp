@@ -50,11 +50,11 @@
 	// excepciones de session: contiene una lista de url donde no hace falta estar auntentificado para ver el CU		
 	//====================================================================================			
 				$plantilla=new marcohtml();
-				if($_SERVER["REQUEST_URI"]=="/zionphp/sistema/paginas/CU_login/" or 
-				   $_SERVER["REQUEST_URI"]=="/zionphp/sistema/paginas/CU_login/index.php" or //excepcion 1
+				if($_SERVER["REQUEST_URI"]==$nombreArchivo."/sistema/paginas/CU_login/" or 
+				   $_SERVER["REQUEST_URI"]==$nombreArchivo."/sistema/paginas/CU_login/index.php" or //excepcion 1
 				   
-				   $_SERVER["REQUEST_URI"]=="/zionphp/sistema/paginas/CU_registrarUsuario/" or 
-				   $_SERVER["REQUEST_URI"]=="/zionphp/sistema/paginas/CU_registrarusuario/index.php" //excepcion 2
+				   $_SERVER["REQUEST_URI"]==$nombreArchivo."/sistema/paginas/CU_registrarUsuario/" or 
+				   $_SERVER["REQUEST_URI"]==$nombreArchivo."/sistema/paginas/CU_registrarusuario/index.php" //excepcion 2
 				   ){
 					session_destroy();
 					$salidahtml=$plantilla->html($Nmenu,$mensaje);
