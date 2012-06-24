@@ -28,8 +28,12 @@
 	*ULTIMO MANTENIMIENTO:              POR:  
 
 //=================================================================	*/
+//requerimos el instalador 
+	require ("instalador/ajax/ajax.php");
 
-require ("instalador/ajax/ajax.php");
+//verificamos el nombre de la carpeta raiz
+	$urlServer=$_SERVER["REQUEST_URI"];
+	$nombreArchivo=ereg_replace("[/]", "", $urlServer);
 
 ?>
 <body bgcolor="#1A1A1A">
@@ -56,7 +60,7 @@ echo "<center><img src='instalador/barra_progreso.gif' /><br/><br/></center>";
 				<form name="crear" id="crear" method="post" action="">
 				
 					<br/>Nombre del Sistema<input type="text" id="nombre_sis" /><br/><br/>
-										Acronimo<input type="text" id="acronimo" /><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+										Acronimo<input type="text" id="acronimo" value="<?php echo $nombreArchivo ?>" /><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 			</p>
 		</td>
 		<td>
@@ -65,7 +69,7 @@ echo "<center><img src='instalador/barra_progreso.gif' /><br/><br/></center>";
 							<option value="mysql">Mysql</option>
 							<option value="psql">Postgresql</option>
 						</select><br/><br/>
-						Nombre de la base de datos<input type="text" id="nombre_bd" /><br/><br/>
+						Nombre de la base de datos<input type="text" id="nombre_bd" value="<?php echo $nombreArchivo ?>" /><br/><br/>
 						Servidor<input type="text" id="server" /><br/><br/>
 						Usuario<input type="text" id="user" /><br/><br/>
 						Password<input type="password" id="pass" /><br/><br/>
@@ -78,5 +82,5 @@ echo "<center><img src='instalador/barra_progreso.gif' /><br/><br/></center>";
 </table>
 </td></tr>
 </table>
-<p align="center"> <b><font color="#FFFFFF" size="2px">Framework oficial del Ministerio del Poder Popular para Relaciones Interiores y Justicia<br/>Software libre bajo licencia GNU v3</font></b><br/></p>
+<p align="center"> <b><font color="#FFFFFF" size="2px">Framework oficial del Ministerio del Poder Popular para Relaciones Interiores y Justicia<br/>Software libre bajo licencia GNU GPLv3</font></b><br/></p>
 </body>
