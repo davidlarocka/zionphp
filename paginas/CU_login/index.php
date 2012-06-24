@@ -35,15 +35,15 @@
 		//invocamos una consulta
 		//$respuesta=$selecionarNombre->consultarNombre();
 		//print_r($respuesta);
-	$cedula=$_POST["usuario"];	
+	$user_login=$_POST["usuario"];	
 	
 	if (isset($_POST["usuario"])){
 		//consultamos si el usuario exite en la base de datos y asignamos el resultado a una variable usuario
-		$objUsuario=$consultasCU_inicio->login($cedula);
+		$objUsuario=$consultasCU_inicio->login($user_login);
 		echo "pass--> ".$objUsuario[0][1];
 		echo "pass post ".$_POST['password'];
 		//revisamos que el usuario y la clave sean validos
-		if(($objUsuario[0][0]!=$_POST["usuario"])){
+		if(($objUsuario[0][5]!=$_POST["usuario"])){
 			
 			//si el usuario no existe redireccionamos al inicio
 		   echo	'<script  type="text/javascript">
@@ -55,7 +55,7 @@
 			exit;	
 						
 		}
-		else if(($objUsuario[0][0]==$_POST["usuario"]) && ($objUsuario[0][1]!=$_POST["password"]) ){
+		else if(($objUsuario[0][5]==$_POST["usuario"]) && ($objUsuario[0][1]!=$_POST["password"]) ){
 			
 			echo '<script  type="text/javascript">
 						alert("clave invalida");
@@ -65,7 +65,7 @@
 				</script>';
 			exit;	
 		}
-		else if(($objUsuario[0][0]==$_POST["usuario"]) && ($objUsuario[0][1]==$_POST["password"]) ){
+		else if(($objUsuario[0][5]==$_POST["usuario"]) && ($objUsuario[0][1]==$_POST["password"]) ){
 			
 			//iniciamos la session 
 			
