@@ -20,7 +20,7 @@ $nombreSistema=$_GET['nombre_sis'];
 $nombreArchivo=$_GET['acronimo'];
 $admin=$_GET['admin'];
 $clave_admin=$_GET['clave_admin'];
-print_r($_GET);
+
 //datos pertienetes a la BD
 $motor=$_GET['motor'];
 $servidor=$_GET['server'];
@@ -28,7 +28,7 @@ $baseDatos=$_GET['nombre_bd'];
 $usuario=$_GET['user'];
 $pass=$_GET['pass'];
 $insert = "INSERT INTO t_usuarios (user_login,p_nombre, p_apellido, cedula, rol, password, psecreta) VALUES ('".$admin."', 'Administrador', 'ZionPHP', '0', '1', '".$clave_admin."', '0000')";				
-echo $insert;
+
 	if($motor=="mysql"){
 		// Conectamos a la base de datos
 		$conexion= mysql_connect($servidor, $usuario, $pass)or die ("no se pudo conectar");
@@ -69,7 +69,7 @@ echo $insert;
 				echo "no se insertó el usuario<br/>";
 			if($respuestaQUERY==true)
 				echo "se insertó el usuario<br/>";	
-			exit;
+			
 			
 			
 			
