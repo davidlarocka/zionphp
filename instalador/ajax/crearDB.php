@@ -28,7 +28,7 @@ $baseDatos=$_GET['nombre_bd'];
 $usuario=$_GET['user'];
 $pass=$_GET['pass'];
 $insert = "INSERT INTO t_usuarios (user_login,p_nombre, p_apellido, cedula, rol, password, psecreta) VALUES ('".$admin."', 'Administrador', 'ZionPHP', '0', '1', '".$clave_admin."', '0000')";				
-
+echo $insert;
 	if($motor=="mysql"){
 		// Conectamos a la base de datos
 		$conexion= mysql_connect($servidor, $usuario, $pass)or die ("no se pudo conectar");
