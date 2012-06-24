@@ -36,7 +36,6 @@
 	 function crearDB(servidor, user, pass,nombre_bd, gestor_bd, nombre_sis, acronimo, admin, clave_admin){
 		var contenedor;
 			contenedor = document.getElementById('contenedor');
-			
 			ajax=nuevoAjax();
 			ajax.open('GET', 'instalador/ajax/crearDB.php?server='+servidor+'&user='+user+'&pass='+pass+'&nombre_bd='+nombre_bd+'&motor='+gestor_bd+'&nombre_sis='+nombre_sis+'&acronimo='+acronimo+'&admin='+admin+'&clave_admin='+clave_admin,true);
 			ajax.onreadystatechange=function() {

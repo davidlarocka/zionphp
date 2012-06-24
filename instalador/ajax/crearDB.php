@@ -20,7 +20,7 @@ $nombreSistema=$_GET['nombre_sis'];
 $nombreArchivo=$_GET['acronimo'];
 $admin=$_GET['admin'];
 $clave_admin=$_GET['clave_admin'];
-
+print_r($_GET);
 //datos pertienetes a la BD
 $motor=$_GET['motor'];
 $servidor=$_GET['server'];
@@ -69,7 +69,7 @@ echo $insert;
 				echo "no se insertó el usuario<br/>";
 			if($respuestaQUERY==true)
 				echo "se insertó el usuario<br/>";	
-			
+			exit;
 			
 			
 			
