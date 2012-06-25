@@ -95,9 +95,7 @@ echo "<p align='left'><img src='instalador/logo.png'  height='100px' /></p>";
 </td></tr>
 </table>
 </div>
-<p align="center"> <b><font color="#FFFFFF" size="2px">Framework oficial del Ministerio del Poder Popular para Relaciones Interiores y Justicia<br/>Software libre bajo licencia de GNU GPLv3</font></b><br/></p>
-	<?php
-		echo "<p align='center'><b><font color='#B7B7B7'>Instalaci&oacute;n</font></b><br/>";
-		echo "<img src='instalador/barra_progreso.gif' height='10px'/><br/></p>";
-	?>
+<?php
+  include('footer.html')
+?>
 </body>
