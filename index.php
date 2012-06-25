@@ -39,12 +39,12 @@
 	</title>
 </head>
 <body bgcolor="#1A1A1A">
+<br/>	
 <table align="center" border="0" bgcolor="white" style="width:95%; height:550px;">
 	<tr><td>
 <?php	
-echo "<p align='center'><img src='instalador/logo.png'  /><br/>";	
-echo "<center><b>Instalador</b></center>";
-echo "<center><img src='instalador/barra_progreso.gif' /><br/><br/></center>";
+echo "<p align='left'><img src='instalador/logo.png'  height='100px' /></p>";	
+
 ?>
 
 <table align="center" border="0" style="width:80%;">
@@ -92,5 +92,9 @@ echo "<center><img src='instalador/barra_progreso.gif' /><br/><br/></center>";
 </table>
 </td></tr>
 </table>
-<p align="center"> <b><font color="#FFFFFF" size="2px">Framework oficial del Ministerio del Poder Popular para Relaciones Interiores y Justicia<br/>Software libre bajo licencia GNU GPLv3</font></b><br/></p>
+<p align="center"> <b><font color="#FFFFFF" size="2px">Framework oficial del Ministerio del Poder Popular para Relaciones Interiores y Justicia<br/>Software libre bajo licencia de GNU GPLv3</font></b><br/></p>
+	<?php
+		echo "<p align='center'><b><font color='#B7B7B7'>Instalaci&oacute;n</font></b><br/>";
+		echo "<img src='instalador/barra_progreso.gif' height='10px'/><br/></p>";
+	?>
 </body>
