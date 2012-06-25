@@ -192,7 +192,7 @@ $insert = "INSERT INTO t_usuarios (user_login,p_nombre, p_apellido, cedula, rol,
 			fclose($gestor); 
 			echo "ZionPHP se Instaló con exito";
 
-			echo "<a href=''><img src='instalador/ir.png' /></a>";
+			echo "<p align='right'><a href=''><img src='instalador/irsis.png' /></a></p>";
 		
 			
 	}
