@@ -120,7 +120,7 @@
 			<table border="0" align="center">
 				<tr>
 					<td>  
-						<p align="center"><img src="imagenes/candado.png" width="60px" height="70px"/></p><br/><br/>
+						<p align="center"></p><br/><br/>
 						<p align="right">
 						Usuario<input type="text" name="usuario" id="usuario" /><br/><br/>
 						Clave<input type="password" name="password" id="password" /></p><br/><br/>
