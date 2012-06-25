@@ -39,8 +39,10 @@
 	</title>
 </head>
 <body bgcolor="#1A1A1A">
-<br/>	
-<table align="center" border="0" bgcolor="white" style="width:95%; height:550px;">
+<br/>
+<div id="sombra" style="background:#7F7F7F;padding-top: 3px;padding-bottom: 3px;">	
+
+<table align="center" border="0" bgcolor="white" style="width:99.5%; height:550px;">
 	<tr><td>
 <?php	
 echo "<p align='left'><img src='instalador/logo.png'  height='100px' /></p>";	
@@ -92,6 +94,7 @@ echo "<p align='left'><img src='instalador/logo.png'  height='100px' /></p>";
 </table>
 </td></tr>
 </table>
+</div>
 <p align="center"> <b><font color="#FFFFFF" size="2px">Framework oficial del Ministerio del Poder Popular para Relaciones Interiores y Justicia<br/>Software libre bajo licencia de GNU GPLv3</font></b><br/></p>
 	<?php
 		echo "<p align='center'><b><font color='#B7B7B7'>Instalaci&oacute;n</font></b><br/>";
