@@ -52,7 +52,7 @@ echo "<p align='left'><img src='instalador/logo.png'  height='100px' /></p>";
 <table align="center" border="0" style="width:80%;">
 	<tr>
 		<td style="background-image:url(instalador/tab.png);height:40px;">
-			<p align="center"> <b>Datos del Sistema</b><img src="instalador/ventana.png" width="32px" height="35px"/><br/></p>
+			<p align="center"> <b><font color="#FFFFFF">Datos del Sistema</font></b><img src="instalador/ventana.png" width="32px" height="35px"/><br/></p>
 		</td>
 		<td style="background-image:url(instalador/tab2.png);height:40px;">
 			<p align="center"> <b><font color="#FFFFFF">Base de Datos <img src="instalador/db-icon.png" width="32px" height="35px"/></font></b><br/></p>
