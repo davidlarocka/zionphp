@@ -30,7 +30,7 @@ class marcohtml
 			<script type="text/javascript" src="../../framework/librerias/incluir.js"></script>
 			<script type="text/javascript" src="'.$url.'js/validaciones.js"></script>
 		</head>
-		<body bgcolor="#110303">			
+		<body bgcolor="#3A3A3A">			
 			<table style="height:700px;min-height:700px;margin:0 auto" border="0" width="90%" align="center" bgcolor="#EDEDED">
 				<tr>
 					<td valign="top" height="150px"> 
