@@ -30,11 +30,11 @@ class marcohtml
 			<script type="text/javascript" src="../../framework/librerias/incluir.js"></script>
 			<script type="text/javascript" src="'.$url.'js/validaciones.js"></script>
 		</head>
-		<body bgcolor="#B9B9B9">			
-			<table style="height:700px;min-height:700px;margin:0 auto" border="0" width="60%" align="center" bgcolor="#EDEDED">
+		<body bgcolor="#110303">			
+			<table style="height:700px;min-height:700px;margin:0 auto" border="0" width="90%" align="center" bgcolor="#EDEDED">
 				<tr>
 					<td valign="top" height="150px"> 
-						<img src="../../framework/marco_html/imagenes/SIRCAP_WEB.jpeg" alt="logo.png" width="100%" height="150px"/>
+						<img src="../../framework/marco_html/imagenes/logosis.png" alt="logo.png" width="100%" height="150px"/>
 					</td>
 				</tr>
 				<tr>
