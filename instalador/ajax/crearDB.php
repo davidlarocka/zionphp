@@ -99,7 +99,8 @@ $insert = "INSERT INTO t_usuarios (user_login,p_nombre, p_apellido, cedula, rol,
 			unlink("../logo.png");
 			unlink("../db-icon.png");
 			unlink("../ventana.png");	
-			unlink("../siguiente.png");	
+			unlink("../siguiente.png");
+			unlink("../ir.png");		
 			$gestor = fopen("../../index.php", "w") or die ("no reescribio el index"); 
 			// escribimos el script php
 			fwrite($gestor, "<?php\n header(\"location:paginas/CU_login\");
@@ -111,7 +112,7 @@ $insert = "INSERT INTO t_usuarios (user_login,p_nombre, p_apellido, cedula, rol,
 			fclose($gestor); 
 			echo "ZionPHP se Instaló con exito";
 
-			echo "<a href=''><img src='ir.png' /></a>";
+			echo "<a href=''><img src='instalador/ir.png' /></a>";
 		}
 	if($motor=="psql"){
 		//conectamos a postgres
@@ -191,7 +192,7 @@ $insert = "INSERT INTO t_usuarios (user_login,p_nombre, p_apellido, cedula, rol,
 			fclose($gestor); 
 			echo "ZionPHP se Instaló con exito";
 
-			echo "<a href=''><img src='ir.png' /></a>";
+			echo "<a href=''><img src='instalador/ir.png' /></a>";
 		
 			
 	}
