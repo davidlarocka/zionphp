@@ -3,5 +3,5 @@ $gestorBD="postgres";
 $servidor="localhost";
 $base_datos="zionprueba";
 $usuario="postgres";
-$pass="123456";
+$pass="1234567";
 ?>

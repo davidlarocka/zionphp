@@ -30,15 +30,20 @@ class marcohtml
 			<script type="text/javascript" src="../../framework/librerias/incluir.js"></script>
 			<script type="text/javascript" src="'.$url.'js/validaciones.js"></script>
 		</head>
-		<body bgcolor="#3A3A3A">			
-			<table style="height:700px;min-height:700px;margin:0 auto" border="0" width="90%" align="center" bgcolor="#EDEDED">
+		<body bgcolor="white">			
+			<table style="height:700px;min-height:700px;margin:0 auto" border="0" width="900px" align="center" bgcolor="#F5F5FF">
 				<tr>
-					<td valign="top" height="150px"> 
-						<img src="../../framework/marco_html/imagenes/logosis.png" alt="logo.png" width="100%" height="150px"/>
+					<td valign="top" height="10px"> 
+						<img src="../../framework/marco_html/imagenes/corazon_venezolano.png" alt="logo.png" width="100%" height="45px"/>
 					</td>
 				</tr>
 				<tr>
-					<td valign="top"> 
+					<td valign="top" height="10px"> 
+						<img src="../../framework/marco_html/imagenes/logosis.png" alt="logo.png" width="100%" height="100px"/>
+					</td>
+				</tr>
+				<tr height="10px">
+					<td> 
 						'.$menu.'
 					</td>
 				</tr>

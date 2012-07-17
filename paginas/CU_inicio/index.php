@@ -44,7 +44,7 @@
 	//llenamos el mensaje que estara dentro de nuestro marco html de salida	
 
 		$mensaje="<div align='center'>
-					<h2><font color='#159B15'>SISTEMA DE ANTECEDENTES PENALES</font></h2></div>";	
+					<h2><font color='#159B15'>SISTEMA</font></h2></div>";	
 				 
 		
 		

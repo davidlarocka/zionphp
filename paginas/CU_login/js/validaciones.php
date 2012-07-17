@@ -1,17 +1,17 @@
 <script type="text/javascript">
- function validarCampos()
- 	{
-	 
-	 var usuario= document.getElementById("usuario").value;
-	 var password=document.getElementById("password").value;
-	 var code=document.getElementById("code").value;
-	
-	if(usuario=="" || password=="" || code==""){
+	function validarCamposVacios()
+		{
+		 
+		 var cedula= document.getElementById("cedula").value;
+		 var clave=document.getElementById("clave").value;
+		// var code=document.getElementById("code").value;
 		
-		alert("Debe llenar todos los campos!");
-	}else{
-	document.form_login.submit();
-		
+		if(cedula=="" || clave=="" ){
+			
+			alert("Debe llenar todos los campos");
+		}else{
+		document.form_login.submit();
+			
+		}
 	}
-}
 </script>

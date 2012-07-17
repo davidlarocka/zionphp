@@ -26,7 +26,7 @@
 		$html = new Html();
 		
 		//instanciamos una consulta
-		$consultasCU_inicio= new consultas();
+		$consultasCU_recuperarLogin= new consultas();
 		
 //=================================================================		
 //==========LOGICA DE NEGOCIOS ====================================		
@@ -42,7 +42,7 @@
 	if (isset($_POST["cedula"])){
 		$cedula=$_POST["cedula"];	
 		//consultamos si el usuario exite en la base de datos y asignamos el resultado a una variable usuario
-		$objUsuario=$consultasCU_inicio->login($cedula);
+		$objUsuario=$consultasCU_recuperarLogin->login($cedula);
 		
 		//revisamos que el usuario y la clave sean validos
 		if(($objUsuario[0][0]!=$_POST["usuario"])){
@@ -95,22 +95,18 @@
 			$_SESSION['rol']=$objUsuario[0][4];
 			$_SESSION['seccion']=$objUsuario[0][5];
 			$_SESSION['carrera']=$objUsuario[0][6];
+			
+			
 			echo '<script  type="text/javascript">
-						var pagina="../CU_inicio/index.php";
+						var pagina="../CU_recuperarLogin/index.php";
 						location.href=pagina;
 						
 				</script>';
 			exit;	
 		
 		}
-		
-		
-		
 	}	
 	
-	
-		
-		
 //=================================================================		
 //==========ARMAR LA SALIDA ====================================		
 //=================================================================		
@@ -119,12 +115,20 @@
 		$mensaje='<form name="form_clave" id="form_clave" action="" method="post">
 					<table class="tabla" align="center">
 						<tr>
-							<td> Correo </td>
-							<td> <input type="text" name="correo" id="correo"/>	</td>
+							<td> Cedula </td>
+							<td> <input type="text" name="cedula" id="cedula"/>	</td>
+						</tr>
+						<tr>
+							<td> Pregunta Secreta </td>
+							<td> <input type="text" name="psecreta" id="psrecrete"/>	</td>
+						</tr>
+						<tr>
+							<td> Respuesta</td>
+							<td> <input type="text" name="respuesta" id="respuesta"/>	</td>
 						</tr>
 						<tr>
 							<td colspan="2" align="center">
-								<input type="button" value="Entrar" onclick="validarCampos()"/>
+								<input type="button" value="Enviar" onclick="validarCampos()"/>
 							</td>
 						</tr>
 					</table>	

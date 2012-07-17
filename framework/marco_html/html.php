@@ -49,20 +49,32 @@
 	//====================================================================================			
 	// excepciones de session: contiene una lista de url donde no hace falta estar auntentificado para ver el CU		
 	//====================================================================================			
+				
 				$plantilla=new marcohtml();
-				if($_SERVER["REQUEST_URI"]==$nombreArchivo."/sistema/paginas/CU_login/" or 
-				   $_SERVER["REQUEST_URI"]==$nombreArchivo."/sistema/paginas/CU_login/index.php" or //excepcion 1
-				   
-				   $_SERVER["REQUEST_URI"]==$nombreArchivo."/sistema/paginas/CU_registrarUsuario/" or 
-				   $_SERVER["REQUEST_URI"]==$nombreArchivo."/sistema/paginas/CU_registrarusuario/index.php" //excepcion 2
+				if($_SERVER["REQUEST_URI"]=="/".$nombreArchivo."/paginas/CU_login/" or 
+				   $_SERVER["REQUEST_URI"]=="/".$nombreArchivo."/paginas/CU_login/index.php" //excepcion 1
 				   ){
-					session_destroy();
-					$salidahtml=$plantilla->html($Nmenu,$mensaje);
-					exit;
+						$salidahtml=$plantilla->html($tituloPagina,$Nmenu,$mensaje);
+						exit;
 					
 				 }		
-				$salidahtml=$plantilla->html($tituloPagina,$Nmenu,$mensaje);
-
+				
+				if($_SESSION['cedula']==""){
+						print_r($_SESSION);
+						$mensaje='
+						
+							Acceso denegado!!!<br/> Debe iniciar Sesion con un usuario válido
+							<br/>
+						<input type="button" tabindex="6" value="Regresar" onclick="location.href =\'../CU_login/index.php\'" />
+						
+						';
+						$salidahtml=$plantilla->html($tituloPagina,"menuInicio",$mensaje);
+						
+				}
+				else
+				{
+						$salidahtml=$plantilla->html($tituloPagina,$Nmenu,$mensaje);
+				}
 			}
 	}
 ?>

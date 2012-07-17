@@ -1,7 +1,8 @@
+/* -- fuente del menú --*/
 ul.dropdown {
  background: transparent url(../../../../images/vimeo.com/box1-bottom-left.png) 0 100% no-repeat;
  font-family: normal Tahoma, Verdana, Arial, Helvetica, sans-serif;
- font-size:14px;
+ font-size:10px;
 }
 	ul.dropdown li {
 	 padding: 5px 10px;
@@ -154,3 +155,24 @@ ul.dropdown-horizontal ul *.dir {
  background-position: 95% 50%;
  background-repeat: no-repeat;
 }
+
+.tablas {
+background: transparent url(../../../../images/vimeo.com/box1-bottom-left.png) 0 100% no-repeat;
+ font-family: normal Tahoma, Verdana, Arial, Helvetica, sans-serif;
+ font-size:14px;
+}
+
+.encabezadoTabla {
+background-image: url(../../../../../imagenes/tab2.png);
+ font-family: normal Tahoma, Verdana, Arial, Helvetica, sans-serif;
+ font-size:14px;
+ color:white; 
+ text-align:center;
+ 
+ 
+ 
+ 
+}
+
+
+

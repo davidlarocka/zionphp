@@ -19,7 +19,8 @@
 $nombreSistema=$_GET['nombre_sis'];
 $nombreArchivo=$_GET['acronimo'];
 $admin=$_GET['admin'];
-$clave_admin=$_GET['clave_admin'];
+$clave_admin=md5 ($_GET['clave_admin']); //clave encriptada
+$fecha=date('Y-m-d');
 
 //datos pertienetes a la BD
 $motor=$_GET['motor'];
@@ -27,7 +28,9 @@ $servidor=$_GET['server'];
 $baseDatos=$_GET['nombre_bd'];
 $usuario=$_GET['user'];
 $pass=$_GET['pass'];
-$insert = "INSERT INTO t_usuarios (user_login,p_nombre, p_apellido, cedula, rol, password, psecreta) VALUES ('".$admin."', 'Administrador', 'ZionPHP', '0', '1', '".$clave_admin."', '0000')";				
+
+
+$insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, clave, id_psecreta, rsecreta, fecha_registro, fecha_expiracion  ) VALUES ('".$admin."', 'Administrador', 'ZionPHP', '0', '1', '".$clave_admin."', '1', 'zionphp', '".$fecha."', '2222-12-31' )";				
 
 	if($motor=="mysql"){
 		// Conectamos a la base de datos
@@ -46,21 +49,38 @@ $insert = "INSERT INTO t_usuarios (user_login,p_nombre, p_apellido, cedula, rol,
 			$respuestaQUERY=mysql_query($sql, $conexion);
 			
 			$sql = 'CREATE TABLE  `'.$baseDatos.'`.`t_usuarios` (
-					  `id_usuario` int(11) NOT NULL,
+					  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
 					  `user_login` varchar(45) DEFAULT NULL,
-					  `p_nombre` varchar(45) DEFAULT NULL,
-					  `p_apellido` varchar(45) DEFAULT NULL,
+					  `nombres` varchar(45) DEFAULT NULL,
+					  `apellidos` varchar(45) DEFAULT NULL,
 					  `cedula` int(15) DEFAULT NULL,
 					  `rol` int(15) DEFAULT NULL,
-					  `password` varchar(50) DEFAULT NULL,
-					  `psecreta` varchar(45) DEFAULT NULL,
+					  `clave` varchar(50) DEFAULT NULL,
+					  `id_psecreta` int(2) DEFAULT NULL,
+					  `rsecreta` varchar(45) DEFAULT NULL,
+					  `fecha_registro` date DEFAULT NULL,
+					  `fecha_expiracion` date DEFAULT NULL,
+					  `estatus` int(2) DEFAULT 1,
 					  PRIMARY KEY (`id_usuario`)
 					) ;';
 			$respuestaQUERY=mysql_query($sql, $conexion);
 			if($respuestaQUERY==false)
 				echo "no se crearon las tablas :(<br/>";
 			if($respuestaQUERY==true)
-				echo "todas las tablas fueron creadas<br/>";	
+				echo "todas las tablas fueron creadas<br/>";
+			$sql = 'CREATE TABLE `'.$baseDatos.'`.`t_psecretas` (
+						`id_psecreta` int(11) NOT NULL AUTO_INCREMENT,
+						 `pregunta` varchar(150),
+						 PRIMARY KEY (`id_psecreta`)
+					);';
+			$respuestaQUERY=mysql_query($sql, $conexion);
+			if($respuestaQUERY==false)
+				echo "no se crearon las tablas :(<br/>";
+			if($respuestaQUERY==true)
+				echo "todas las tablas fueron creadas<br/>";		
+				
+				
+					
 			
 			// insertar
 			mysql_select_db($baseDatos)or die ("no se seleccionó la base de datos");
@@ -100,7 +120,8 @@ $insert = "INSERT INTO t_usuarios (user_login,p_nombre, p_apellido, cedula, rol,
 			unlink("../db-icon.png");
 			unlink("../ventana.png");	
 			unlink("../siguiente.png");
-			unlink("../ir.png");		
+			unlink("../ir.png");	
+			unlink("../irsis.png");	
 			$gestor = fopen("../../index.php", "w") or die ("no reescribio el index"); 
 			// escribimos el script php
 			fwrite($gestor, "<?php\n header(\"location:paginas/CU_login\");
@@ -133,21 +154,39 @@ $insert = "INSERT INTO t_usuarios (user_login,p_nombre, p_apellido, cedula, rol,
 		$sql = 'CREATE TABLE t_usuarios
 					(
 						  id_usuario SERIAL,
-						  user_login varchar(45),
-						  p_nombre varchar(45),
-						  p_apellido varchar(45),
+						  user_login character varying(45),
+						  nombres character varying(45),
+						  apellido character varying(45),
 						  cedula integer,
 						  rol integer DEFAULT 0,
-						  password varchar(45),
-						  psecreta varchar(200),
+						  clave character varying(45),
+						  id_psecreta integer DEFAULT 0,
+						  rsecreta` character varying(45) DEFAULT NULL,
+						  fecha_registro date DEFAULT NULL,
+						  fecha_expiracion date DEFAULT \'2222-12-31\',
+						  estatus integer DEFAULT \'1\'
 						  CONSTRAINT id_usuario PRIMARY KEY (id_usuario)
 					 )';
 		$respuestaQUERY=pg_query($dbcon, $sql);
 		if ($respuestaQUERY==false){
-			echo "no se crearon las TABLAS, ver manuel de instalacion<br/>";
+			echo "no se crearon las TABLAS, ver manual de instalacion<br/>";
 		}else{
 			echo "las tablas fueron creadas con exito<br/>";
 		}
+		
+		$sql = 'CREATE TABLE t_psecretas (
+					id_psecreta SERIAL,
+					pregunta character varying(150)
+					CONSTRAINT id_usuario PRIMARY KEY (id_psecreta)
+				);';
+		$respuestaQUERY=pg_query($dbcon, $sql);
+		if ($respuestaQUERY==false){
+			echo "no se crearon las TABLAS, ver manual de instalacion<br/>";
+		}else{
+			echo "las tablas fueron creadas con exito<br/>";
+		}
+		
+		
 		$insertResult = pg_query($insert);
 		if ($insertResult) {
 			echo "Usuario administrador creado exitosamente<br/>";
@@ -181,6 +220,7 @@ $insert = "INSERT INTO t_usuarios (user_login,p_nombre, p_apellido, cedula, rol,
 			unlink("../ventana.png");	
 			unlink("../siguiente.png");	
 			unlink("../ir.png");	
+			unlink("../irsis.png");	
 			$gestor = fopen("../../index.php", "w") or die ("no reescribio el index"); 
 			// escribimos el script php
 			fwrite($gestor, "<?php\n header(\"location:paginas/CU_login\");

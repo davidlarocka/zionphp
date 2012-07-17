@@ -21,16 +21,18 @@
 			$conexionDB= new db_consultas($cedula);
 			
 			//aki indicamos una cadena de conexion distinta a la indicada en la configuracion
-			//$conexionDB->cadenaConexion="conexion/conexion2.php";
+			$conexionDB->cadenaConexion="conexion/conexion1.php";
 		//======== armar la consulta =============================			
 					
 			//indicamos los campos a consultar EN UN ARREGLO
-			$campos=array("cedula",
-							"password",
-							"p_nombre",          //1
-						  	"p_apellido",
-						  
-						 
+			$campos=array("id_usuario",//0
+						  "nombres", //1
+						  "apellidos", //2
+						  "cedula",     //3     
+						  "rol", //4
+						  "clave",//5
+						  "id_psecreta", //6
+						  "rsecreta" //7 
 						  	
 						  ); 
 			//indicamos la tabla donde vamos a buscar los campos EN UN ARREGLO

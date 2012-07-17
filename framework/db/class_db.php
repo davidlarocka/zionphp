@@ -1,4 +1,4 @@
-|<?php 
+<?php 
 /*copyright:This file is part of zionPHP 1.0
 
     zionPHP 1.0 is free software: you can redistribute it and/or modify
@@ -71,7 +71,7 @@
 				}
 
 			// a este select le pasamos como parametros los campos a buscar, la tabla o tablas y de ser necesario la condicion...
-			function select($atributo, $tabla, $condicion, $groupBy){
+			function select($atributo, $tabla, $condicion, $groupBy,$ordenBy){
 				
 				//se conecta a la base de datos
 					$conexion=$this->conectar();
@@ -114,8 +114,20 @@
 						}
 						//eliminamos el ultimo AND que nos enbasura la sentencia
 						$SQL=substr($SQL,0,-5);
-					
-					
+					}
+					//verifica si existe order By
+					if($ordenBy[0]!=""){ 	
+						$SQL.=" ORDER BY ";
+						foreach($ordenBy as $valor){
+						//incluimos el campo que toca en el buble a la consulta SQL
+							$SQL.= $valor;
+							//ponemos una coma para separar campo por campo y respetar la sintaxsis del lenguaje SQL
+							$SQL.=' AND ';
+						}
+						
+						//eliminamos el ultimo AND que nos enbasura la sentencia
+						$SQL=substr($SQL,0,-5);
+					}
 					
 					
 					//group By
@@ -135,14 +147,13 @@
 						
 						//cerramos la sentencia SQL
 						$SQL.= ';'; 	   
-				    }
+				   
 			
 				echo $SQL;
 				
 					//exit;
 					//aki hacemos el select
 					if($conexion[2]=="mysql"){
-				echo "-3";
 					$resultado=mysql_query($SQL)or die("no se realizo la consulta");
 					//ordenamos en un arreglo lo que nos trae
 					$i=0;
@@ -163,7 +174,8 @@
 					return $res;	
 					}
 					if($conexion[2]=="postgres"){
-				
+						
+					//if($conexion[2]=="postgres"){
 						$resultado=pg_query($conexion[0], $SQL)or die("no se realizo la consulta");
 						//ordenamos en un arreglo lo que nos trae
 /*
