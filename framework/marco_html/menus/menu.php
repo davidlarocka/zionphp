@@ -35,7 +35,7 @@ class menus
 							<b>Inicio</b>
 						</a>
 					</li>
-					<li class=""><a href="./" class="dir"><b>Usuarios</b></a>
+					<li class=""><a href="./" class="dir"><b>Usuarios&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></a>
 						<ul>
 							<li class="first"><a href="../CU_gestionarUsuario/">Gestionar Usuarios</a></li>
 						</ul>
