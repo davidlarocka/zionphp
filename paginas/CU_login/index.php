@@ -121,7 +121,7 @@
 					<td>  
 						<p align="center"><img src="imagenes/inicio_de_sesion.gif" width="60px" height="70px"/></p><br/><br/>
 						<p align="right">
-						Cédula<input type="text"  name="cedula" id="cedula" /><br/><br/>
+						Usuario<input type="text"  name="cedula" id="cedula" /><br/><br/>
 						Clave<input type="password"  maxlength="15" name="clave" id="clave" /></p><br/><br/>
 						<p align="center"><input type="button" value="Entrar" onclick="validarCamposVacios()"/></p><br/><br/>
 					</td>

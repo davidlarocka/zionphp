@@ -40,28 +40,6 @@ class menus
 							<li class="first"><a href="../CU_gestionarUsuario/">Gestionar Usuarios</a></li>
 						</ul>
 					</li>
-					<li class=""><a href="./" class="dir"><b>Datos Propietarios</b></a>
-						<ul>
-							<li class="first"><a href="../CU_asignarVehiculo/">Asignar Vehículo</a></li>
-						</ul>
-					</li>
-					<li class=""><a href="./" class="dir"><b>Registro de Acceso</b></a>
-						<ul>
-							<li class="first"><a href="../CU_accesoInterno/">Acceso Interno</a></li>
-							<li class="first"><a href="../CU_accesoVisitante/">Acceso Visitante</a></li>
-						</ul>
-					</li>
-					<li class=""><a href="./" class="dir"><b>Puestos x Dependencia</b></a>	
-						<ul>
-							<li class="first"><a href="../CU_asignarCantidadPuestos/">Asignar Cantidad</a></li>
-						</ul>
-					</li>
-					<li class=""><a href="./" class="dir"><b>Incidencias</b></a>	
-						<ul>
-							<li class="first"><a href="../CU_registrarIncidencia/">Registrar Incidencias</a></li>
-							<li class="first"><a href="../CU_consultarIncidencia/">Consultar Incidencias</a></li>
-						</ul>
-					</li>
 					<li class=""><a href="../CU_login/cerrarSesion.php"><b>Cerrar</b></a></li>	
 					<li class="dir last">&nbsp;</li>
 				</ul>';
