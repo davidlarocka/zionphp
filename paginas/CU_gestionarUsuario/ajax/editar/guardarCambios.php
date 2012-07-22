@@ -15,8 +15,8 @@
 		$cedula=$_GET['cedula'];
 		$nombres=$_GET['nombres'];
 		$apellidos=$_GET['apellidos'];
-		$clave=$_GET['clave'];
-		
+		$clave=md5($_GET['clave']);
+		//esto garantiza que un usuario no puede cambiar su rol a administrador
 		if ($_SESSION ['rol']==2){
 			$rol=2;
 			}
