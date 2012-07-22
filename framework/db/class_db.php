@@ -255,7 +255,7 @@
 								//ordenamos en un arreglo lo que nos trae
 								$i=0;
 				//cuando arregla no trae todos los resultados				
-								
+				 					
 								
 								return null;
 								}
@@ -265,7 +265,11 @@
 								$i=0;
 				//cuando arregla no trae todos los resultados				
 								
+								/*aki mejoraremos este metodo para que 
+								  nos traiga un retorno de lo insertado de ser requerido con un RETURNING...
+								  YIFA ya tiene algo adelantado queridos colegas :)
 								
+								*/
 								return null;
 								}
 		   }
