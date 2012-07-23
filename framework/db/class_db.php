@@ -273,6 +273,117 @@
 								return null;
 								}
 		   }
+		   
+//===============================================================================================================================			
+//=============FUNCION PARA INSERTAR REGISTROS EN BASE DE DATOS Y DEVUELVA LOS PARAMETRO ========================================
+//===============================================================================================================================
+
+			function insert_return($atributo, $tabla, $values, $campos_retorno)
+			{
+				//se conecta a la base de datos
+				$conexion=$this->conectar();
+				$nro_atributos=-1;
+				//armamos la sentencia en lenguaje SQL
+				$SQL.='INSERT INTO ';
+							
+				//indicamos las tablas a utilizar
+				foreach($tabla as $valor){
+					//incluimos el campo que toca en el buble a la consulta SQL
+					$SQL.= $valor;
+					//ponemos una coma para separar campo por campo y respetar la sintaxsis del lenguaje SQL
+					$SQL.=', ';
+				}	
+				//eliminamos la ultima coma que quedo en el ciclo como basura(esto borra los dos ultimos caracteres de la cadena... la coma y el espacio )
+				$SQL=substr($SQL,0,-2);		
+				
+				//indicamos que campos
+				$SQL.="(";
+				foreach($atributo as $valor)
+				{
+					//incluimos el campo que toca en el buble a la consulta SQL
+					$SQL.= $valor;
+					//ponemos una coma para separar campo por campo y respetar la sintaxsis del lenguaje SQL
+					$SQL.=', ';
+					$nro_atributos++;
+				}	
+					//eliminamos la ultima coma que quedo en el ciclo como basura(esto borra los dos ultimos caracteres de la cadena... la coma y el espacio )
+					$SQL=substr($SQL,0,-2);
+					//VALORES
+					$SQL.=  ') VALUES (';
+								
+					foreach($values as $valor)
+					{
+						//incluimos el campo que toca en el buble a la consulta SQL
+						$SQL.= "'".$valor."'";
+						//ponemos una coma para separar campo por campo y respetar la sintaxsis del lenguaje SQL
+						$SQL.=', ';
+					}	
+						$SQL=substr($SQL,0,-2);	
+						//cerramos la sentencia SQL
+						$SQL.=  ')';
+						
+					//==========RETORNO DE PARAMETROS===============			
+						
+				
+						if ($campos_retorno[0]!="") 
+						{
+							if ($conexion[2]=="postgres")
+							{
+							$SQL.='RETURNING ';
+								
+							//indicamos las tablas a utilizar
+								foreach($campos_retorno as $valor)
+								{
+									//incluimos el campo que toca en el buble a la consulta SQL
+									$SQL.= $valor;
+									//ponemos una coma para separar campo por campo y respetar la sintaxsis del lenguaje SQL
+									$SQL.=', ';
+								}
+								//eliminamos la ultima coma que quedo en el ciclo como basura(esto borra los dos ultimos caracteres de la cadena... la coma y el espacio )
+								$SQL=substr($SQL,0,-2);	
+							}
+						}	
+					
+					echo $SQL;
+							
+					if($conexion[2]=="mysql")
+					{
+						$resultado=mysql_query($SQL)or die("no se realizo la consulta");
+						//ordenamos en un arreglo lo que nos trae
+						$i=0;
+						//cuando arregla no trae todos los resultados				
+					
+						while($row=mysql_fetch_array($resultado))
+						{
+							for($j=0;$j<=$nro_atributos;$j++)
+							{	
+								$res[$i][$j]=$row[$j];
+							}
+							$i++;		
+						}
+						
+					return $res;	
+					}
+								
+					if($conexion[2]=="postgres")
+					{
+						$resultado=pg_query($SQL)or die("no se realizo la consulta");
+						//ordenamos en un arreglo lo que nos trae
+						$i=0;
+						//cuando arregla no trae todos los resultados				
+						while($row=pg_fetch_array($resultado))
+						{
+							for($j=0;$j<=$nro_atributos;$j++)
+							{	
+								$res[$i][$j]=$row[$j];
+							}
+							$i++;		
+						}
+						return $res;
+					}
+		   }
+
+		   
 		   function update($tabla, $set,  $condicion){
 							
 							//se conecta a la base de datos
