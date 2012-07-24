@@ -53,6 +53,7 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 					  `user_login` varchar(45) DEFAULT NULL,
 					  `nombres` varchar(45) DEFAULT NULL,
 					  `apellidos` varchar(45) DEFAULT NULL,
+					  `email` varchar(45) DEFAULT NULL,
 					  `cedula` int(15) DEFAULT NULL,
 					  `rol` int(15) DEFAULT NULL,
 					  `clave` varchar(50) DEFAULT NULL,
@@ -105,7 +106,16 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			// creamos el archivo de conexion
 			$gestor = fopen("../../framework/db/conexion/conexion1.php", "w") or die ("no se crearon los archivos de Conexion"); 
 			// escribimos el script php
-			fwrite($gestor, "<?php\n\$gestorBD=\"mysql\";\n\$servidor=\"".$servidor."\";\n\$base_datos=\"".$baseDatos."\";\n\$usuario=\"".$usuario."\";\n\$pass=\"".$pass."\";\n?>"); 
+			fwrite($gestor, "<?php\n
+								\$gestorBD=\"mysql\";\n
+								\$servidor=\"".$servidor."\";\n
+								\$base_datos=\"".$baseDatos."\";\n
+								\$usuario=\"".$usuario."\";\n
+								\$pass=\"".$pass."\";\n
+								
+								
+								
+								?>"); 
 			fclose($gestor); 	
 			@chmod ("../../framework/db/conexion/conexion1.php",0777); 
 			
@@ -156,7 +166,8 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 						  id_usuario SERIAL,
 						  user_login character varying(45),
 						  nombres character varying(45),
-						  apellido character varying(45),
+						  apellidos character varying(45),
+						  email character varying(45),
 						  cedula integer,
 						  rol integer DEFAULT 0,
 						  clave character varying(45),
@@ -205,7 +216,19 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			// creamos el archivo de conexion
 			$gestor = fopen("../../framework/db/conexion/conexion1.php", "w") or die ("no se crearon los archivos de Conexion"); 
 			// escribimos el script php
-			fwrite($gestor, "<?php\n\$gestorBD=\"postgres\";\n\$servidor=\"".$servidor."\";\n\$base_datos=\"".$baseDatos."\";\n\$usuario=\"".$usuario."\";\n\$pass=\"".$pass."\";\n\n?>"); 
+			fwrite($gestor, "<?php\n
+									\$gestorBD=\"postgres\";\n
+									\$servidor=\"".$servidor."\";\n
+									\$base_datos=\"".$baseDatos."\";\n
+									\$usuario=\"".$usuario."\";\n
+									\$pass=\"".$pass."\";\n
+									
+									//despliega los errores del sistema en el codigo php\n
+									\$mostrarErroresPHP=\"no\"; //si=muestra errores  no=no muestra errores\n
+									//despliega los errores del sistema en el codigo php\n
+									\$mostrarConsultasSQL=\"no\"; //si=muestra errores  no=no muestra errores \n
+									
+									\n?>"); 
 			fclose($gestor); 	
 			@chmod ("../../framework/db/conexion/conexion1.php",0777); 
 		
