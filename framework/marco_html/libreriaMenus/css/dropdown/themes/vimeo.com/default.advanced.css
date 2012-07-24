@@ -1,0 +1,22 @@
+ul.dropdown li a {
+ display: block;
+ padding: 5px 10px;
+}
+ul.dropdown li, ul.dropdown ul li {
+ padding: 0;
+}
+ul.dropdown li.dir {
+ padding: 5px 20px 5px 10px;
+}
+ul.dropdown ul li.dir {
+ padding: 5px 15px;
+}
+ul.dropdown ul a {
+ padding-left: 15px;
+}
+ul.dropdown li.hover *.open {
+ color: #b0d730;
+}
+ul.dropdown li:hover > *.dir {
+ color: #6EBCAF;
+}
