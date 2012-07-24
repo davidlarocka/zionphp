@@ -98,7 +98,17 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			// creamos el archivo de conexion
 			$gestor1 = fopen("../../configuracion.php", "w") or die ("no se creo el archivo de configuracion"); 
 			// escribimos el script php
-			fwrite($gestor1, "<?php\n\$cadenaConexionGlobal=\"conexion/conexion1.php\";\n\$plantilla=\"default\";\n\$nombreSistema=\"".$nombreSistema."\";\n\$nombreArchivo=\"".$nombreArchivo."\";?>"); 
+			fwrite($gestor1, "<?php\n
+								\$cadenaConexionGlobal=\"conexion/conexion1.php\";\n
+								\$plantilla=\"default\";\n
+								\$nombreSistema=\"".$nombreSistema."\";\n
+								\$nombreArchivo=\"".$nombreArchivo."\";
+									//despliega los errores del sistema en el codigo php\n
+									\$mostrarErroresPHP=\"no\"; //si=muestra errores  no=no muestra errores\n
+									//despliega los errores del sistema en el codigo php\n
+									\$mostrarConsultasSQL=\"no\"; //si=muestra errores  no=no muestra errores \n
+								
+								\n?>"); 
 			fclose($gestor1); 	
 			@chmod ("../../configuracion.php",0777); 
 			
@@ -137,9 +147,8 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			fwrite($gestor, "<?php\n header(\"location:paginas/CU_login\");
 								unlink(\"instalador/ajax/crearDB.php\");
 								rmdir(\"instalador/ajax\");
-								rmdir(\"instalador\");
-								
-			?>"); 
+								rmdir(\"instalador\");						
+							?>"); 
 			fclose($gestor); 
 			echo "ZionPHP se Instaló con exito";
 
@@ -221,13 +230,7 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 									\$servidor=\"".$servidor."\";\n
 									\$base_datos=\"".$baseDatos."\";\n
 									\$usuario=\"".$usuario."\";\n
-									\$pass=\"".$pass."\";\n
-									
-									//despliega los errores del sistema en el codigo php\n
-									\$mostrarErroresPHP=\"no\"; //si=muestra errores  no=no muestra errores\n
-									//despliega los errores del sistema en el codigo php\n
-									\$mostrarConsultasSQL=\"no\"; //si=muestra errores  no=no muestra errores \n
-									
+									\$pass=\"".$pass."\";\n	
 									\n?>"); 
 			fclose($gestor); 	
 			@chmod ("../../framework/db/conexion/conexion1.php",0777); 
