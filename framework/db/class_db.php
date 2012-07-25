@@ -29,7 +29,7 @@
 	*CREADO POR: TSU David Garcia
 	*CORREO ELECTRONICO: davidlarocka@gmail.com
 	*FECHA CREACION: 1 DE MAYO DE 2012
-	*FECHA ULTIMO MANTENIMIENTO:              POR:  
+	*FECHA ULTIMO MANTENIMIENTO: 23-07-2012		POR:  Yajes Fuenmayor
 
 //=================================================================	*/	
 	class db_consultas {
