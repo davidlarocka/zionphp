@@ -21,7 +21,7 @@ echo "ZionPHP Dice: Ejecutando... <br/>";
 	// archivo de configuracion del sistema
 	// creamos el archivo de conexion
 	echo "ZionPHP Dice: Abriendo Archivo... <br/>";
-	$nombreArchivo="../../../configuracion.php";
+	$nombreArchivo="../../../framework/db/class_db.php";
 	
 	$lineas = file($nombreArchivo)or die("ZionPHP Dice: ocurrio un error mientras intentaba comentar los SQL :-( <br/>");
 	$i=1;
@@ -36,7 +36,7 @@ echo "ZionPHP Dice: Ejecutando... <br/>";
 	}
 	//echo $archivo;
 	//reemplazamos el parametro $mostrarConsultasSQL="no"; por $mostrarConsultasSQL="si";
-	$archivo_nuevo=str_replace("\$mostrarConsultasSQL=\"si\";","\$mostrarConsultasSQL=\"no\";",$archivo);
+	$archivo_nuevo=str_replace("\$imprimo=1","\$imprimo=0",$archivo);
 	
 	echo "ZionPHP Dice: Escribiendo Archivo... <br/>";
 	//reescribimos el archivo

@@ -21,7 +21,7 @@ $nombreSistema=$_GET['nombre_sis'];
 	
 	// archivo de configuracion del sistema
 	// creamos el archivo de conexion
-	$nombreArchivo="../../../configuracion.php";
+	$nombreArchivo="../../../framework/db/class_db.php";
 	
 	$lineas = file($nombreArchivo);
 	$i=1;
@@ -36,7 +36,7 @@ $nombreSistema=$_GET['nombre_sis'];
 	}
 	//echo $archivo;
 	//reemplazamos el parametro $mostrarConsultasSQL="no"; por $mostrarConsultasSQL="si";
-	$archivo_nuevo=str_replace("\$mostrarConsultasSQL=\"no\";","\$mostrarConsultasSQL=\"si\";",$archivo);
+	$archivo_nuevo=str_replace("\$imprimo=0","\$imprimo=1",$archivo);
 	
 	
 	//reescribimos el archivo

@@ -55,6 +55,7 @@
 					hacer una nueva instancia de db_consultas entonces esa es la que se usa*/
 					require($this->cadenaConexion);
 				}
+				
 				//echo "parametros conexion: ".$servidor." ".$usuario." ".$base_datos." ".$pass."<br/><br/>";
 				
 				//construimos la conexion para mysql
@@ -62,7 +63,6 @@
 				$conexion[0]=mysql_connect($servidor,$usuario,$pass) or die ("murio la conexion a la base de datos :(");
 				$conexion[1]=mysql_select_db($base_datos);
 				$conexion[2]=$gestorBD;
-				$conexion[3]=$mostrarConsultasSQL;
 				}
 				//devuelve el resultado
 				if($gestorBD=="postgres"){
@@ -70,7 +70,6 @@
     			  or die ("no hay conexion " . pg_last_error($conn)); 	
 				$conexion[1]=NULL;
 				$conexion[2]=$gestorBD; 
-				$conexion[3]=$mostrarConsultasSQL; //parametro de configuracion que indica si se imprime en pantalla la consulta
 				}
 				return $conexion;
 				}
@@ -171,8 +170,9 @@
 						$SQL_PRINT.=';</font><font color="black"></div>';
 			
 				//verifica si en la configuracion global se establecio imprimir los SQL
-				if($conexion[3]=="si")
-				echo $SQL_PRINT;
+				$imprimo=1;
+				if($imprimo==1)
+				echo $SQL_PRINT."<br/>";
 				
 					
 					//aki hacemos el select
@@ -270,7 +270,8 @@
 									   
 								
 						//verifica si en la configuracion global se establecio imprimir los SQL
-								if($conexion[3]=="si")
+								
+								
 								echo $SQL;
 							
 								//exit;
@@ -290,11 +291,6 @@
 								$i=0;
 				//cuando arregla no trae todos los resultados				
 								
-								/*aki mejoraremos este metodo para que 
-								  nos traiga un retorno de lo insertado de ser requerido con un RETURNING...
-								  YIFA ya tiene algo adelantado queridos colegas :)
-								
-								*/
 								return null;
 								}
 		   }
@@ -370,8 +366,8 @@
 						}	
 					
 					//verifica si en la configuracion global se establecio imprimir los SQL
-						if($conexion[3]=="si")
-						echo $SQL;
+						
+					echo $SQL;
 							
 					if($conexion[2]=="mysql")
 					{
@@ -456,8 +452,8 @@
 									   
 								
 						//verifica si en la configuracion global se establecio imprimir los SQL
-							if($conexion[3]=="si")
-							echo $SQL;
+							
+							echo  $SQL;
 							
 								//exit;
 								//aki hacemos el select	
