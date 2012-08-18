@@ -66,9 +66,9 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 					) ;';
 			$respuestaQUERY=mysql_query($sql, $conexion);
 			if($respuestaQUERY==false)
-				echo "no se crearon las tablas :(<br/>";
+				echo "no se crearon las tablas usuarios :(<br/>";
 			if($respuestaQUERY==true)
-				echo "todas las tablas fueron creadas<br/>";
+				echo "todas las tablas usuarios fueron creadas<br/>";
 			$sql = 'CREATE TABLE `'.$baseDatos.'`.`t_psecretas` (
 						`id_psecreta` int(11) NOT NULL AUTO_INCREMENT,
 						 `pregunta` varchar(150),
@@ -76,9 +76,9 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 					);';
 			$respuestaQUERY=mysql_query($sql, $conexion);
 			if($respuestaQUERY==false)
-				echo "no se crearon las tablas :(<br/>";
+				echo "no se crearon las tablas pregunta secreta :(<br/>";
 			if($respuestaQUERY==true)
-				echo "todas las tablas fueron creadas<br/>";		
+				echo "todas las tablas pregunta secreta fueron creadas<br/>";		
 				
 				
 					
@@ -91,8 +91,39 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			if($respuestaQUERY==true)
 				echo "se insertó el usuario<br/>";	
 			
+			//se crea la tabla menus
 			
+			$sql ='CREATE TABLE  `'.$baseDatos.'`.`menus` (
+					  `id_menu` int(11) NOT NULL AUTO_INCREMENT,
+					  `nivel` int(11) NOT NULL,
+					  `id_menu_padre` int(11) NOT NULL,
+					  `descripcion` varchar(30) NOT NULL,
+					  `url` varchar(100) NOT NULL,
+					  `acceso` int(11) NOT NULL COMMENT \'define que usuarios pueden ver este menu\',
+					  PRIMARY KEY (`id_menu`);';
 			
+			$respuestaQUERY=mysql_query($sql, $conexion);
+			if($respuestaQUERY==false)
+				echo "no se crearon las tablas menus :(<br/>";
+			if($respuestaQUERY==true)
+				echo "todas las tablas menus fueron creadas<br/>";
+				
+			//insertamos los menus default
+			$sql ='INSERT INTO `'.$baseDatos.'`.`menus` VALUES  (1,1,0,\'Inicio\',\'../CU_inicio\',1),
+				 (2,1,0,\'Usuarios\',\'\',1),
+				 (3,2,2,\'todos\',\'../CU_gestionarUsuario\',1),
+				 (4,2,2,\'por usuarios\',\'\',1),
+				 (5,2,2,\'por fecha\',\'\',1),
+				 (6,1,0,\'ejemplo\',\'../CU_login/cerrarSession.php\',1),
+				 (7,1,0,\'Reportes\',\'\',1),
+				 (8,1,0,\'Registrate\',\'../CU_registrarUsuario\',0),
+				 (9,1,0,\'Log In\',\'../CU_login\',0),
+				 (10,1,0,\'Salir\',\'../CU_login/cerrarSession.php\',1);';	
+			$respuestaQUERY=mysql_query($sql, $conexion);
+			if($respuestaQUERY==false)
+				echo "no se insertaron los menus default :(<br/>";
+			if($respuestaQUERY==true)
+				echo "todos los menus fueron creados con exito<br/>";	
 			
 			// archivo de configuracion del sistema
 			// creamos el archivo de conexion
@@ -100,7 +131,7 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			// escribimos el script php
 			fwrite($gestor1, "<?php\n
 								\$cadenaConexionGlobal=\"conexion/conexion1.php\";\n
-								\$plantilla=\"default\";\n
+								\$plantilla=\"benzion\";\n
 								\$nombreSistema=\"".$nombreSistema."\";\n
 								\$nombreArchivo=\"".$nombreArchivo."\";
 									//despliega los errores del sistema en el codigo php\n
@@ -217,7 +248,7 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			// creamos el archivo de conexion
 			$gestor1 = fopen("../../configuracion.php", "w") or die ("no se creo el archivo de configuracion"); 
 			// escribimos el script php
-			fwrite($gestor1, "<?php\n\$cadenaConexionGlobal=\"conexion/conexion1.php\";\n\$plantilla=\"default\";\n\$nombreSistema=\"".$nombreSistema."\";\n\$nombreArchivo=\"".$nombreArchivo."\";?>"); 
+			fwrite($gestor1, "<?php\n\$cadenaConexionGlobal=\"conexion/conexion1.php\";\n\$plantilla=\"benzion\";\n\$nombreSistema=\"".$nombreSistema."\";\n\$nombreArchivo=\"".$nombreArchivo."\";?>"); 
 			fclose($gestor1); 	
 			@chmod ("../../configuracion.php",0777); 
 		
