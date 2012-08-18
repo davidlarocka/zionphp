@@ -130,17 +130,7 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			// creamos el archivo de conexion
 			$gestor1 = fopen("../../configuracion.php", "w") or die ("no se creo el archivo de configuracion"); 
 			// escribimos el script php
-			fwrite($gestor1, "<?php\n
-								\$cadenaConexionGlobal=\"conexion/conexion1.php\";\n
-								\$plantilla=\"benzion\";\n
-								\$nombreSistema=\"".$nombreSistema."\";\n
-								\$nombreArchivo=\"".$nombreArchivo."\";
-									//despliega los errores del sistema en el codigo php\n
-									\$mostrarErroresPHP=\"no\"; //si=muestra errores  no=no muestra errores\n
-									//despliega los errores del sistema en el codigo php\n
-									\$mostrarConsultasSQL=\"no\"; //si=muestra errores  no=no muestra errores \n
-								
-								\n?>"); 
+			fwrite($gestor1, "<?php\n\$cadenaConexionGlobal=\"conexion/conexion1.php\";\n\$plantilla=\"benzion\";\n\$nombreSistema=\"".$nombreSistema."\";\n\$nombreArchivo=\"".$nombreArchivo."\";//despliega los errores del sistema en el codigo php\n\$mostrarErroresPHP=\"no\"; //si=muestra errores  no=no muestra errores\n//despliega las consultas sql \n\$mostrarConsultasSQL=\"no\"; //si=muestra errores  no=no muestra errores \n\$moduloDesarrollador=\"no\"; //si=habilita modulo de desarrollador  no=desabilita modulo de desarrollador\n\n?>"); 
 			fclose($gestor1); 	
 			@chmod ("../../configuracion.php",0777); 
 			
