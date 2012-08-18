@@ -99,8 +99,9 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 					  `id_menu_padre` int(11) NOT NULL,
 					  `descripcion` varchar(30) NOT NULL,
 					  `url` varchar(100) NOT NULL,
-					  `acceso` int(11) NOT NULL COMMENT \'define que usuarios pueden ver este menu\',
-					  PRIMARY KEY (`id_menu`);';
+					  `acceso` int(11) NOT NULL ,
+					  PRIMARY KEY (`id_menu`)
+				  );';
 			
 			$respuestaQUERY=mysql_query($sql, $conexion);
 			if($respuestaQUERY==false)
