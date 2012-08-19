@@ -39,11 +39,9 @@
 			ajax=nuevoAjax();
 			ajax.open('GET', 'instalador/ajax/crearDB.php?server='+servidor+'&user='+user+'&pass='+pass+'&nombre_bd='+nombre_bd+'&motor='+gestor_bd+'&nombre_sis='+nombre_sis+'&acronimo='+acronimo+'&admin='+admin+'&clave_admin='+clave_admin,true);
 			ajax.onreadystatechange=function() {
+				contenedor.innerHTML = "Por favor espere...";
 				if (ajax.readyState==4) {
 				contenedor.innerHTML = ajax.responseText
-				}else
-				{
-					contenedor.innerHTML = "Por favor espere...";
 				}
 			
 			}
