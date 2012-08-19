@@ -83,7 +83,7 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 				
 					
 			
-			// insertar
+			// insertar usuario 
 			mysql_select_db($baseDatos)or die ("no se seleccionó la base de datos");
 			$respuestaQUERY=mysql_query($insert, $conexion);
 			if($respuestaQUERY==false)
@@ -176,6 +176,11 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 
 			echo "<p align='right'><a href=''><img src='instalador/irsis.png' /></a></p>";
 		}
+		
+		
+	//=============================POSTGRESQL ==============================================//
+	//======================================================================================//	
+	
 	if($motor=="psql"){
 		//conectamos a postgres
 		$conn_string = "host=".$servidor."  user=".$usuario." password=".$pass."";
@@ -235,6 +240,38 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 		} else {
 			echo "Hubo un problema tratando de crear el usuario administrador.<br/>";
 		}
+		
+		//crear tablas para los menus
+		//se crea la tabla menus
+			
+			$sql ='CREATE TABLE  menus (
+					  id_menu SERIAL,
+					  nivel integer,
+					  id_menu_padre integer,
+					  descripcion character varying(50),
+					  url character varying(150),
+					  acceso integer,
+					  CONSTRAINT id_menu PRIMARY KEY (id_menu)
+				  );';
+		$respuestaQUERY=pg_query($dbcon, $sql);
+		if ($respuestaQUERY==false){
+			echo "no se crearon las TABLAS de los menus, ver manual de instalacion<br/>";
+		}else{
+			echo "las tablas de los menus fueron creadas con exito<br/>";
+		}
+		
+		//insertamos los menus default
+			$sql ='INSERT INTO menus (nivel, id_menu_padre, descripcion, url, acceso  ) VALUES  (1,0,\'Inicio\',\'../CU_inicio\',1),
+				 (1,0,\'Usuarios\',\'\',1),
+				 (2,2,\'todos\',\'../CU_gestionarUsuario\',1),
+				 (2,2,\'por usuarios\',\'\',1),
+				 (2,2,\'por fecha\',\'\',1),
+				 (1,0,\'ejemplo\',\'../CU_login/cerrarSession.php\',1),
+				 (1,0,\'Reportes\',\'\',1),
+				 (1,0,\'Registrate\',\'../CU_registrarUsuario\',0),
+				 (1,0,\'Log In\',\'../CU_login\',0),
+				 (1,0,\'Salir\',\'../CU_login/cerrarSession.php\',1);';	
+		
 		// archivo de configuracion del sistema
 			// creamos el archivo de conexion
 			$gestor1 = fopen("../../configuracion.php", "w") or die ("no se creo el archivo de configuracion"); 
