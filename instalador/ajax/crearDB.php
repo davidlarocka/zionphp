@@ -38,9 +38,12 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 
 		// armamos la sentencia que creara la nueva base de datos
 		$sql = 'CREATE DATABASE IF NOT EXISTS '.$baseDatos;
-		 $respuestaQUERY=mysql_query($sql, $conexion);
-		   
-			echo "La base de datos <font='#227324'>".$baseDatos."</font> fue creada satisfactoriamente\n <br/>";
+		$respuestaQUERY=mysql_query($sql, $conexion);
+			if($respuestaQUERY==false)
+				echo "no se creó la base de datos :(<br/>";
+			if($respuestaQUERY==true)
+				echo "La base de datos <font color='#227324'>".$baseDatos."</font> fue creada satisfactoriamente\n <br/>";
+				
 		//creamos las tablas basicas para el funcionamiento del sistema
 
 			// creamos la tabla de usuarios
@@ -138,16 +141,7 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			// creamos el archivo de conexion
 			$gestor = fopen("../../framework/db/conexion/conexion1.php", "w") or die ("no se crearon los archivos de Conexion"); 
 			// escribimos el script php
-			fwrite($gestor, "<?php\n
-								\$gestorBD=\"mysql\";\n
-								\$servidor=\"".$servidor."\";\n
-								\$base_datos=\"".$baseDatos."\";\n
-								\$usuario=\"".$usuario."\";\n
-								\$pass=\"".$pass."\";\n
-								
-								
-								
-								?>"); 
+			fwrite($gestor, "<?php\n\$gestorBD=\"mysql\";\n\$servidor=\"".$servidor."\";\n\$base_datos=\"".$baseDatos."\";\n\$usuario=\"".$usuario."\";\n\$pass=\"".$pass."\";\n?>"); 
 			fclose($gestor); 	
 			@chmod ("../../framework/db/conexion/conexion1.php",0777); 
 			
@@ -174,7 +168,7 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			fclose($gestor); 
 			echo "ZionPHP se Instaló con exito";
 
-			echo "<p align='right'><a href=''><img src='instalador/irsis.png' /></a></p>";
+			echo "<p align='right'><a href=''>Ir al Sistema</a></p>";
 		}
 		
 		
@@ -202,8 +196,6 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 		}else{
 			echo "se conectó a la base de datos <font color='#227324'>".$baseDatos."</font> satisfactoriamente\n <br/>";
 		}
-		
-		
 		//creamos las tables
 		$sql = 'CREATE TABLE t_usuarios
 					(
@@ -250,8 +242,7 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 		}
 		
 		//crear tablas para los menus
-		//se crea la tabla menus
-			
+		//se crea la tabla menus	
 			$sql ='CREATE TABLE  menus (
 					  id_menu SERIAL,
 					  nivel integer,
@@ -299,13 +290,7 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			// creamos el archivo de conexion
 			$gestor = fopen("../../framework/db/conexion/conexion1.php", "w") or die ("no se crearon los archivos de Conexion"); 
 			// escribimos el script php
-			fwrite($gestor, "<?php\n
-									\$gestorBD=\"postgres\";\n
-									\$servidor=\"".$servidor."\";\n
-									\$base_datos=\"".$baseDatos."\";\n
-									\$usuario=\"".$usuario."\";\n
-									\$pass=\"".$pass."\";\n	
-									\n?>"); 
+			fwrite($gestor, "<?php\n\$gestorBD=\"postgres\";\n\$servidor=\"".$servidor."\";\n\$base_datos=\"".$baseDatos."\";\n\$usuario=\"".$usuario."\";\n\$pass=\"".$pass."\";\n	\n?>"); 
 			fclose($gestor); 	
 			@chmod ("../../framework/db/conexion/conexion1.php",0777); 
 		
@@ -332,7 +317,7 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			fclose($gestor); 
 			echo "ZionPHP se Instaló con exito";
 
-			echo "<p align='right'><a href=''><img src='instalador/irsis.png' /></a></p>";
+			echo "<p align='right'><a href=''>ir al sistema</a></p>";
 		
 			
 	}
