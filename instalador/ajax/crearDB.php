@@ -189,14 +189,22 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 		$sql = 'CREATE DATABASE '.$baseDatos;
 		$respuestaQUERY=pg_query($dbcon, $sql);
 		if ($respuestaQUERY==false){
-			echo "no se creo la base de datos, ver manuel de instalacionz<br/>";
+			echo "no se creo la base de datos, ver manual de instalacionz<br/>";
 		}else{
-			echo "La base de datos <font='#227324'>".$baseDatos."</font> fue creada satisfactoriamente\n <br/>";
+			echo "La base de datos <font color='#227324'>".$baseDatos."</font> fue creada satisfactoriamente\n <br/>";
 		}	
 		
-		//creamos las tables
+		//conectamos a la base de datos recien creada
 		$conn_string = "host=".$servidor." dbname=".$baseDatos." user=".$usuario." password=".$pass."";
 		$dbcon = pg_connect($conn_string);
+		if ($dbcon ==false){
+			echo "no se pudo conectar a la base de datos :( <br/>";
+		}else{
+			echo "se conectó a la base de datos <font color='#227324'>".$baseDatos."</font> satisfactoriamente\n <br/>";
+		}
+		
+		
+		//creamos las tables
 		$sql = 'CREATE TABLE t_usuarios
 					(
 						  id_usuario SERIAL,
@@ -208,29 +216,29 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 						  rol integer DEFAULT 0,
 						  clave character varying(45),
 						  id_psecreta integer DEFAULT 0,
-						  rsecreta` character varying(45) DEFAULT NULL,
+						  rsecreta character varying(45) DEFAULT NULL,
 						  fecha_registro date DEFAULT NULL,
 						  fecha_expiracion date DEFAULT \'2222-12-31\',
-						  estatus integer DEFAULT \'1\'
+						  estatus integer DEFAULT \'1\',
 						  CONSTRAINT id_usuario PRIMARY KEY (id_usuario)
 					 )';
 		$respuestaQUERY=pg_query($dbcon, $sql);
 		if ($respuestaQUERY==false){
-			echo "no se crearon las TABLAS, ver manual de instalacion<br/>";
+			echo "no se crearon las TABLAS de usuario, ver manual de instalacion<br/>";
 		}else{
-			echo "las tablas fueron creadas con exito<br/>";
+			echo "las tablas de usuarios fueron creadas con exito<br/>";
 		}
 		
 		$sql = 'CREATE TABLE t_psecretas (
 					id_psecreta SERIAL,
-					pregunta character varying(150)
+					pregunta character varying(150),
 					CONSTRAINT id_usuario PRIMARY KEY (id_psecreta)
 				);';
 		$respuestaQUERY=pg_query($dbcon, $sql);
 		if ($respuestaQUERY==false){
-			echo "no se crearon las TABLAS, ver manual de instalacion<br/>";
+			echo "no se crearon las TABLAS de pregunta secreta, ver manual de instalacion<br/>";
 		}else{
-			echo "las tablas fueron creadas con exito<br/>";
+			echo "las tablas de pregunta secreta fueron creadas con exito<br/>";
 		}
 		
 		
@@ -271,6 +279,13 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 				 (1,0,\'Registrate\',\'../CU_registrarUsuario\',0),
 				 (1,0,\'Log In\',\'../CU_login\',0),
 				 (1,0,\'Salir\',\'../CU_login/cerrarSession.php\',1);';	
+		
+		$respuestaQUERY=pg_query($dbcon, $sql);
+		if ($respuestaQUERY==false){
+			echo "Hubo problemas tratando de insertar menus default<br/>";
+		}else{
+			echo "los menus fueron creados con exito<br/>";
+		}
 		
 		// archivo de configuracion del sistema
 			// creamos el archivo de conexion
