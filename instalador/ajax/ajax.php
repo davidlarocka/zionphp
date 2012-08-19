@@ -35,10 +35,18 @@
 	 } 
 	 function crearDB(servidor, user, pass,nombre_bd, gestor_bd, nombre_sis, acronimo, admin, clave_admin){
 		var contenedor;
-			contenedor = document.getElementById('contenedor');
+			contenedor = document.getElementById('sombra');
+			contenedor2 = document.getElementById('footer');
+			contenedor2.innerHTML = "";
+			contenedor.style.width="900px";
+			contenedor.style.height="400px";
+			
+			contenedor.style.background="url(instalador/fondo_consola.png)";
 			ajax=nuevoAjax();
 			ajax.open('GET', 'instalador/ajax/crearDB.php?server='+servidor+'&user='+user+'&pass='+pass+'&nombre_bd='+nombre_bd+'&motor='+gestor_bd+'&nombre_sis='+nombre_sis+'&acronimo='+acronimo+'&admin='+admin+'&clave_admin='+clave_admin,true);
-			contenedor.innerHTML = "Por favor espere...<img src='barra_progreso.gif' />";
+			contenedor.innerHTML = "Por favor espere...<br/><br/><br/><img src='instalador/barra_progreso.gif' /><br/><br/><br/>ZionPHP est&aacute; instalando los componentes de base de datos necesarios para el funcionamiento de su aplicaci&oacute;n";
+			//return;
+			
 			ajax.onreadystatechange=function() {
 				if (ajax.readyState==4) {
 				contenedor.innerHTML = ajax.responseText

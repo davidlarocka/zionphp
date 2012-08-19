@@ -38,14 +38,15 @@
 		ZionPHP v1.0
 	</title>
 </head>
-<body bgcolor="#1A1A1A">
+<body style="background:url(instalador/bgbody.jpg);">
 <br/>
-<div id="sombra" style="background:#7F7F7F;padding-top: 3px;padding-bottom: 3px;">	
+<center>
+<div id="sombra" style="padding-top: 30px;padding-bottom: 3px; width:900px; border-radius:30px; background:url(instalador/fondo_consola.png);">	
 
-<table align="center" border="0" bgcolor="white" style="width:99.5%; height:550px;">
+<table align="center" border="0" style="width:99.5%; height:550px;">
 	<tr><td>
 <?php	
-echo "<p align='left'><img src='instalador/logo.png'  height='100px' /></p>";	
+//echo "<p align='left'><img src='instalador/logo.png'  height='100px' /></p>";	
 
 ?>
 
@@ -64,7 +65,7 @@ echo "<p align='left'><img src='instalador/logo.png'  height='100px' /></p>";
 				<form name="crear" id="crear" method="post" action="">
 				
 					<br/>Nombre del Sistema<br/><input type="text" id="nombre_sis" /><br/><br/>
-						 Acronimo<br/><input type="text" id="acronimo" value="<?php echo $nombreArchivo ?>" /><br/><br/>
+						 Acronimo<br/><input type="text" id="acronimo" value="<?php echo $nombreArchivo ?>" readonly /><br/><br/>
 						 Super Administrador<br/><input type="text" id="admin" value="" /><br/><br/>
 						 Password <br/><input type="password" id="clave_admin" value="" />
 							
@@ -78,8 +79,8 @@ echo "<p align='left'><img src='instalador/logo.png'  height='100px' /></p>";
 		<td id="td_bd" style="display:none;">
 		
 					 <br/><p align="left"> Gestor de Base de Datos<select id="gestor_bd" ><br/><br/></p>
-							<option value="mysql">Mysql</option>
-							<option value="psql">Postgresql</option>
+							<option value="mysql">MySQL</option>
+							<option value="psql">Postgresql <img src="ksks" /></option>
 						</select><br/><br/>
 						Nombre de la base de datos<input type="text" id="nombre_bd" value="<?php echo $nombreArchivo ?>" /><br/><br/>
 						Servidor<input type="text" id="server" /><br/><br/>
@@ -95,7 +96,11 @@ echo "<p align='left'><img src='instalador/logo.png'  height='100px' /></p>";
 </td></tr>
 </table>
 </div>
+</center>
+<div id="footer">
 <?php
+ 
   include('footer.html')
 ?>
+</div>
 </body>
