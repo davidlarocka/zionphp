@@ -27,6 +27,7 @@
 //=================================================================	*/
 //requerimos el instalador 
 	require ("instalador/ajax/ajax.php");
+	include("i18n/i18n.php");
 
 //verificamos el nombre de la carpeta raiz
 	$urlServer=$_SERVER["REQUEST_URI"];
@@ -97,10 +98,7 @@
 </table>
 </div>
 </center>
-<div id="footer">
 <?php
- 
-  include('footer.html')
+  include('footer.php')
 ?>
-</div>
 </body>
