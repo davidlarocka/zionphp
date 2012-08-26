@@ -103,6 +103,7 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 					  `descripcion` varchar(30) NOT NULL,
 					  `url` varchar(100) NOT NULL,
 					  `acceso` int(11) NOT NULL ,
+					  `orden` int(3) NOT NULL ,
 					  PRIMARY KEY (`id_menu`)
 				  );';
 			
@@ -217,17 +218,7 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			echo "las tablas de usuarios fueron creadas con exito<br/>";
 		}
 		
-		$sql = 'CREATE TABLE t_psecretas (
-					id_psecreta SERIAL,
-					pregunta character varying(150),
-					CONSTRAINT id_usuario PRIMARY KEY (id_psecreta)
-				);';
-		$respuestaQUERY=pg_query($dbcon, $sql);
-		if ($respuestaQUERY==false){
-			echo "no se crearon las TABLAS de pregunta secreta, ver manual de instalacion<br/>";
-		}else{
-			echo "las tablas de pregunta secreta fueron creadas con exito<br/>";
-		}
+		
 		
 		
 		$insertResult = pg_query($insert);
@@ -246,6 +237,7 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 					  descripcion character varying(50),
 					  url character varying(150),
 					  acceso integer,
+					  orden integer,
 					  CONSTRAINT id_menu PRIMARY KEY (id_menu)
 				  );';
 		$respuestaQUERY=pg_query($dbcon, $sql);
