@@ -155,6 +155,8 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			unlink("../siguiente.png");
 			unlink("../ir.png");	
 			unlink("../irsis.png");	
+			unlink("../bgbody.jpg");
+			unlink("../fondo_consola.png");	
 			$gestor = fopen("../../index.php", "w") or die ("no reescribio el index"); 
 			// escribimos el script php
 			fwrite($gestor, "<?php\n header(\"location:paginas/CU_login\");
