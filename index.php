@@ -33,7 +33,7 @@
 
 //verificamos el nombre de la carpeta raiz
 	$urlServer=$_SERVER["REQUEST_URI"];
-	$nombreArchivo=ereg_replace("[/]", "", $urlServer);
+	$nombreArchivo=preg_replace("[/]", "", $urlServer);
 
 ?>
 <head>

@@ -136,6 +136,7 @@
 						$SQL=substr($SQL,0,-5);
 						$SQL_PRINT=substr($SQL_PRINT,0,-12);
 					}
+					
 					//verifica si existe order By
 					if($ordenBy[0]!=""){ 	
 						$SQL.=" ORDER BY ";
@@ -170,9 +171,8 @@
 						$SQL.= ';'; 	   
 						$SQL_PRINT.=';</font><font color="black"></div>';
 			
-				//verifica si en la configuracion global se establecio imprimir los SQL
-				if($conexion[3]=="si")
-				echo $SQL_PRINT;
+				
+				echo $SQL;
 				
 					
 					//aki hacemos el select

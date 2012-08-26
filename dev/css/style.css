@@ -22,6 +22,7 @@ body {
 	border-radius:0px 10px 10px 0px;
 }
 .menu{
+  background:green url(../images/bg.png) repeat-x 0 -110px;
 	width:1010px;
 	height:50px;
 	position:relative;
@@ -29,6 +30,7 @@ body {
 	display:block;
 	border-radius:10px 10px 0px 0px;
 	border:5px solid rgba(41,41,41,.5);
+	text-align:right;
 }
 #contenido{
 	position:relative;
@@ -56,14 +58,28 @@ div.ventana {
 	overflow-y:scroll;
 */	
 	
-	background:url(../images/fondo_consola.png) no-repeat;
+	background:url(../images/fondo_consola.png)repeat;
 	color:#FFFFFF;
-	width:500px;
+	width:400px;
 	height:300px;
-	position:relative;
-	z-index: 2;
-	display:block;
+	position:absolute;
+	
 	border-radius:10px 10px 10px 10px;
 	border:5px solid rgba(41,41,41,.5);
 	overflow-y:scroll;
+}
+.visor_botones{
+ /*	background:black;
+	width:500px;
+	height:300px;
+	color:white;
+	overflow-y:scroll;
+*/	
+	
+	background:#000000;
+	color:#FFF5F5;
+	width:380px;
+	height:20px;
+	position:inline;
+	
 }

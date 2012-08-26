@@ -103,6 +103,7 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 					  `descripcion` varchar(30) NOT NULL,
 					  `url` varchar(100) NOT NULL,
 					  `acceso` int(11) NOT NULL ,
+					  `orden` int(3) NOT NULL ,
 					  PRIMARY KEY (`id_menu`)
 				  );';
 			
@@ -116,13 +117,9 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			$sql ='INSERT INTO `'.$baseDatos.'`.`menus` VALUES  (1,1,0,\'Inicio\',\'../CU_inicio\',1),
 				 (2,1,0,\'Usuarios\',\'\',1),
 				 (3,2,2,\'todos\',\'../CU_gestionarUsuario\',1),
-				 (4,2,2,\'por usuarios\',\'\',1),
-				 (5,2,2,\'por fecha\',\'\',1),
-				 (6,1,0,\'ejemplo\',\'../CU_login/cerrarSession.php\',1),
-				 (7,1,0,\'Reportes\',\'\',1),
-				 (8,1,0,\'Registrate\',\'../CU_registrarUsuario\',0),
-				 (9,1,0,\'Log In\',\'../CU_login\',0),
-				 (10,1,0,\'Salir\',\'../CU_login/cerrarSession.php\',1);';	
+				 (4,1,0,\'Registrate\',\'../CU_registrarUsuario\',0),
+				 (5,1,0,\'Log In\',\'../CU_login\',0),
+				 (6,1,0,\'Salir\',\'../CU_login/cerrarSession.php\',1);';	
 			$respuestaQUERY=mysql_query($sql, $conexion);
 			if($respuestaQUERY==false)
 				echo "no se insertaron los menus default :(<br/>";
@@ -221,17 +218,7 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			echo "las tablas de usuarios fueron creadas con exito<br/>";
 		}
 		
-		$sql = 'CREATE TABLE t_psecretas (
-					id_psecreta SERIAL,
-					pregunta character varying(150),
-					CONSTRAINT id_usuario PRIMARY KEY (id_psecreta)
-				);';
-		$respuestaQUERY=pg_query($dbcon, $sql);
-		if ($respuestaQUERY==false){
-			echo "no se crearon las TABLAS de pregunta secreta, ver manual de instalacion<br/>";
-		}else{
-			echo "las tablas de pregunta secreta fueron creadas con exito<br/>";
-		}
+		
 		
 		
 		$insertResult = pg_query($insert);
@@ -250,6 +237,7 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 					  descripcion character varying(50),
 					  url character varying(150),
 					  acceso integer,
+					  orden integer,
 					  CONSTRAINT id_menu PRIMARY KEY (id_menu)
 				  );';
 		$respuestaQUERY=pg_query($dbcon, $sql);
@@ -263,10 +251,6 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			$sql ='INSERT INTO menus (nivel, id_menu_padre, descripcion, url, acceso  ) VALUES  (1,0,\'Inicio\',\'../CU_inicio\',1),
 				 (1,0,\'Usuarios\',\'\',1),
 				 (2,2,\'todos\',\'../CU_gestionarUsuario\',1),
-				 (2,2,\'por usuarios\',\'\',1),
-				 (2,2,\'por fecha\',\'\',1),
-				 (1,0,\'ejemplo\',\'../CU_login/cerrarSession.php\',1),
-				 (1,0,\'Reportes\',\'\',1),
 				 (1,0,\'Registrate\',\'../CU_registrarUsuario\',0),
 				 (1,0,\'Log In\',\'../CU_login\',0),
 				 (1,0,\'Salir\',\'../CU_login/cerrarSession.php\',1);';	
@@ -305,7 +289,9 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			unlink("../ventana.png");	
 			unlink("../siguiente.png");	
 			unlink("../ir.png");	
-			unlink("../irsis.png");	
+			unlink("../irsis.png");
+			unlink("../bgbody.jpg");
+			unlink("../fondo_consola.png");	
 			$gestor = fopen("../../index.php", "w") or die ("no reescribio el index"); 
 			// escribimos el script php
 			fwrite($gestor, "<?php\n header(\"location:paginas/CU_login\");

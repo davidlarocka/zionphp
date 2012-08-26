@@ -42,10 +42,10 @@
 			);
 							
 			$groupBy=array();
-			$ordenBy="";
+			$ordenBy=array("orden");
 			$limit="";
 			//devolvemos los resultados de la consulta
-			return $respuesta=$conexionDB->select($campos,$tablas,$condicion,$groupBy);
+			return $respuesta=$conexionDB->select($campos,$tablas,$condicion,$groupBy,$ordenBy);
 			}
 				
 			

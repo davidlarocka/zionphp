@@ -170,7 +170,7 @@
 						$SQL_PRINT.=';</font><font color="black"></div>';
 			
 				//verifica si en la configuracion global se establecio imprimir los SQL
-				$imprimo=1;
+				$imprimo=0;
 				if($imprimo==1)
 				echo $SQL_PRINT."<br/>";
 				

@@ -45,77 +45,41 @@ if($moduloDesarrollador=="si"){
   </head>
   <body>
 	<center><div class="ventana">
-		<div>
-			<div class="banner"></div>
-			<!-- div id="tool-tip">
-				<!--ul class="tt-links">
-					<li><a class="tt-gplus" href="#"><span>Google Plus</span></a></li>
-					<li><a class="tt-twitter" href="#"><span>Twitter</span></a></li>
-					<li><a class="tt-dribbble" href="#"><span>Dribbble</span></a></li>
-					<li><a class="tt-facebook" href="#"><span>Facebook</span></a></li>
-					<li><a class="tt-linkedin" href="#"><span>LinkedIn</span></a></li>
-					<li><a class="tt-forrst" href="#"><span>Forrst</span></a></li>
-				</ul>
-			</div -->
-			<!--div class="tool-tip">
-			
-			</div -->
-		</div -->
-			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		
 		<div style="border-radius:10px;">
 			<div class="menu">
-				    <ul id="nav"><br/><br/><br/>
-				    <!--    <li class="current"><a href="#">Inicio</a></li>
-				        <li><a href="#">Tutoriales de ZIONPHP</a>
-				            <ul>
-				                <li><a href="#">Basicos</a>
-									<ul>
-				                        <li><a href="#">Instalacion</a></li>
-				                        <li><a href="#">MI primer Modulo</a></li>
-				                    </ul>
-				                </li>
-				                
-				                <li><a href="#">Intermedios</a>
-				                    <ul>
-				                        <li><a href="#">jQuery</a></li>
-				                        <li><a href="#">JS</a></li>
-				                    </ul>
-				                </li>
-				            </ul>
-				        </li>
-				        <li><a href="#">Codigos|Clases|Plantillas</a>
-				            <ul>
-				                <li><a href="#">Por categoria</a>
-				                    <ul>
-				                        <li><a href="#">PHP</a></li>
-				                        <ul>
-				                        	<li><a href="#">Otros</a></li>	
-				                        </ul>
-				                    </ul>
-				                </li>
-				            </ul>
-				        </li>
-				        <li><a href="#">Descargar</a></li>
-						<li><a href="#">&nbsp;</a></li>
-						<li><a href="#">&nbsp;</a></li>
-						<li><a href="#">&nbsp;</a></li> -->
-						
-				    </ul>
-						
+				<table border="0" width="100%">
+					<tr>
+						<td width="80%">
+							<img src="images/logo.png" width="385px" height="50px" />
+						</td>
+						<td>
+							 <img src="images/sql.png" width="40px" height="40px" class="sql" />	
+							 <img src="images/php.png" width="40px" height="40px" class="sql" />
+							 <a href="../paginas/CU_login" target="_blank"><img src="images/ir.png" width="100px" height="40px" class="sql" /></a>
+						</td>
+					</tr>
+				</table>
+				
+				   
+				
+					
+												    
+
 			</div>
 			<div id="contenido" style="color:white;text-align:left;">
-				
+							
 				 <ul id="navCU"><br/>
 				        <li><a href="#">Gestores</a><br/>
 				            <ul>
-				                <li><a href="#">Casos de Uso</a>
+				                <li><a href="#" style="color:black;">Modulos</a>
 									<ul>
 				                        <li><a onclick="mostrarOpcionesCU()" href="#"><span>Nuevo</span></a></li>
 				                        <li><a href="#">Editar</a></li>
 				                    </ul>
 				                </li>
 				                
-				                <li><a href="#">Conexiones BD</a>
+				                <li><a href="#" style="color:black;">Conexiones BD</a>
 				                    <ul>
 				                        <li><a href="#">Nueva</a></li>
 				                        <li><a href="#">Editar Existente</a></li>
@@ -129,34 +93,30 @@ if($moduloDesarrollador=="si"){
 				    </ul>
 				
 				<table border="0">
-					<tr height="300px">
-						<td>
-							<div id="area_opciones" >
+					<tr height="200px">
+						<td colspan="2">
 							
-							</div>	
-						
-						
-						</td>
-						<td><b>Visor de Sucesos</b><br/>
-							<div id="contenedor" name="contenedor"  class="visor_sucesos">
+						    <div id="contenedor" name="contenedor"  class="visor_sucesos" onmousedown="dragStart(event), this.id" >
+								<img src="images/php.png" width="20px" height="20px" class="sql" />
+								<img src="images/min.png" width="20px" height="20px" class="sql" onclick="minimizar()"/>
+								<img src="images/max.png" width="23px" height="23px" class="sql" onclick="maximizar()"/>
+								<br/>
 								ZionPHP Dice: Hola! Bonito dia no?<br/>
 							</div> 	
-
-						
+					
+					 
+						<div id="area_opciones" >
+							
+							</div>	
 						</td>
+						
 					</tr>
 					<tr height="20px">
 						<td width="600px">
 							
 						
 						</td>
-						<td><b>Debug</b>
-							<ul class="tt-links">
-								<li><div id="sql"><a class="tt-SQL" onclick="comentarSQL()" href="#"><span>Comentar SQL</span></a></div></li>
-							
-								<li><div id="php"><a class="tt-twitter" onclick="mostrarErroresPHP()" href="#"><span>Mostrar/Ocultar Errores PHP</span></a></div></li>
-					
-							</ul>
+						<td>
 						
 						</td>
 					</tr>
