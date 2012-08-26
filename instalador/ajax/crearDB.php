@@ -103,7 +103,7 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 					  `descripcion` varchar(30) NOT NULL,
 					  `url` varchar(100) NOT NULL,
 					  `acceso` int(11) NOT NULL ,
-					  `orden` int(3) NOT NULL ,
+					  `orden` int(3),
 					  PRIMARY KEY (`id_menu`)
 				  );';
 			
