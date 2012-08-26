@@ -15,6 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with ZionPHP. If not, see <http://www.gnu.org/licenses/>.
  */
+
 /*=================================================================	
 //=========FICHA TECNICA DE LA CLASE	
 //=================================================================
