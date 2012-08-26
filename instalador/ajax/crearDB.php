@@ -114,7 +114,8 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 				echo "todas las tablas menus fueron creadas<br/>";
 				
 			//insertamos los menus default
-			$sql ='INSERT INTO `'.$baseDatos.'`.`menus` VALUES  (1,1,0,\'Inicio\',\'../CU_inicio\',1),
+			$sql ='INSERT INTO `'.$baseDatos.'`.`menus` (id_menu, nivel, id_menu_padre, descripcion, url, acceso  ) VALUES  
+				 (1,1,0,\'Inicio\',\'../CU_inicio\',1),
 				 (2,1,0,\'Usuarios\',\'\',1),
 				 (3,2,2,\'todos\',\'../CU_gestionarUsuario\',1),
 				 (4,1,0,\'Registrate\',\'../CU_registrarUsuario\',0),
