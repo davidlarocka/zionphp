@@ -1,9 +1,0 @@
-* { margin: 0; padding: 0; }
-
-/* estilos del fondo del framwork*/
-body { padding: 10px 10px 10px 10px; background: white; color: #000; font-family: normal Tahoma, Arial, Helvetica, sans-serif; font-size:11pt }
-h1 { margin-bottom: .5em; border-bottom: solid 1px #fff; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 180%; text-indent: 5px; letter-spacing: -1px; }
-cite { float: right; }
-ul.classic { list-style: disc; margin-bottom: 1em; padding-left: 2em; }
-div.section { clear: both; padding-top: 10px; }
-fieldset { border: none; }
