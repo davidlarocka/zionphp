@@ -116,13 +116,9 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			$sql ='INSERT INTO `'.$baseDatos.'`.`menus` VALUES  (1,1,0,\'Inicio\',\'../CU_inicio\',1),
 				 (2,1,0,\'Usuarios\',\'\',1),
 				 (3,2,2,\'todos\',\'../CU_gestionarUsuario\',1),
-				 (4,2,2,\'por usuarios\',\'\',1),
-				 (5,2,2,\'por fecha\',\'\',1),
-				 (6,1,0,\'ejemplo\',\'../CU_login/cerrarSession.php\',1),
-				 (7,1,0,\'Reportes\',\'\',1),
-				 (8,1,0,\'Registrate\',\'../CU_registrarUsuario\',0),
-				 (9,1,0,\'Log In\',\'../CU_login\',0),
-				 (10,1,0,\'Salir\',\'../CU_login/cerrarSession.php\',1);';	
+				 (4,1,0,\'Registrate\',\'../CU_registrarUsuario\',0),
+				 (5,1,0,\'Log In\',\'../CU_login\',0),
+				 (6,1,0,\'Salir\',\'../CU_login/cerrarSession.php\',1);';	
 			$respuestaQUERY=mysql_query($sql, $conexion);
 			if($respuestaQUERY==false)
 				echo "no se insertaron los menus default :(<br/>";
@@ -263,10 +259,6 @@ $insert = "INSERT INTO t_usuarios (user_login,nombres, apellidos, cedula, rol, c
 			$sql ='INSERT INTO menus (nivel, id_menu_padre, descripcion, url, acceso  ) VALUES  (1,0,\'Inicio\',\'../CU_inicio\',1),
 				 (1,0,\'Usuarios\',\'\',1),
 				 (2,2,\'todos\',\'../CU_gestionarUsuario\',1),
-				 (2,2,\'por usuarios\',\'\',1),
-				 (2,2,\'por fecha\',\'\',1),
-				 (1,0,\'ejemplo\',\'../CU_login/cerrarSession.php\',1),
-				 (1,0,\'Reportes\',\'\',1),
 				 (1,0,\'Registrate\',\'../CU_registrarUsuario\',0),
 				 (1,0,\'Log In\',\'../CU_login\',0),
 				 (1,0,\'Salir\',\'../CU_login/cerrarSession.php\',1);';	
