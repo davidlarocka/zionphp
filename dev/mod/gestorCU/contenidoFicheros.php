@@ -80,13 +80,13 @@ $contenidoIndex.="//============================================================
 $contenidoIndex.=" //==========LOGICA DE NEGOCIOS ===================================\n";
 $contenidoIndex.="//=================================================================\n\n\n\n";
 
-$contenidoIndex.="    \$mensaje=\"<br/><p><font color='#3B3B3B'>Armar salida html aqui</font></p>\";\n\n\n";
+
 
 $contenidoIndex.="//=================================================================\n";
 $contenidoIndex.="//==========ARMAR SALIDA (VISTA) ==================================\n";
-$contenidoIndex.="//=================================================================\n\n\n\n";
+$contenidoIndex.="//=================================================================\n\n\n";
 
-
+$contenidoIndex.="    \$mensaje=\"<br/><p><font color='#3B3B3B'>Armar salida html aqui</font></p>\";\n\n";
 
 $contenidoIndex.="//=================================================================\n";
 $contenidoIndex.="//==========MUESTRA EN PANTALLA DE RESULTADOS (SALIDA) ============\n";
