@@ -120,7 +120,7 @@ if($usar_crear_db=="crear"){
 				echo "todas las tablas menus fueron creadas<br/>";
 				
 			//insertamos los menus default
-			$sql ='INSERT INTO `'.$baseDatos.'`.`menus` (id_menu, nivel, id_menu_padre, descripcion, url, acceso  ) VALUES  
+			$sql ='INSERT INTO `'.$baseDatos.'`.`menus` (id_menu, nivel, id_menu_padre, descripcion, url, acceso, cu_asociado  ) VALUES  
 				 (1,1,0,\'Inicio\',\'../CU_inicio\',1, \'CU_inicio\'),
 				 (2,1,0,\'Usuarios\',\'\',1, \'\'),
 				 (3,2,2,\'todos\',\'../CU_gestionarUsuario\',1, \'CU_gestionarUsuario\'),
@@ -257,7 +257,7 @@ if($usar_crear_db=="crear"){
 		}
 		
 		//insertamos los menus default
-			$sql ='INSERT INTO menus (nivel, id_menu_padre, descripcion, url, acceso  ) VALUES  (1,0,\'Inicio\',\'../CU_inicio\',1, \'CU_inicio\'),
+			$sql ='INSERT INTO menus (nivel, id_menu_padre, descripcion, url, acceso, cu_asociado  ) VALUES  (1,0,\'Inicio\',\'../CU_inicio\',1, \'CU_inicio\'),
 				 (1,0,\'Usuarios\',\'\',1, \'\'),
 				 (2,2,\'todos\',\'../CU_gestionarUsuario\',1, \'CU_gestionarUsuario\'),
 				 (1,0,\'Registrate\',\'../CU_registrarUsuario\',0, \'CU_registrarUsuario\'),
@@ -400,7 +400,7 @@ if($usar_crear_db=="crear"){
 				echo "todas las tablas menus fueron creadas<br/>";
 				
 			//insertamos los menus default
-			$sql ='INSERT INTO `'.$baseDatos.'`.`menus` (id_menu, nivel, id_menu_padre, descripcion, url, acceso  ) VALUES  
+			$sql ='INSERT INTO `'.$baseDatos.'`.`menus` (id_menu, nivel, id_menu_padre, descripcion, url, acceso, cu_asociado  ) VALUES  
 				 (1,1,0,\'Inicio\',\'../CU_inicio\',1, \'CU_inicio\'),
 				 (2,1,0,\'Usuarios\',\'\',1, \'\'),
 				 (3,2,2,\'todos\',\'../CU_gestionarUsuario\',1, \'CU_gestionarUsuario\'),
@@ -526,7 +526,7 @@ if($usar_crear_db=="crear"){
 		}
 		
 		//insertamos los menus default
-			$sql ='INSERT INTO menus (nivel, id_menu_padre, descripcion, url, acceso  ) VALUES  (1,0,\'Inicio\',\'../CU_inicio\',1, \'CU_inicio\'),
+			$sql ='INSERT INTO menus (nivel, id_menu_padre, descripcion, url, acceso, cu_asociado  ) VALUES  (1,0,\'Inicio\',\'../CU_inicio\',1, \'CU_inicio\'),
 				 (1,0,\'Usuarios\',\'\',1, \'\'),
 				 (2,2,\'todos\',\'../CU_gestionarUsuario\',1, \'CU_gestionarUsuario\'),
 				 (1,0,\'Registrate\',\'../CU_registrarUsuario\',0, \'CU_registrarUsuario\'),
