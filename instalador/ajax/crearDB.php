@@ -109,6 +109,7 @@ if($usar_crear_db=="crear"){
 					  `url` varchar(100) NOT NULL,
 					  `acceso` int(11) NOT NULL ,
 					  `orden` int(3),
+					  `cu_asociado` varchar(150),
 					  PRIMARY KEY (`id_menu`)
 				  );';
 			
@@ -120,12 +121,12 @@ if($usar_crear_db=="crear"){
 				
 			//insertamos los menus default
 			$sql ='INSERT INTO `'.$baseDatos.'`.`menus` (id_menu, nivel, id_menu_padre, descripcion, url, acceso  ) VALUES  
-				 (1,1,0,\'Inicio\',\'../CU_inicio\',1),
-				 (2,1,0,\'Usuarios\',\'\',1),
-				 (3,2,2,\'todos\',\'../CU_gestionarUsuario\',1),
-				 (4,1,0,\'Registrate\',\'../CU_registrarUsuario\',0),
-				 (5,1,0,\'Log In\',\'../CU_login\',0),
-				 (6,1,0,\'Salir\',\'../CU_login/cerrarSession.php\',1);';	
+				 (1,1,0,\'Inicio\',\'../CU_inicio\',1, \'CU_inicio\'),
+				 (2,1,0,\'Usuarios\',\'\',1, \'\'),
+				 (3,2,2,\'todos\',\'../CU_gestionarUsuario\',1, \'CU_gestionarUsuario\'),
+				 (4,1,0,\'Registrate\',\'../CU_registrarUsuario\',0, \'CU_registrarUsuario\'),
+				 (5,1,0,\'Log In\',\'../CU_login\',0, \'CU_login\'),
+				 (6,1,0,\'Salir\',\'../CU_login/cerrarSession.php\',1, \'\');';	
 			$respuestaQUERY=mysql_query($sql, $conexion);
 			if($respuestaQUERY==false)
 				echo "no se insertaron los menus default :(<br/>";
@@ -178,7 +179,6 @@ if($usar_crear_db=="crear"){
 		
 		
 	//=============================POSTGRESQL ==============================================//
-	//======================================================================================//	
 	
 	if($motor=="psql"){
 		//conectamos a postgres
@@ -246,6 +246,7 @@ if($usar_crear_db=="crear"){
 					  url character varying(150),
 					  acceso integer,
 					  orden integer,
+					  cu_asociado character varying(150),
 					  CONSTRAINT id_menu PRIMARY KEY (id_menu)
 				  );';
 		$respuestaQUERY=pg_query($dbcon, $sql);
@@ -256,12 +257,12 @@ if($usar_crear_db=="crear"){
 		}
 		
 		//insertamos los menus default
-			$sql ='INSERT INTO menus (nivel, id_menu_padre, descripcion, url, acceso  ) VALUES  (1,0,\'Inicio\',\'../CU_inicio\',1),
-				 (1,0,\'Usuarios\',\'\',1),
-				 (2,2,\'todos\',\'../CU_gestionarUsuario\',1),
-				 (1,0,\'Registrate\',\'../CU_registrarUsuario\',0),
-				 (1,0,\'Log In\',\'../CU_login\',0),
-				 (1,0,\'Salir\',\'../CU_login/cerrarSession.php\',1);';	
+			$sql ='INSERT INTO menus (nivel, id_menu_padre, descripcion, url, acceso  ) VALUES  (1,0,\'Inicio\',\'../CU_inicio\',1, \'CU_inicio\'),
+				 (1,0,\'Usuarios\',\'\',1, \'\'),
+				 (2,2,\'todos\',\'../CU_gestionarUsuario\',1, \'CU_gestionarUsuario\'),
+				 (1,0,\'Registrate\',\'../CU_registrarUsuario\',0, \'CU_registrarUsuario\'),
+				 (1,0,\'Log In\',\'../CU_login\',0, \'CU_login\'),
+				 (1,0,\'Salir\',\'../CU_login/cerrarSession.php\',1, \'\');';	
 		
 		$respuestaQUERY=pg_query($dbcon, $sql);
 		if ($respuestaQUERY==false){
@@ -388,6 +389,7 @@ if($usar_crear_db=="crear"){
 					  `url` varchar(100) NOT NULL,
 					  `acceso` int(11) NOT NULL ,
 					  `orden` int(3),
+					  `cu_asociado` varchar(100),
 					  PRIMARY KEY (`id_menu`)
 				  );';
 			
@@ -399,12 +401,12 @@ if($usar_crear_db=="crear"){
 				
 			//insertamos los menus default
 			$sql ='INSERT INTO `'.$baseDatos.'`.`menus` (id_menu, nivel, id_menu_padre, descripcion, url, acceso  ) VALUES  
-				 (1,1,0,\'Inicio\',\'../CU_inicio\',1),
-				 (2,1,0,\'Usuarios\',\'\',1),
-				 (3,2,2,\'todos\',\'../CU_gestionarUsuario\',1),
-				 (4,1,0,\'Registrate\',\'../CU_registrarUsuario\',0),
-				 (5,1,0,\'Log In\',\'../CU_login\',0),
-				 (6,1,0,\'Salir\',\'../CU_login/cerrarSession.php\',1);';	
+				 (1,1,0,\'Inicio\',\'../CU_inicio\',1, \'CU_inicio\'),
+				 (2,1,0,\'Usuarios\',\'\',1, \'\'),
+				 (3,2,2,\'todos\',\'../CU_gestionarUsuario\',1, \'CU_gestionarUsuario\'),
+				 (4,1,0,\'Registrate\',\'../CU_registrarUsuario\',0, \'CU_registrarUsuario\'),
+				 (5,1,0,\'Log In\',\'../CU_login\',0, \'CU_login\'),
+				 (6,1,0,\'Salir\',\'../CU_login/cerrarSession.php\',1, \'\');';		
 			$respuestaQUERY=mysql_query($sql, $conexion);
 			if($respuestaQUERY==false)
 				echo "no se insertaron los menus default :(<br/>";
@@ -513,6 +515,7 @@ if($usar_crear_db=="crear"){
 					  url character varying(150),
 					  acceso integer,
 					  orden integer,
+					  cu_asociado character varying(150),
 					  CONSTRAINT id_menu PRIMARY KEY (id_menu)
 				  );';
 		$respuestaQUERY=pg_query($dbcon, $sql);
@@ -523,12 +526,12 @@ if($usar_crear_db=="crear"){
 		}
 		
 		//insertamos los menus default
-			$sql ='INSERT INTO menus (nivel, id_menu_padre, descripcion, url, acceso  ) VALUES  (1,0,\'Inicio\',\'../CU_inicio\',1),
-				 (1,0,\'Usuarios\',\'\',1),
-				 (2,2,\'todos\',\'../CU_gestionarUsuario\',1),
-				 (1,0,\'Registrate\',\'../CU_registrarUsuario\',0),
-				 (1,0,\'Log In\',\'../CU_login\',0),
-				 (1,0,\'Salir\',\'../CU_login/cerrarSession.php\',1);';	
+			$sql ='INSERT INTO menus (nivel, id_menu_padre, descripcion, url, acceso  ) VALUES  (1,0,\'Inicio\',\'../CU_inicio\',1, \'CU_inicio\'),
+				 (1,0,\'Usuarios\',\'\',1, \'\'),
+				 (2,2,\'todos\',\'../CU_gestionarUsuario\',1, \'CU_gestionarUsuario\'),
+				 (1,0,\'Registrate\',\'../CU_registrarUsuario\',0, \'CU_registrarUsuario\'),
+				 (1,0,\'Log In\',\'../CU_login\',0, \'CU_login\'),
+				 (1,0,\'Salir\',\'../CU_login/cerrarSession.php\',1, \'\');';	
 		
 		$respuestaQUERY=pg_query($dbcon, $sql);
 		if ($respuestaQUERY==false){
