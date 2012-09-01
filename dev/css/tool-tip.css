@@ -1,0 +1,17 @@
+.tt-links{
+	padding: 0;
+	width: 435px;
+	height: 70px;
+	margin: 40px auto;
+	list-style: none;
+}
+
+.tt-links .sql:hover {
+	visibility: visible;
+	opacity: 0.9;
+	-webkit-transform: translate(0px) rotate(0deg) scale(1);
+	-moz-transform: translate(0px) rotate(0deg) scale(1);
+	-o-transform: translate(0px) rotate(0deg) scale(1);
+	-ms-transform: translate(0px) rotate(0deg) scale(1);
+	transform: translate(0px) rotate(0deg) scale(1);
+}
