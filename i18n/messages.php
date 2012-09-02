@@ -23,6 +23,6 @@
  */
 
   $mpprij = "Ministerio del Poder Popular para Relaciones Interiores y Justicia";
-  $license = "<a href='http://www.gnu.org/licenses/gpl.txt'>Licencia GNU GPLv3</a>";
-  $footer = "Framework oficial del $mpprij. Software libre bajo $license";
+  $license = "<a href='http://www.gnu.org/licenses/gpl.txt' style='text-decoration:none;'>Licencia GNU GPLv3</a>";
+  $footer = "<font color='#FFFFFF'>ZionPHP Framework v1.0 Software libre bajo </font>$license";
 ?>
