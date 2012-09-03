@@ -25,7 +25,7 @@ class menus
 	$menuDB=$consultasCU_Menus->menusDB();
 	
 	//una vez obtenidos armamos el html del menu que el servidor enviara como respuesta
-	$html_menus.="<ul id='nav'>";
+	$html_menus="<ul id='nav'>";
 						$i=0;
 						
 						//revisamos item por item que esta en la tabla menus de la base de datos
