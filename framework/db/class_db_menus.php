@@ -1,6 +1,5 @@
 <?php 
 /*copyright:This file is part of zionPHP 1.0
-
     zionPHP 1.0 is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -14,8 +13,8 @@
     You should have received a copy of the GNU General Public License
     along with zionPHP 1.0.  If not, see <http://www.gnu.org/licenses/>. 
 */
-/*=================================================================	
-//=========FICHA TECNICA DE LA CLASE	
+
+/*FICHA TECNICA DE LA CLASE	
 
 	*FRAMEWORK VERSION: 0.0.1
 	*CLASE:class_db.php
@@ -29,56 +28,57 @@
 	*CREADO POR: TSU David Garcia
 	*CORREO ELECTRONICO: davidlarocka@gmail.com
 	*FECHA CREACION: 1 DE MAYO DE 2012
-	*FECHA ULTIMO MANTENIMIENTO: 23-07-2012		POR:  Yajes Fuenmayor
-
-//=================================================================	*/	
+	*FECHA ULTIMO MANTENIMIENTO: 03-09-2012		POR:  Carlos Vásquez
+*/	
 	class db_consultas_menus {
 			
-			//atributos
+			//Atributos
 			var $cadenaConexion;	
-       //===========METODOS========================================
-       //==========================================================
-			function conectar(){
-				
-				
-				
-		        // se verifica que no se alla expecificado una conexion diferente a la de la configuracion global 	
-				if($this->cadenaConexion==""){	
-				require("../../configuracion.php");
+			//MÉTODOS
+			function conectar()
+			{
+	        	//Verificamos si no se ha especificado una conexión diferente a la de la configuracion global 	
+				if($this->cadenaConexion=="")
+				{	
+					require("../../configuracion.php");
 					/*le asignamos al atributo cadenaConexion de esta clase el parametro de la conexion establecido en el archivo
 					 coniguracion.php*/
 					$this->cadenaConexion=$cadenaConexionGlobal;
 					require($this->cadenaConexion);
 				}
-				else{
+				else
+				{
 					/*si el desarrollador especifica una conexion diferente a la de la configuracion al momente de 
 					hacer una nueva instancia de db_consultas entonces esa es la que se usa*/
 					require($this->cadenaConexion);
 				}
-				//echo "parametros conexion: ".$servidor." ".$usuario." ".$base_datos." ".$pass."<br/><br/>";
-				
 				//construimos la conexion para mysql
-				if($gestorBD=="mysql"){
-				$conexion[0]=mysql_connect($servidor,$usuario,$pass) or die ("murio la conexion a la base de datos :(");
-				$conexion[1]=mysql_select_db($base_datos);
-				$conexion[2]=$gestorBD;
-				$conexion[3]=$mostrarConsultasSQL;
+				if($gestorBD=="mysql")
+				{
+					$conexion[0]=mysql_connect($servidor,$usuario,$pass) or die ("murio la conexion a la base de datos :(");
+					$conexion[1]=mysql_select_db($base_datos);
+					$conexion[2]=$gestorBD;
+					$conexion[3]=$mostrarConsultasSQL;
+					$mostrarConsultasSQL="";
 				}
 				//devuelve el resultado
-				if($gestorBD=="postgres"){
-				$conexion[0]= pg_connect("host=".$servidor."  dbname=".$base_datos." user=".$usuario." password=".$pass."")
-    			  or die ("no hay conexion " . pg_last_error($conn)); 	
-				$conexion[1]=NULL;
-				$conexion[2]=$gestorBD; 
-				$conexion[3]=$mostrarConsultasSQL; //parametro de configuracion que indica si se imprime en pantalla la consulta
+				if($gestorBD=="postgres")
+				{
+					$mostrarConsultasSQL="";
+					$conexion[0]= pg_connect("host=".$servidor."  dbname=".$base_datos." user=".$usuario." password=".$pass."")
+    			  	or die ("no hay conexion " . pg_last_error($conn)); 	
+					$conexion[1]=NULL;
+					$conexion[2]=$gestorBD; 
+					$conexion[3]=$mostrarConsultasSQL;//parametro de configuracion que indica si se imprime en pantalla la consulta 
+					
 				}
 				return $conexion;
 				}
 
-			// a este select le pasamos como parametros los campos a buscar, la tabla o tablas y de ser necesario la condicion...
+			//A este select le pasamos como parametros los campos a buscar, la tabla o tablas y de ser necesario la condicion...
 			function select($atributo, $tabla, $condicion, $groupBy,$ordenBy){
 			
-				
+				$mostrarConsultasSQL="";
 				//se conecta a la base de datos
 					$conexion=$this->conectar();
 					$nro_atributos=-1;
@@ -120,7 +120,7 @@
 					$SQL=substr($SQL,0,-2);  
 					$SQL_PRINT=substr($SQL_PRINT,0,-9);  
 					//verifica si existe condicion y de existir indicamos la condicion
-					if($condicion[0]!=""){ 	
+					if(isset($condicion[0])){ 	
 						$SQL.=" WHERE ";
 						$SQL_PRINT.="<font color='white'> WHERE </font>'";
 						
@@ -153,7 +153,7 @@
 					
 					
 					//group By
-					if($groupBy[0]!=""){ 	
+					if(isset($groupBy[0])){ 	
 						$SQL.=" GROUP BY ";
 						foreach($groupBy as $valor){
 						//incluimos el campo que toca en el buble a la consulta SQL
@@ -172,7 +172,7 @@
 						$SQL_PRINT.=';</font><font color="black"></div>';
 			
 				
-				echo $SQL;
+				//echo $SQL;
 				
 					
 					//aki hacemos el select
@@ -271,7 +271,7 @@
 								
 						//verifica si en la configuracion global se establecio imprimir los SQL
 								if($conexion[3]=="si")
-								echo $SQL;
+								//echo $SQL;
 							
 								//exit;
 								//aki hacemos el select	
@@ -371,7 +371,7 @@
 					
 					//verifica si en la configuracion global se establecio imprimir los SQL
 						if($conexion[3]=="si")
-						echo $SQL;
+						//echo $SQL;
 							
 					if($conexion[2]=="mysql")
 					{
@@ -457,7 +457,7 @@
 								
 						//verifica si en la configuracion global se establecio imprimir los SQL
 							if($conexion[3]=="si")
-							echo $SQL;
+							//echo $SQL;
 							
 								//exit;
 								//aki hacemos el select	
@@ -479,8 +479,6 @@
 								
 								return null;
 								}
-								
-
 		  			
 		}	
 	}
